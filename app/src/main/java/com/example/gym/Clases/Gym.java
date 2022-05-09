@@ -7,11 +7,11 @@ public class Gym {
     private int idGym;
     private String ciudad;
     private int CP;
-    private Actividades[] actividades;
+    private Actividad[] actividades;
     private Date hora_apertura;
     private Date hora_cerrada;
 
-    public Gym(int idGym, String ciudad, int CP, Actividades[] actividades, Date hora_apertura, Date hora_cerrada) {
+    public Gym(int idGym, String ciudad, int CP, Actividad[] actividades, Date hora_apertura, Date hora_cerrada) {
         this.idGym = idGym;
         this.ciudad = ciudad;
         this.CP = CP;
@@ -44,11 +44,11 @@ public class Gym {
         this.CP = CP;
     }
 
-    public Actividades[] getActividades() {
+    public Actividad[] getActividades() {
         return actividades;
     }
 
-    public void setActividades(Actividades[] actividades) {
+    public void setActividades(Actividad[] actividades) {
         this.actividades = actividades;
     }
 

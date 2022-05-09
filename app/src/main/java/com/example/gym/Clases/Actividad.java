@@ -2,7 +2,7 @@ package com.example.gym.Clases;
 
 import java.util.Date;
 
-public class Actividades {
+public class Actividad {
 
     private int idActividad;
     private String nombre;
@@ -11,7 +11,7 @@ public class Actividades {
     private Date hora_inicio;
     private Date hora_fin;
 
-    public Actividades(int idActividad, String nombre, String descripcion, int aforo, Date hora_inicio, Date hora_fin) {
+    public Actividad(int idActividad, String nombre, String descripcion, int aforo, Date hora_inicio, Date hora_fin) {
         this.idActividad = idActividad;
         this.nombre = nombre;
         this.descripcion = descripcion;
