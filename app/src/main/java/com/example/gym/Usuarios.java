@@ -11,8 +11,4 @@ public class Usuarios {
     private String user;
     private String password;
 
-    private void login(){
-
-
-    }
 }
