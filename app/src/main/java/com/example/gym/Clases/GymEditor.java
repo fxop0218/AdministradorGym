@@ -1,5 +1,5 @@
 package com.example.gym.Clases;
 
-public class gymEditor {
+public class GymEditor {
     private int id_gym;
 }
