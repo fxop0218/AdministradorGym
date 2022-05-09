@@ -1,5 +1,24 @@
 package com.example.gym.Clases;
 
-public class GymEditor {
-    private int id_gym;
+import java.util.Date;
+
+public class GymEditor extends Usuarios{
+
+    private Gym gym;
+
+    public GymEditor(String nombre, String apellidos, String dni, Date dataNacimiento, String user, String password) {
+        super(nombre, apellidos, dni, dataNacimiento, user, password);
+    }
+
+    public Gym getGym() {
+        return gym;
+    }
+
+    public void setGym(Gym gym) {
+        this.gym = gym;
+    }
+
+    public void get(){
+
+    }
 }
