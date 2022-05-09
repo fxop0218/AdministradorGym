@@ -16,11 +16,11 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         //Declaramos los editText
-        etPwd = findViewById(R.id.etPassword);
-        etUser = findViewById(R.id.etUsname);
+        etPwd = findViewById(R.id.username);
+        etUser = findViewById(R.id.password);
 
         //Declaramos los botones
-        btLogin = findViewById(R.id.btLogin);
+        btLogin = findViewById(R.id.login);
         //TODO declarar el boton de registrarse
         //TODO añadir el boton de registrarse al layOut
 
