@@ -9,6 +9,7 @@ public class GymEditor extends Persona {
     public GymEditor(String nombre, String apellidos, String dni, Date dataNacimiento, String user, String password) {
         super(nombre, apellidos, dni, dataNacimiento, user, password);
     }
+    //Getters and setters
 
     public Gym getGym() {
         return gym;

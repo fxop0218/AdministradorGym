@@ -20,6 +20,8 @@ public class Persona {
         this.password = password;
     }
 
+    //Getters and setters
+
     public String getNombre() {
         return nombre;
     }
