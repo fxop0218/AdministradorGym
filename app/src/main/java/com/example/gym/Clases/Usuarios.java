@@ -1,4 +1,4 @@
-package com.example.gym;
+package com.example.gym.Clases;
 
 import java.util.Date;
 
