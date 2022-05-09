@@ -2,7 +2,7 @@ package com.example.gym.Clases;
 
 import java.util.Date;
 
-public class Usuarios {
+public class Persona {
 
     private String nombre;
     private String apellidos;
@@ -11,7 +11,7 @@ public class Usuarios {
     private String user;
     private String password;
 
-    public Usuarios(String nombre, String apellidos, String dni, Date dataNacimiento, String user, String password) {
+    public Persona(String nombre, String apellidos, String dni, Date dataNacimiento, String user, String password) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.dni = dni;

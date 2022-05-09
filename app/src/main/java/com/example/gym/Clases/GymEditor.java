@@ -2,7 +2,7 @@ package com.example.gym.Clases;
 
 import java.util.Date;
 
-public class GymEditor extends Usuarios{
+public class GymEditor extends Persona {
 
     private Gym gym;
 
