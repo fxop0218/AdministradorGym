@@ -10,4 +10,9 @@ public class Usuarios {
     private Date dataNacimiento;
     private String user;
     private String password;
+
+    private void login(){
+
+
+    }
 }
