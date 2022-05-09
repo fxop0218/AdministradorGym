@@ -16,6 +16,8 @@ public class Usuario extends Persona{
         return gimnasios;
     }
 
+
+
     /* TODO
     public void setGym (Gym gimnasio) {
         gimnasios[gimnasios.length] = gimnasio;
