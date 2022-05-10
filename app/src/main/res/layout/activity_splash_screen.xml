@@ -20,13 +20,10 @@
 
     <com.lusfold.spinnerloading.SpinnerLoading
         android:id="@+id/spinnerloading"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="150dp"
-        android:layout_marginStart="153dp"
-        android:layout_marginEnd="152dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgicono"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintEnd_toEndOf="@+id/imgicono"
+        app:layout_constraintStart_toStartOf="@+id/imgicono"
+        app:layout_constraintTop_toBottomOf="@+id/imgicono" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
