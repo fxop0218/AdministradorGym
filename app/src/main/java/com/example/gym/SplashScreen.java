@@ -18,6 +18,7 @@ public class SplashScreen extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
 
         spinnerLoading = findViewById(R.id.spinnerloading);
+        spinnerLoading.setCircleRadius(20);
 
         new Handler().postDelayed(new Runnable() {
             @Override
