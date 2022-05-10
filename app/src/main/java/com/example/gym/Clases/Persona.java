@@ -10,14 +10,16 @@ public class Persona {
     private Date dataNacimiento;
     private String user;
     private String password;
+    private Reserva[] reserva;
 
-    public Persona(String nombre, String apellidos, String dni, Date dataNacimiento, String user, String password) {
+    public Persona(String nombre, String apellidos, String dni, Date dataNacimiento, String user, String password, Reserva[] reserva) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.dni = dni;
         this.dataNacimiento = dataNacimiento;
         this.user = user;
         this.password = password;
+        this.reserva = reserva;
     }
 
     //Getters and setters
@@ -68,5 +70,13 @@ public class Persona {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Reserva[] getReserva() {
+        return reserva;
+    }
+
+    public void setReserva(Reserva[] reserva) {
+        this.reserva = reserva;
     }
 }

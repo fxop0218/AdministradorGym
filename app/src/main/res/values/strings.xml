@@ -9,4 +9,8 @@
     <string name="invalid_username">No es un usuario valido</string>
     <string name="invalid_password">La contraseña tiene que tener mas de 5 caracteres</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="bottom_nav_home">Home</string>
+    <string name="bottom_nav_calendar">Calendari</string>
+    <string name="bottom_nav_tienda">Tienda</string>
+    <string name="bottom_nav_user">Usuario</string>
 </resources>
