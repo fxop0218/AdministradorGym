@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.example.gym.ui.login.LoginActivity;
 import com.lusfold.spinnerloading.SpinnerLoading;
 
 public class SplashScreen extends AppCompatActivity {
@@ -18,15 +19,15 @@ public class SplashScreen extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
 
         spinnerLoading = findViewById(R.id.spinnerloading);
-        spinnerLoading.setCircleRadius(20);
+        spinnerLoading.setCircleRadius(10);
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(SplashScreen.this, MainActivity.class);
+                Intent intent = new Intent(SplashScreen.this, LoginActivity.class);
                 startActivity(intent);
                 finish();
             }
-        },4000);
+        },1000);
     }
 }
