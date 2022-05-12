@@ -31,4 +31,16 @@
     <string name="etUserName">Nombre de Usuario</string>
     <string name="etPwd">Contraseña</string>
     <string name="etRepeatPwd">Repetir contraseña</string>
+    <string name="rutinas">RUTINAS</string>
+    <string name="rutinas_nivel_principiante">Nivel principiante</string>
+    <string name="rutinas_nivel_intermedio">Nivel Intermedio</string>
+    <string name="rutinas_nivel_avanzado">Nivel avanzado</string>
+    <string name="dietas">DIETAS</string>
+    <string name="Dieta_hipocalórica">Dieta Hipocalórica</string>
+    <string name="Dieta_proteica">Dieta Proteica</string>
+    <string name="Dieta_Vegetariana">Dieta Vegetariana</string>
+    <string name="maquinas">MAQUINAS</string>
+    <string name="Cardio">Cardio</string>
+    <string name="Con_poleas">Con Poleas</string>
+    <string name="Con_pesas">Con Pesas</string>
 </resources>
