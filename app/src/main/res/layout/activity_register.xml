@@ -6,83 +6,130 @@
     android:layout_height="match_parent"
     tools:context=".Clases.RegisterActivity">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="320dp"
-        android:layout_height="329dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="48dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <EditText
-            android:id="@+id/etName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Nombre"
-            android:inputType="textPersonName"
-            android:textSize="24sp" />
-
-        <EditText
-            android:id="@+id/etSurname"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Apellidos"
-            android:inputType="textPersonName"
-            android:textSize="24sp" />
-
-        <EditText
-            android:id="@+id/etDni"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="DNI"
-            android:inputType="textPersonName"
-            android:textSize="24sp" />
-
-        <EditText
-            android:id="@+id/etYear"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Fecha de Nacimiento"
-            android:inputType="date"
-            android:textSize="24sp" />
-
-        <EditText
-            android:id="@+id/etUserName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Nombre de Usuario"
-            android:inputType="textPersonName"
-            android:textSize="24sp" />
-
-        <EditText
-            android:id="@+id/etPwd"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Contraseña"
-            android:inputType="textPassword"
-            android:textSize="24sp" />
-
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/bRegsiter"
+    <ScrollView
         android:layout_width="0dp"
-        android:onClick="register"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="@string/action_register"
-        app:layout_constraintEnd_toEndOf="@+id/linearLayout"
-        app:layout_constraintStart_toStartOf="@+id/linearLayout"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/action_register"
+                android:layout_marginTop="30dp"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                />
+
+            <EditText
+                android:id="@+id/etDni"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="50dp"
+                android:ems="10"
+                android:hint="@string/etDni"
+                android:inputType="textPersonName"
+                android:maxLength="9"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/etName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/etNombre"
+                android:inputType="textPersonName"
+                android:textSize="18sp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                />
+
+            <EditText
+                android:id="@+id/etSurname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/etApellidos"
+                android:inputType="textPersonName"
+                android:textSize="18sp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                />
+
+            <EditText
+                android:id="@+id/etYear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/etFecha_de_nacimiento"
+                android:inputType="date"
+                android:textSize="18sp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                />
+
+            <EditText
+                android:id="@+id/etUserName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/etUserName"
+                android:inputType="textPersonName"
+                android:textSize="18sp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                />
+
+            <EditText
+                android:id="@+id/etPwd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/etPwd"
+                android:inputType="textPassword"
+                android:textSize="18sp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                />
+
+            <EditText
+                android:id="@+id/etCfnPwd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/etRepeatPwd"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                />
+
+            <Button
+                android:id="@+id/bRegsiter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:onClick="register"
+                android:layout_gravity="center"
+                android:background="@drawable/custom_button"
+                android:text="@string/action_register" />
+        </LinearLayout>
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

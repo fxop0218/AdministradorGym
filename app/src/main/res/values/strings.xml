@@ -18,8 +18,17 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <!--- String fragment Calendar -->
     <string name="bViewActivities">View activities</string>
     <string name="bViewUpcomingActivities">See upcoming activities</string>
+    <!--- String fragment Register -->
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="etDni">DNI</string>
+    <string name="etNombre">Nombre</string>
+    <string name="etApellidos">Apellidos</string>
+    <string name="etFecha_de_nacimiento">Fecha de Nacimiento</string>
+    <string name="etUserName">Nombre de Usuario</string>
+    <string name="etPwd">Contraseña</string>
+    <string name="etRepeatPwd">Repetir contraseña</string>
 </resources>
