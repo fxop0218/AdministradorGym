@@ -33,6 +33,7 @@
                         android:layout_marginLeft="30dp"
                         android:layout_marginTop="50dp"
                         android:layout_marginRight="30dp"
+                        android:scaleType="centerCrop"
                         app:srcCompat="@color/azul_logo" />
 
                     <TextView
@@ -47,10 +48,20 @@
                         android:textSize="19sp"
                         android:textStyle="bold" />
 
+                    <ImageView
+                        android:id="@+id/ImageRutinas"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="30dp"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/imagen_nivel_avanzado" />
+
                     <Button
                         android:id="@+id/bt_principiante"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="50dp"
                         android:layout_marginLeft="30dp"
                         android:layout_marginTop="20dp"
                         android:layout_marginRight="30dp"
@@ -61,7 +72,7 @@
                     <Button
                         android:id="@+id/bt_intermedio"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="50dp"
                         android:layout_marginLeft="30dp"
                         android:layout_marginTop="20dp"
                         android:layout_marginRight="30dp"
@@ -72,7 +83,7 @@
                     <Button
                         android:id="@+id/bt_avanzado"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="50dp"
                         android:layout_marginLeft="30dp"
                         android:layout_marginTop="20dp"
                         android:layout_marginRight="30dp"
@@ -92,21 +103,32 @@
                         android:textSize="19sp"
                         android:textStyle="bold" />
 
+                    <ImageView
+                        android:id="@+id/ImageDietas"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="30dp"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/dieta_hipocalorica" />
+
                     <Button
                         android:id="@+id/bt_hipocalorica"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="50dp"
                         android:layout_marginLeft="30dp"
                         android:layout_marginTop="20dp"
                         android:layout_marginRight="30dp"
                         android:background="@drawable/boton2"
                         android:drawableLeft="@drawable/ic_hipocalorica"
+                        android:onClick="onButtonShowPopupWindowClick"
                         android:text="@string/Dieta_hipocalórica" />
 
                     <Button
                         android:id="@+id/bt_proteica"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="50dp"
                         android:layout_marginLeft="30dp"
                         android:layout_marginTop="20dp"
                         android:layout_marginRight="30dp"
@@ -117,7 +139,7 @@
                     <Button
                         android:id="@+id/bt_vegetariana"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="50dp"
                         android:layout_marginLeft="30dp"
                         android:layout_marginTop="20dp"
                         android:layout_marginRight="30dp"
@@ -137,10 +159,20 @@
                         android:textSize="19sp"
                         android:textStyle="bold" />
 
+                    <ImageView
+                        android:id="@+id/ImageMaquinas"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="30dp"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/imagen_nivel_principiante" />
+
                     <Button
                         android:id="@+id/bt_cardio"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="50dp"
                         android:layout_marginLeft="30dp"
                         android:layout_marginTop="20dp"
                         android:layout_marginRight="30dp"
@@ -151,7 +183,7 @@
                     <Button
                         android:id="@+id/bt_poleas"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginLeft="30dp"
                         android:layout_marginTop="20dp"
                         android:layout_marginRight="30dp"
@@ -162,7 +194,7 @@
                     <Button
                         android:id="@+id/bt_pesas"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="50dp"
                         android:layout_marginLeft="30dp"
                         android:layout_marginTop="20dp"
                         android:layout_marginRight="30dp"
