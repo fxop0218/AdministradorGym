@@ -7,7 +7,10 @@
         <item name="colorSecondary">@color/azul_logo</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-
         <!-- Customize your theme here. -->
+    </style>
+
+    <style name="rojo_rutina" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:colorPrimary">@color/rojo_rutina</item>
     </style>
 </resources>

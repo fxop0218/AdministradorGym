@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Gym">
-        <activity android:name=".Clases.RegisterActivity"></activity>
+        <activity
+            android:name=".DietaHipocalorica"
+            android:theme="@style/Theme.AppCompat.Dialog" />
+        <activity android:name=".Clases.RegisterActivity" />
         <activity
             android:name=".ui.login.LoginActivity"
             android:label="@string/title_activity_login" />
