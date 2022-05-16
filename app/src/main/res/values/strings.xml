@@ -44,4 +44,11 @@
     <string name="Con_poleas">Con Poleas</string>
     <string name="Con_pesas">Con Pesas</string>
     <string name="cambiar_nombre_de_ususario">CAMBIAR NOMBRE DE USUSARIO</string>
+    <string name="cambiar_nombre_y_apellidos">Cambiar nombre y apellidos</string>
+    <string name="cambiar_fecha_nacimiento">Cambiar fecha de nacimiento</string>
+    <string name="mis_actividades">Mis actividades</string>
+    <string name="cerrar_sesion">cerrar sesion</string>
+    <string name="material">Material</string>
+    <string name="suplementos">Suplementos</string>
+    <string name="vestuario">Vestuario</string>
 </resources>

@@ -24,6 +24,7 @@ public class RegisterActivity extends Activity {
     private int actYear = Calendar.getInstance().get(Calendar.YEAR);
     private int year = 0;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
