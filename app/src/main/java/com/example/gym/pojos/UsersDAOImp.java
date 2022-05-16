@@ -17,7 +17,7 @@ import org.jetbrains.annotations.NotNull;
 public class UsersDAOImp implements UsersDAO{
     Context context;
     @Override
-    public Usuario getUsuario(String userName, OnSuccessListener<Usuario> listener) {
+    public Usuario getUsuario(String userName, OnSuccessListener<Usuario> listener, OnFailureListener failure) {
         final Usuario[] usr = new Usuario[1];
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         DocumentReference docRef = db.collection("users").document(userName);
@@ -27,18 +27,17 @@ public class UsersDAOImp implements UsersDAO{
                 String nombre = documentSnapshot.getString("nombre");
                 String apellidos = documentSnapshot.getString("apellidos");
                 String dni = documentSnapshot.getString("dni");
-                int año = Math.toIntExact(documentSnapshot.getLong("dataNacimiento"));
                 String user = documentSnapshot.getString("user");
                 String pwd = documentSnapshot.getString("password");
 
-                usr[0] = new Usuario(nombre, apellidos, dni, año, user, pwd);
+                usr[0] = new Usuario(nombre, apellidos, dni, 2002, user, pwd);
 
                 listener.onSuccess(usr[0]);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull @NotNull Exception e) {
-                return;
+                failure.onFailure(new Exception("usuario o contraseña incorrecto"));
             }
         });
 

@@ -146,9 +146,11 @@ public class LoginActivity extends AppCompatActivity {
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             String pwd = "";
+            Usuario usr = null;
             @Override
             public void onClick(View v) {
-                Usuario usr = pjClss.getUsuarioDAO().getUsuario(usernameEditText.getText().toString(), (usuario -> {
+                loginButton.setEnabled(false);
+                usr = pjClss.getUsuarioDAO().getUsuario(usernameEditText.getText().toString(), (usuario -> {
                    pwd = usuario.getPassword();
                     if (pwd.equals(passwordEditText.getText().toString())) {
                         Toast.makeText(getApplicationContext(), "Bienvenido", Toast.LENGTH_SHORT).show();
@@ -157,9 +159,12 @@ public class LoginActivity extends AppCompatActivity {
                                 passwordEditText.getText().toString());
                     } else {
                         Toast.makeText(getApplicationContext(), "La contraseña es incorrecta, intentalo de nuevo", Toast.LENGTH_SHORT).show();
+
                     }
+                }), (e -> {
+                    loginButton.setEnabled(true);
+                    Toast.makeText(getApplicationContext(), "Contraseña o usuario incorrecto", Toast.LENGTH_SHORT).show();
                 }));
-                Toast.makeText(getApplicationContext(), "Usuario o contraseña incorrecto", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -174,7 +179,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void showLoginFailed(@StringRes Integer errorString) {
-        Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), errorString + "error", Toast.LENGTH_SHORT).show();
     }
 
     public void register(View view){
