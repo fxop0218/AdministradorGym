@@ -7,19 +7,17 @@ public class Persona {
     private String nombre;
     private String apellidos;
     private String dni;
-    private Date dataNacimiento;
+    private int dataNacimiento;
     private String user;
     private String password;
-    private Reserva[] reserva;
 
-    public Persona(String nombre, String apellidos, String dni, Date dataNacimiento, String user, String password, Reserva[] reserva) {
+    public Persona(String nombre, String apellidos, String dni, int dataNacimiento, String user, String password) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.dni = dni;
         this.dataNacimiento = dataNacimiento;
         this.user = user;
         this.password = password;
-        this.reserva = reserva;
     }
 
     //Getters and setters
@@ -48,11 +46,11 @@ public class Persona {
         this.dni = dni;
     }
 
-    public Date getDataNacimiento() {
+    public int getDataNacimiento() {
         return dataNacimiento;
     }
 
-    public void setDataNacimiento(Date dataNacimiento) {
+    public void setDataNacimiento(int dataNacimiento) {
         this.dataNacimiento = dataNacimiento;
     }
 
@@ -70,13 +68,5 @@ public class Persona {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public Reserva[] getReserva() {
-        return reserva;
-    }
-
-    public void setReserva(Reserva[] reserva) {
-        this.reserva = reserva;
     }
 }

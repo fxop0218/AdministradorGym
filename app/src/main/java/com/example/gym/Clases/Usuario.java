@@ -4,18 +4,17 @@ import java.util.Date;
 
 public class Usuario extends Persona{
 
-    private Gym[] gimnasios;
-    private Reserva[] reservas;
+    private int idGimnasios;
 
-    public Usuario(String nombre, String apellidos, String dni, Date dataNacimiento, String user, String password, Reserva[] reserva) {
-        super(nombre, apellidos, dni, dataNacimiento, user, password, reserva);
+    public Usuario(String nombre, String apellidos, String dni, int dataNacimiento, String user, String password) {
+        super(nombre, apellidos, dni, dataNacimiento, user, password);
     }
 
 
     //Getters and setters
 
-    public Gym[] getGimnasios() {
-        return gimnasios;
+    public int getGimnasios() {
+        return idGimnasios;
     }
 
 
@@ -26,7 +25,7 @@ public class Usuario extends Persona{
     }
      */
 
-    public void setGimnasios(Gym[] gimnasios) {
-        this.gimnasios = gimnasios;
+    public void setGimnasios(int gimnasios) {
+        this.idGimnasios = gimnasios;
     }
 }

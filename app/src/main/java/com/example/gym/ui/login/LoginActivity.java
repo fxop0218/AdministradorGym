@@ -1,7 +1,10 @@
 package com.example.gym.ui.login;
 
 import android.app.Activity;
+import com.example.gym.pojos.PojosClass;
 
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -23,18 +26,41 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.gym.Clases.RegisterActivity;
+import com.example.gym.Clases.Actividad;
+import com.example.gym.Clases.Reserva;
+import com.example.gym.Clases.Usuario;
+import com.example.gym.data.RegisterActivity;
 import com.example.gym.MainActivity;
 import com.example.gym.R;
 import com.example.gym.SplashScreen;
+import com.example.gym.data.RegisterActivity;
+import com.example.gym.pojos.FireBaseConnection;
+import com.example.gym.pojos.UsersDAOImp;
 import com.example.gym.ui.login.LoginViewModel;
 import com.example.gym.ui.login.LoginViewModelFactory;
 import com.example.gym.databinding.ActivityLoginBinding;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.Date;
 
 public class LoginActivity extends AppCompatActivity {
 
     private LoginViewModel loginViewModel;
     private ActivityLoginBinding binding;
+    private PojosClass pjClss = new PojosClass();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -46,8 +72,8 @@ public class LoginActivity extends AppCompatActivity {
         loginViewModel = new ViewModelProvider(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);
 
-        final EditText usernameEditText = binding.username;
-        final EditText passwordEditText = binding.password;
+        final EditText usernameEditText = findViewById(R.id.username);
+        final EditText passwordEditText = findViewById(R.id.password);
         final Button loginButton = binding.login;
         final ProgressBar loadingProgressBar = binding.loading;
 
@@ -119,11 +145,21 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         loginButton.setOnClickListener(new View.OnClickListener() {
+            String pwd = "";
             @Override
             public void onClick(View v) {
-                loadingProgressBar.setVisibility(View.VISIBLE);
-                loginViewModel.login(usernameEditText.getText().toString(),
-                        passwordEditText.getText().toString());
+                Usuario usr = pjClss.getUsuarioDAO().getUsuario(usernameEditText.getText().toString(), (usuario -> {
+                   pwd = usuario.getPassword();
+                    if (pwd.equals(passwordEditText.getText().toString())) {
+                        Toast.makeText(getApplicationContext(), "Bienvenido", Toast.LENGTH_SHORT).show();
+                        loadingProgressBar.setVisibility(View.VISIBLE);
+                        loginViewModel.login(usernameEditText.getText().toString(),
+                                passwordEditText.getText().toString());
+                    } else {
+                        Toast.makeText(getApplicationContext(), "La contraseña es incorrecta, intentalo de nuevo", Toast.LENGTH_SHORT).show();
+                    }
+                }));
+                Toast.makeText(getApplicationContext(), "Usuario o contraseña incorrecto", Toast.LENGTH_SHORT).show();
             }
         });
     }

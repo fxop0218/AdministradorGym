@@ -4,20 +4,21 @@ import java.util.Date;
 
 public class GymEditor extends Persona {
 
-    private Gym gym;
+    private int idGym;
 
-    public GymEditor(String nombre, String apellidos, String dni, Date dataNacimiento, String user, String password, Reserva[] reserva) {
-        super(nombre, apellidos, dni, dataNacimiento, user, password, reserva);
+    public GymEditor(String nombre, String apellidos, String dni, int dataNacimiento, String user, String password, int gym) {
+        super(nombre, apellidos, dni, dataNacimiento, user, password);
+        this.idGym = gym;
     }
 
     //Getters and setters
 
-    public Gym getGym() {
-        return gym;
+    public int getGym() {
+        return idGym;
     }
 
-    public void setGym(Gym gym) {
-        this.gym = gym;
+    public void setGym(int gym) {
+        this.idGym = gym;
     }
 
     public void get(){

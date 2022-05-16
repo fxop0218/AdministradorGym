@@ -7,15 +7,13 @@ public class Gym {
     private int idGym;
     private String ciudad;
     private int CP;
-    private Actividad[] actividades;
     private Date hora_apertura;
     private Date hora_cerrada;
 
-    public Gym(int idGym, String ciudad, int CP, Actividad[] actividades, Date hora_apertura, Date hora_cerrada) {
+    public Gym(int idGym, String ciudad, int CP, Date hora_apertura, Date hora_cerrada) {
         this.idGym = idGym;
         this.ciudad = ciudad;
         this.CP = CP;
-        this.actividades = actividades;
         this.hora_apertura = hora_apertura;
         this.hora_cerrada = hora_cerrada;
     }
@@ -42,14 +40,6 @@ public class Gym {
 
     public void setCP(int CP) {
         this.CP = CP;
-    }
-
-    public Actividad[] getActividades() {
-        return actividades;
-    }
-
-    public void setActividades(Actividad[] actividades) {
-        this.actividades = actividades;
     }
 
     public Date getHora_apertura() {

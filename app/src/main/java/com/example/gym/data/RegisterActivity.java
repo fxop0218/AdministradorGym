@@ -1,4 +1,4 @@
-package com.example.gym.Clases;
+package com.example.gym.data;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,10 +9,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.gym.Clases.Usuario;
 import com.example.gym.MainActivity;
 import com.example.gym.R;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.database.FirebaseDatabase;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
@@ -186,16 +187,9 @@ public class RegisterActivity extends Activity {
     }
 
     public void register(View view){
-        Map<String, Object> userData = new HashMap<>();
-        userData.put("name", etName.getText().toString());
-        userData.put("surname", etSurname.getText().toString());
-        userData.put("year", etYear.getText().toString());
-        userData.put("pwd", etPwd.getText().toString());
-        userData.put("dni", etDni.getText().toString());
-
-
         //TODO guardar en la base de datos, si no se puede porque hay un usario on el mismo nombre te salta un error
-        db.collection("users").document(etUserName.getText().toString()).set(userData);
+        Usuario u1 = new Usuario(etName.getText().toString(), etSurname.getText().toString(), etDni.getText().toString(), Integer.parseInt(etYear.getText().toString()), etUserName.getText().toString(), etPwd.getText().toString());
+        db.collection("users").document(u1.getUser()).set(u1);
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
     }
@@ -212,7 +206,7 @@ public class RegisterActivity extends Activity {
         //            etYear.setError("El año no puede ser inferior a " + (actYear - 100) + " y no puede ser superior a " + actYear);
         //            correctLogin = false;
         if (is_not_correct(etUserName, 5, 30)) correctLogin = false;
-        if (is_not_correct(etPwd, 5, 30)) correctLogin = false;
+        if (is_not_correct(etPwd, 6, 30)) correctLogin = false;
         if (!etCfnPwd.getText().toString().equals(etPwd.getText().toString())) correctLogin = false;
         if (is_not_correct(etDni, 9)) correctLogin = false;
         return correctLogin;
