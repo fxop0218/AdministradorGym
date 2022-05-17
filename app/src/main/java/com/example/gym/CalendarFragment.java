@@ -95,5 +95,14 @@ public class CalendarFragment extends Fragment {
 
 
         return view;
+
+    }
+
+    public void bGetActivity(View v) {
+
+    }
+
+    public void bSetReserva(View v) {
+
     }
 }

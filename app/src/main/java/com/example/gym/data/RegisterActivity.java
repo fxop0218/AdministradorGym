@@ -21,7 +21,6 @@ import java.util.Map;
 public class RegisterActivity extends Activity {
     private EditText etDni, etName, etSurname, etYear, etUserName, etPwd, etCfnPwd;
     private Button bRegister;
-    private int actYear = Calendar.getInstance().get(Calendar.YEAR);
     private int year = 0;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -73,7 +72,7 @@ public class RegisterActivity extends Activity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if (is_not_correct(etName, 3, 20)) {
+                if (RegisterComFunctions.is_not_correct(etName, 3, 20)) {
                     etName.setError("El nombre tiene que tener entre 3 y 20 letras");
                     bRegister.setEnabled(setRegisterEnabled());
                 }
@@ -93,7 +92,7 @@ public class RegisterActivity extends Activity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if (is_not_correct(etSurname, 5, 20)) {
+                if (RegisterComFunctions.is_not_correct(etSurname, 5, 20)) {
                     etSurname.setError("El apellido tiene que tener entre 5 y 20 letras");
                     bRegister.setEnabled(setRegisterEnabled());
                 }
@@ -114,7 +113,7 @@ public class RegisterActivity extends Activity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if (is_not_correct(etUserName, 5, 30)) {
+                if (RegisterComFunctions.is_not_correct(etUserName, 5, 30)) {
                     etUserName.setError("El nombre de usuario tiene que tener entre 5 y 30 letras");
                     bRegister.setEnabled(setRegisterEnabled());
                 }
@@ -134,7 +133,7 @@ public class RegisterActivity extends Activity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if (is_not_correct(etPwd, 5, 20)) {
+                if (RegisterComFunctions.is_not_correct(etPwd, 5, 20)) {
                     etPwd.setError("La contraseña tiene que tener entre 5 y 20 letras");
                     bRegister.setEnabled(setRegisterEnabled());
                 }
@@ -179,8 +178,8 @@ public class RegisterActivity extends Activity {
                 } else {
                     year = Integer.parseInt(etYear.getText().toString());
                 }
-                if (is_not_correct_year(year)) {
-                    etYear.setError("El año no esta entre los valores " + (actYear - 100) + " - " + actYear);
+                if (RegisterComFunctions.is_not_correct_year(year, etYear)) {
+                    etYear.setError("El año no esta entre los valores " + (RegisterComFunctions.actYear - 100) + " - " + RegisterComFunctions.actYear);
                 }
                 bRegister.setEnabled(setRegisterEnabled());
             }
@@ -197,36 +196,20 @@ public class RegisterActivity extends Activity {
 
     public boolean setRegisterEnabled() {
         boolean correctLogin = true;
-        if (is_not_correct(etName, 3, 20)) {
+        if (RegisterComFunctions.is_not_correct(etName, 3, 20)) {
             correctLogin = false;
         };
-        if (is_not_correct(etSurname, 5, 20)) {
+        if (RegisterComFunctions.is_not_correct(etSurname, 5, 20)) {
             correctLogin = false;
         }
-        if (is_not_correct_year(year)) correctLogin = false;
+        if (RegisterComFunctions.is_not_correct_year(year, etYear)) correctLogin = false;
         //            etYear.setError("El año no puede ser inferior a " + (actYear - 100) + " y no puede ser superior a " + actYear);
         //            correctLogin = false;
-        if (is_not_correct(etUserName, 5, 30)) correctLogin = false;
-        if (is_not_correct(etPwd, 6, 30)) correctLogin = false;
+        if (RegisterComFunctions.is_not_correct(etUserName, 5, 30)) correctLogin = false;
+        if (RegisterComFunctions.is_not_correct(etPwd, 6, 30)) correctLogin = false;
         if (!etCfnPwd.getText().toString().equals(etPwd.getText().toString())) correctLogin = false;
-        if (is_not_correct(etDni, 9)) correctLogin = false;
+        if (RegisterComFunctions.is_not_correct(etDni, 9)) correctLogin = false;
         return correctLogin;
-    }
-
-    private boolean is_not_correct_year(int year) {
-        if (is_not_correct(etYear, 4)) return true;
-        if (year < actYear - 100 || year > actYear) return true;
-        return false;
-    }
-
-    private boolean is_not_correct(EditText etValidator, int i, int i2) {
-        if (etValidator.getText().toString().length() < i || etValidator.getText().toString().length() > i2) return true;
-        return false;
-    }
-
-    private boolean is_not_correct(EditText etValidator, int i) {
-        if (etValidator.getText().toString().length() != i) return true;
-        return false;
     }
 
     private boolean dni_validator() {
@@ -284,5 +267,10 @@ public class RegisterActivity extends Activity {
         resto = miDNI % 23;
         miletra = asignacionletra[resto];
         return miletra;
+    }
+
+    public void bCreateGymAccount (View v) {
+        Intent i = new Intent(this, RegisterGymActivity.class);
+        startActivity(i);
     }
 }

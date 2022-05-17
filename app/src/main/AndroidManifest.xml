@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Gym">
         <activity
+            android:name=".data.RegisterGymActivity"
+            android:exported="false" />
+        <activity
             android:name=".DietaHipocalorica"
             android:theme="@style/Theme.AppCompat.Dialog" />
         <activity android:name=".data.RegisterActivity" />

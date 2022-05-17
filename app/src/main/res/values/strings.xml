@@ -51,4 +51,12 @@
     <string name="material">Material</string>
     <string name="suplementos">Suplementos</string>
     <string name="vestuario">Vestuario</string>
+    <string name="onAcctionCreateGymAccount">Registrar un gymnasio</string>
+    <string name="idGym">Gym id</string>
+    <string name="ciudad">Ciudad</string>
+    <string name="codigoPostal">Codigo postal</string>
+    <string name="horaA">Hora apertura</string>
+    <string name="horaC">Hora cierre</string>
+    <string name="create_your_gym">Create your gym</string>
+    <string name="nextStep">Next step</string>
 </resources>
