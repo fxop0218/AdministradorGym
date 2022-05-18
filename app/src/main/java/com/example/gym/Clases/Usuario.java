@@ -14,6 +14,8 @@ public class Usuario{
     private boolean gymOwner = false;
 
     //Contructor usuarios noramles
+    public Usuario() {}
+
     public Usuario(String nombre, String apellidos, String dni, int dataNacimiento, String user, String password) {
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -36,23 +38,6 @@ public class Usuario{
 
     }
     //Getters and setters
-
-    public int getGimnasios() {
-        return idGimnasios;
-    }
-
-
-
-    /* TODO
-    public void setGym (Gym gimnasio) {
-        gimnasios[gimnasios.length] = gimnasio;
-    }
-     */
-
-    public void setGimnasios(int gimnasios) {
-        this.idGimnasios = gimnasios;
-    }
-
     public String getNombre() {
         return nombre;
     }

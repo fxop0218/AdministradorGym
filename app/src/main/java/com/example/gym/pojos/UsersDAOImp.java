@@ -15,22 +15,35 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import org.jetbrains.annotations.NotNull;
 
 public class UsersDAOImp implements UsersDAO{
+    public static final String USERS = "users";
+    public static final String NOMBRE = "nombre";
+    public static final String APELLIDOS = "apellidos";
+    public static final String DNI = "dni";
+    public static final String USER = "user";
+    public static final String PASSWORD = "password";
+    public static final String ID_GIMNASIOS = "idGimnasios";
+    public static final String GYM_OWNER = "gymOwner";
     Context context;
     @Override
     public Usuario getUsuario(String userName, OnSuccessListener<Usuario> listener, OnFailureListener failure) {
         final Usuario[] usr = new Usuario[1];
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        DocumentReference docRef = db.collection("users").document(userName);
+        DocumentReference docRef = db.collection(USERS).document(userName);
         docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override //String nombre, String apellidos, String dni, int dataNacimiento, String user, String password
             public void onSuccess(DocumentSnapshot documentSnapshot) {
-                String nombre = documentSnapshot.getString("nombre");
-                String apellidos = documentSnapshot.getString("apellidos");
-                String dni = documentSnapshot.getString("dni");
-                String user = documentSnapshot.getString("user");
-                String pwd = documentSnapshot.getString("password");
+                /*
+                String nombre = documentSnapshot.getString(NOMBRE);
+                String apellidos = documentSnapshot.getString(APELLIDOS);
+                String dni = documentSnapshot.getString(DNI);
+                String user = documentSnapshot.getString(USER);
+                String pwd = documentSnapshot.getString(PASSWORD);
+                int gymID = documentSnapshot.toObject(Integer.class);
+                boolean owner = documentSnapshot.getBoolean(GYM_OWNER);
+                */
 
-                usr[0] = new Usuario(nombre, apellidos, dni, 2002, user, pwd);
+                usr[0] = documentSnapshot.toObject(Usuario.class);
+                //usr[0] = new Usuario(nombre, apellidos, dni, 2002, user, pwd,gymID ,owner);
 
                 listener.onSuccess(usr[0]);
             }

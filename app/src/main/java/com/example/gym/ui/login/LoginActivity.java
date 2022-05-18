@@ -36,6 +36,8 @@ public class LoginActivity extends AppCompatActivity {
     private LoginViewModel loginViewModel;
     private ActivityLoginBinding binding;
     private PojosClass pjClss = new PojosClass();
+    private boolean isOwner = false;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -122,6 +124,7 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             String pwd = "";
             Usuario usr = null;
+            int idGym = 0;
             @Override
             public void onClick(View v) {
                 loginButton.setEnabled(false);
@@ -129,6 +132,7 @@ public class LoginActivity extends AppCompatActivity {
                    pwd = usuario.getPassword();
                    try {
                        if (pwd.equals(passwordEditText.getText().toString())) {
+                           isOwner = usuario.isGymOwner();
                            Toast.makeText(getApplicationContext(), "Bienvenido", Toast.LENGTH_SHORT).show();
                            loadingProgressBar.setVisibility(View.VISIBLE);
                            loginViewModel.login(usernameEditText.getText().toString(),
@@ -160,6 +164,7 @@ public class LoginActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("user", binding.username.getText().toString());
+        //intent.putExtra("owner", isOwner);
         startActivity(intent);
     }
 

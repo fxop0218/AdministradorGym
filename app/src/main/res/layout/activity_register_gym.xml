@@ -94,18 +94,22 @@
 
                 <Button
                     android:id="@+id/bSelectHoraA"
-                    android:layout_width="65dp"
-                    android:layout_height="wrap_content"
-                    android:text="Button" />
+                    android:layout_width="56dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/custom_button"
+                    android:drawableLeft="@drawable/custom_horaa_selected"
+                    android:onClick="popTimerPickerApertura" />
 
                 <EditText
                     android:id="@+id/etHoraA"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
+                    android:enabled="true"
                     android:inputType="textPersonName"
-                    android:text="Name" />
+                    android:clickable="false"
+                    android:hint="Hora de apertura" />
 
             </LinearLayout>
 
@@ -124,16 +128,19 @@
                     android:layout_width="56dp"
                     android:layout_height="match_parent"
                     android:background="@drawable/custom_button"
-                    android:drawableLeft="@drawable/custom_horaa_selected" />
+                    android:drawableLeft="@drawable/custom_horac_selected"
+                    android:onClick="popTimerPickerCierre" />
 
                 <EditText
                     android:id="@+id/etHoraC"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
+                    android:enabled="true"
                     android:inputType="textPersonName"
-                    android:text="Name" />
+                    android:hint="Hora de cierre"
+                    android:clickable="false"/>
 
             </LinearLayout>
 

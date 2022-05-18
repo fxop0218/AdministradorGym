@@ -2,6 +2,8 @@ package com.example.gym.data;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -9,6 +11,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.gym.Clases.Gym;
@@ -16,11 +19,14 @@ import com.example.gym.R;
 import com.example.gym.pojos.PojosClass;
 
 import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 public class RegisterGymActivity extends AppCompatActivity {
     private EditText etGymID, etCity, etPostalCode, etHoraA, etHoraC;
     private Button bNextStep;
+    private Button dataPickerHoraA, dataPickerHoraC;
     private SimpleDateFormat df = new SimpleDateFormat("HH:mm");
+    private int horaC, minuteC, horaA, minuteA;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +40,9 @@ public class RegisterGymActivity extends AppCompatActivity {
         etHoraA = findViewById(R.id.etHoraA);
         etHoraC = findViewById(R.id.etHoraC);
         bNextStep = findViewById(R.id.bNextStep);
+        //Botones que permiten selecionar la hora
+        dataPickerHoraA = findViewById(R.id.bSelectHoraA);
+        dataPickerHoraC = findViewById(R.id.bSelectHoraC);
 
         //Listeners
         etGymID.addTextChangedListener(new TextWatcher() {
@@ -144,12 +153,40 @@ public class RegisterGymActivity extends AppCompatActivity {
             p1.getGymDAO().setNewGym(g1);
 
             Intent i = new Intent(this, RegisterOwner_activity.class);
-            i.putExtra("gymID", etGymID.getText().toString());
+            i.putExtra("gymID", Integer.parseInt(etGymID.getText().toString()));
             startActivity(i);
         } catch (Exception e) {
             Toast.makeText(this, "Error al introducir el gimnasio a la base de datos", Toast.LENGTH_SHORT).show();
         }
 
+    }
+
+    public void popTimerPickerApertura (View v) {
+        TimePickerDialog.OnTimeSetListener onTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                horaA = selectedHour;
+                minuteA = selectedMinute;
+                etHoraA.setText(String.format(Locale.getDefault(), "%02d:%02d", horaA, minuteA));
+            }
+        };
+        TimePickerDialog timePickerDialog = new TimePickerDialog(this, AlertDialog.THEME_HOLO_DARK, onTimeSetListener, horaA, minuteA, true);
+        timePickerDialog.setTitle("Seleciona la hora de apertura del gimnasio");
+        timePickerDialog.show();
+    }
+
+    public void popTimerPickerCierre (View v) {
+        TimePickerDialog.OnTimeSetListener onTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                horaC = selectedHour;
+                minuteC = selectedMinute;
+                etHoraC.setText(String.format(Locale.getDefault(), "%02d:%02d", horaC, minuteC));
+            }
+        };
+        TimePickerDialog timePickerDialog = new TimePickerDialog(this, AlertDialog.THEME_HOLO_DARK, onTimeSetListener, horaC, minuteC, true);
+        timePickerDialog.setTitle("Seleciona la hora de cierre del gimnasio");
+        timePickerDialog.show();
     }
 
     public boolean setRegisterEnabled() {

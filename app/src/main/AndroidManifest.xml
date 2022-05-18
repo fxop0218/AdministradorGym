@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Gym">
-        <activity android:name=".data.RegisterOwner_activity"></activity>
+        <activity android:name=".data.RegisterOwner_activity"
+            android:screenOrientation="portrait"
+            ></activity>
         <activity
             android:name=".data.RegisterGymActivity"
             android:exported="false" />
