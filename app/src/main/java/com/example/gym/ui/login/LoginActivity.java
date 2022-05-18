@@ -129,8 +129,9 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 loginButton.setEnabled(false);
                 usr = pjClss.getUsuarioDAO().getUsuario(usernameEditText.getText().toString(), (usuario -> {
-                   pwd = usuario.getPassword();
+                    //This catch throws a NullPointerException when don't get a User
                    try {
+                       pwd = usuario.getPassword();
                        if (pwd.equals(passwordEditText.getText().toString())) {
                            isOwner = usuario.isGymOwner();
                            Toast.makeText(getApplicationContext(), "Bienvenido", Toast.LENGTH_SHORT).show();

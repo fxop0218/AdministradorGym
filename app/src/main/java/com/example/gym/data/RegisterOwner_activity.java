@@ -272,6 +272,7 @@ public class RegisterOwner_activity extends AppCompatActivity {
 
     public void bCreateGymAccount (View v) {
         Intent i = new Intent(this, RegisterGymActivity.class);
+        i.putExtra("owner", true);
         startActivity(i);
     }
 

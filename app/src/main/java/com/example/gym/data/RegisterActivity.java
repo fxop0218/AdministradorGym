@@ -271,6 +271,7 @@ public class RegisterActivity extends Activity {
 
     public void bCreateGymAccount (View v) {
         Intent i = new Intent(this, RegisterGymActivity.class);
+        i.putExtra("owner", false);
         startActivity(i);
     }
 }
