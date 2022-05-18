@@ -9,12 +9,18 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.example.gym.Clases.Gym;
 import com.example.gym.R;
+import com.example.gym.pojos.PojosClass;
+
+import java.text.SimpleDateFormat;
 
 public class RegisterGymActivity extends AppCompatActivity {
     private EditText etGymID, etCity, etPostalCode, etHoraA, etHoraC;
     private Button bNextStep;
+    private SimpleDateFormat df = new SimpleDateFormat("HH:mm");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +50,7 @@ public class RegisterGymActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {
                 if (RegisterComFunctions.is_not_correct(etGymID,8)) {
-                    etGymID.setError("El nombre de usuario tiene que tener entre 5 y 30 letras");
+                    etGymID.setError("El id del gimnasio tiene que tener 8 numeros");
                     bNextStep.setEnabled(setRegisterEnabled());
                 }
             }
@@ -64,7 +70,7 @@ public class RegisterGymActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {
                 if (RegisterComFunctions.is_not_correct(etCity, 5, 30)) {
-                    etCity.setError("El nombre de usuario tiene que tener entre 5 y 30 letras");
+                    etCity.setError("El nombre de la ciudad tiene que tener entre 5 y 30 letras");
                     bNextStep.setEnabled(setRegisterEnabled());
                 }
             }
@@ -84,7 +90,7 @@ public class RegisterGymActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {
                 if (RegisterComFunctions.is_not_correct(etPostalCode, 5)) {
-                    etPostalCode.setError("El nombre de usuario tiene que tener entre 5 y 30 letras");
+                    etPostalCode.setError("El codigo postal tiene que tener 5 numeros");
                     bNextStep.setEnabled(setRegisterEnabled());
                 }
             }
@@ -125,17 +131,25 @@ public class RegisterGymActivity extends AppCompatActivity {
         });
     }
 
-
-
     /**
      * Pasa al siguinte paso cuando todos los campos estan rellenados de forma correcta
      *
      * @param v
      */
-    private void bNextStep (View v) {
+    public void bNextStep (View v) {
         //TODO Guardar aqui en la base de datos los archivos
-        Intent i = new Intent();
-        startActivity(i);
+        try {
+            Gym g1 = new Gym(Integer.parseInt(etGymID.getText().toString()), etCity.getText().toString(), Integer.parseInt(etPostalCode.getText().toString()), df.parse(etHoraA.getText().toString()), df.parse(etHoraC.getText().toString()));
+            PojosClass p1 = new PojosClass();
+            p1.getGymDAO().setNewGym(g1);
+
+            Intent i = new Intent(this, RegisterOwner_activity.class);
+            i.putExtra("gymID", etGymID.getText().toString());
+            startActivity(i);
+        } catch (Exception e) {
+            Toast.makeText(this, "Error al introducir el gimnasio a la base de datos", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     public boolean setRegisterEnabled() {

@@ -81,44 +81,61 @@
                 android:inputType="number"
                 android:paddingStart="10dp" />
 
-            <EditText
-                android:id="@+id/etHoraA"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:hint="@string/horaA"
-                android:ems="10"
-                android:inputType="textPassword"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:enabled="true"
-                android:drawableStart="@drawable/custom_horaa_selected"
-                android:background="@drawable/custom_edit_text"
-                android:paddingStart="10dp"
-                android:drawablePadding="12dp"
-                android:layout_marginEnd="35dp"
-                android:layout_marginStart="35dp"
-                />
 
-            <EditText
-                android:id="@+id/etHoraC"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:hint="@string/horaC"
-                android:ems="10"
-                android:inputType="textPassword"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:enabled="true"
-                android:drawableStart="@drawable/custom_horac_selected"
-                android:background="@drawable/custom_edit_text"
-                android:paddingStart="10dp"
-                android:drawablePadding="12dp"
-                android:layout_marginEnd="35dp"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
                 android:layout_marginStart="35dp"
-                />
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="35dp"
+                android:layout_marginRight="50dp"                >
 
+                <Button
+                    android:id="@+id/bSelectHoraA"
+                    android:layout_width="65dp"
+                    android:layout_height="wrap_content"
+                    android:text="Button" />
+
+                <EditText
+                    android:id="@+id/etHoraA"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="Name" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginStart="35dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="35dp"
+                android:layout_marginRight="50dp"     >
+
+                <Button
+                    android:id="@+id/bSelectHoraC"
+                    android:layout_width="56dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/custom_button"
+                    android:drawableLeft="@drawable/custom_horaa_selected" />
+
+                <EditText
+                    android:id="@+id/etHoraC"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="Name" />
+
+            </LinearLayout>
 
             <Button
                 android:id="@+id/bNextStep"
