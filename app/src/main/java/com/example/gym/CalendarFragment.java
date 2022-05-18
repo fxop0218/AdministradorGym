@@ -1,21 +1,17 @@
 package com.example.gym;
 
-import android.app.usage.UsageEvents;
-import android.graphics.Color;
-import android.media.metrics.Event;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.Toast;
 
-import com.google.android.material.tabs.TabLayout;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,6 +25,7 @@ public class CalendarFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private CalendarView cvCalendar;
+    private Button btUpComingActivities, btCreateActivity;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -93,9 +90,12 @@ public class CalendarFragment extends Fragment {
             }
         });
 
+        btCreateActivity = view.findViewById(R.id.newActivity);
+        btUpComingActivities = view.findViewById(R.id.bSeeNex);
+
+        btCreateActivity.setVisibility(View.INVISIBLE);
 
         return view;
-
     }
 
     public void bGetActivity(View v) {

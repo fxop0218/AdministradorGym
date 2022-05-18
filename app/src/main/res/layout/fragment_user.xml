@@ -64,6 +64,7 @@
                 android:text="@string/mis_actividades"/>
 
             <Button
+                android:id="@+id/cerrar_sesion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
