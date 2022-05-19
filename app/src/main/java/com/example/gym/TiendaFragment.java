@@ -1,9 +1,11 @@
 package com.example.gym;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,18 +25,38 @@ public class TiendaFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull @NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_calendar, container, false);
-        ViewPager viewPager = view.findViewById(R.id.viewPager);
-        TabLayout tabLayout = view.findViewById(R.id.tabLayout);
+        View view = inflater.inflate(R.layout.fragment_tienda, container, false);
 
-        VPAdapter vpAdapter = null;
+        ImageButton ibMaterial = view.findViewById(R.id.ibMaterial);
+        ImageButton ibSuplementos = view.findViewById(R.id.ibSuplementos);
+        ImageButton ibVestuario = view.findViewById(R.id.ibVestuario);
 
-        vpAdapter.addFragments(new MaterialFragment(), "Material");
-        vpAdapter.addFragments(new SuplementosFragment(), "Suplementos");
-        vpAdapter.addFragments(new VestuarioFragment(), "Vestuario");
+        ibMaterial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
-        viewPager.setAdapter(vpAdapter);
-        tabLayout.setupWithViewPager(viewPager);
+                Intent intent = new Intent(view.getContext(), MaterialActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        ibSuplementos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(view.getContext(), SuplementosActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        ibVestuario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(view.getContext(), VestuarioActivity.class);
+                startActivity(intent);
+            }
+        });
 
         return view;
     }

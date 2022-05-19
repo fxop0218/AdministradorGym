@@ -61,4 +61,7 @@
     <string name="nextStep">Next step</string>
     <string name="register">register</string>
     <string name="new_activity">Create new Activity</string>
+    <string name="material_para_gym">MATERIAL PARA GYM</string>
+    <string name="suplementos_para_gym">SUPLEMENTOS PARA GYM</string>
+    <string name="vestuario_para_gym">VESTUARIO PARA GYM</string>
 </resources>

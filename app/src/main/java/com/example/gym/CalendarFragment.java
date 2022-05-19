@@ -90,7 +90,7 @@ public class CalendarFragment extends Fragment {
             }
         });
 
-        btCreateActivity = view.findViewById(R.id.newActivity);
+        btCreateActivity = view.findViewById(R.id.new_activity);
         btUpComingActivities = view.findViewById(R.id.bSeeNex);
 
         btCreateActivity.setVisibility(View.INVISIBLE);
