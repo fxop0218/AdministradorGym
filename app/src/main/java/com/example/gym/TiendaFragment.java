@@ -1,28 +1,41 @@
 package com.example.gym;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager.widget.ViewPager;
 
-import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
+
+import org.jetbrains.annotations.NotNull;
 
 public class TiendaFragment extends Fragment {
 
-
-
+    @Nullable
+    @org.jetbrains.annotations.Nullable
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        requireActivity().setContentView(R.layout.fragment_tienda);
+    public View onCreateView(@NonNull @NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
 
-        super.onCreate(savedInstanceState);
+        View view = inflater.inflate(R.layout.fragment_calendar, container, false);
+        ViewPager viewPager = view.findViewById(R.id.viewPager);
+        TabLayout tabLayout = view.findViewById(R.id.tabLayout);
 
-        ViewPager viewPager = requireActivity().findViewById(R.id.viewPager);
-        TabLayout tabLayout = requireActivity().findViewById(R.id.tabLayout);
+        VPAdapter vpAdapter = null;
 
-        TabItem tabMaterial = (TabItem) requireActivity().findViewById(R.id.tab1);
-        TabItem tabSuplementos = (TabItem) requireActivity().findViewById(R.id.tab2);
-        TabItem tabVestuario = (TabItem) requireActivity().findViewById(R.id.tab3);
+        vpAdapter.addFragments(new MaterialFragment(), "Material");
+        vpAdapter.addFragments(new SuplementosFragment(), "Suplementos");
+        vpAdapter.addFragments(new VestuarioFragment(), "Vestuario");
+
+        viewPager.setAdapter(vpAdapter);
+        tabLayout.setupWithViewPager(viewPager);
+
+        return view;
     }
 }

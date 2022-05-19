@@ -1,6 +1,7 @@
 package com.example.gym;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     CalendarFragment calendarFragment = new CalendarFragment();
     TiendaFragment tiendaFragment = new TiendaFragment();
     UserFragment userFragment = new UserFragment();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,5 +64,12 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, fragment);
         transaction.commit();
+    }
+
+    public boolean es_owner(){
+
+        Intent intent = getIntent();
+
+        return intent.getBooleanExtra("owner", false);
     }
 }

@@ -43,6 +43,18 @@
                 android:background="@drawable/custom_button"
                 android:onClick="bSetActivity"
                 android:text="@string/bViewUpcomingActivities" />
+
+            <Button
+                android:id="@+id/new_activity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="85dp"
+                android:layout_marginRight="85dp"
+                android:background="@drawable/custom_button"
+                android:text="@string/new_activity"
+                android:visibility="invisible"/>
+
         </LinearLayout>
     </ScrollView>
 </FrameLayout>

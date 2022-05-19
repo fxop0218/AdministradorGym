@@ -24,11 +24,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="@string/action_register"
                 android:layout_marginTop="30dp"
+                android:text="@string/action_register"
                 android:textAlignment="center"
-                android:textSize="18sp"
-                />
+                android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/etDni"
@@ -175,27 +174,22 @@
                 android:id="@+id/bRegsiter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:onClick="register"
+                android:textSize="14sp"
                 android:layout_gravity="center"
+                android:layout_marginTop="24dp"
                 android:background="@drawable/custom_button"
+                android:onClick="register"
                 android:text="@string/action_register" />
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="or"
-                android:gravity="center"/>
 
             <Button
                 android:id="@+id/bCreateGymAccount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:onClick="bCreateGymAccount"
+                android:textSize="14sp"
                 android:layout_gravity="center"
+                android:layout_marginTop="24dp"
                 android:background="@drawable/custom_button"
+                android:onClick="bCreateGymAccount"
                 android:text="@string/onAcctionCreateGymAccount" />
         </LinearLayout>
     </ScrollView>

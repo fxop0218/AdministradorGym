@@ -1,7 +1,6 @@
 package com.example.gym.pojos;
 
 import android.content.Context;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -26,6 +25,7 @@ public class UsersDAOImp implements UsersDAO{
     Context context;
     @Override
     public Usuario getUsuario(String userName, OnSuccessListener<Usuario> listener, OnFailureListener failure) {
+
         final Usuario[] usr = new Usuario[1];
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         DocumentReference docRef = db.collection(USERS).document(userName);
