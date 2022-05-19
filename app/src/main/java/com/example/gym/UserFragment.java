@@ -32,6 +32,7 @@ public class UserFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     private Button btCerrarSesion;
+    private String gola;
 
     public UserFragment() {
         // Required empty public constructor
@@ -61,6 +62,8 @@ public class UserFragment extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+
+
         }
 
     }
