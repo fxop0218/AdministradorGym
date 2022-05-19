@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -153,7 +154,7 @@ public class RegisterGymActivity extends AppCompatActivity {
             p1.getGymDAO().setNewGym(g1);
 
             Intent i = new Intent(this, RegisterOwner_activity.class);
-            i.putExtra("gymID", Integer.parseInt(etGymID.getText().toString()));
+            i.putExtra("gymID", g1.getIdGym());
             startActivity(i);
         } catch (Exception e) {
             Toast.makeText(this, "Error al introducir el gimnasio a la base de datos", Toast.LENGTH_SHORT).show();

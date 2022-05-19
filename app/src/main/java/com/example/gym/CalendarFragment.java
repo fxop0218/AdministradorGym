@@ -1,6 +1,8 @@
 package com.example.gym;
 
+import android.app.AlertDialog;
 import android.app.usage.UsageEvents;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.media.metrics.Event;
 import android.os.Bundle;
@@ -17,6 +19,10 @@ import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link CalendarFragment#newInstance} factory method to
@@ -29,6 +35,12 @@ public class CalendarFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private CalendarView cvCalendar;
+    private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    private String selectedDate;
+
+    private static Date actualDate = new Date();
+    private Date selDate;
+
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -87,9 +99,16 @@ public class CalendarFragment extends Fragment {
         cvCalendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(CalendarView calendarView, int i, int i1, int i2) {
-                date = i + "/" + i1 + "/" +i2;
+                date = i2 + "/" + i1 + "/" +i;
+
+                try {
+                    actualDate = sdf.parse(date);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
                 Log.d("CalendarFragment", "onSelectedDayChange: date:"+ date);
-                Toast.makeText(getContext(), date, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), date , Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -105,4 +124,28 @@ public class CalendarFragment extends Fragment {
     public void bSetReserva(View v) {
 
     }
+
+    public void bSetActivity(View v) {
+        if (selDate != null) {
+            if (!selDate.before(actualDate)) {
+                AlertDialog.Builder myDialog = new AlertDialog.Builder(getContext());
+                myDialog.setTitle("Actividad");
+
+                myDialog.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getContext(), "Funciona flameton", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                myDialog.show();
+            } else {
+                Toast.makeText(v.getContext(), "No puedes crear una actividad para un dia anterior" +
+                        "al actual", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            Toast.makeText(v.getContext(), "Seleciona una fecha", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
 }

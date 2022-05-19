@@ -9,15 +9,18 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.example.gym.Clases.Gym;
 import com.example.gym.Clases.Usuario;
 import com.example.gym.MainActivity;
 import com.example.gym.R;
+import com.example.gym.UserSession;
 import com.example.gym.pojos.FireConnection;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class RegisterOwner_activity extends AppCompatActivity {
-    private int gymID = 0;
+    private int gymID;
     private EditText etDni, etName, etSurname, etYear, etUserName, etPwd, etCfnPwd;
     private Button bRegister;
     private int year = 0;
@@ -189,10 +192,17 @@ public class RegisterOwner_activity extends AppCompatActivity {
 
     public void register(View view){
         //TODO guardar en la base de datos, si no se puede porque hay un usario on el mismo nombre te salta un error
-        Usuario u1 = new Usuario(etName.getText().toString(), etSurname.getText().toString(), etDni.getText().toString(), Integer.parseInt(etYear.getText().toString()), etUserName.getText().toString(), etPwd.getText().toString(), gymID, true);
-        db.collection("users").document(u1.getUser()).set(u1);
-        Intent i = new Intent(this, MainActivity.class);
-        startActivity(i);
+        try {
+            Usuario u1 = new Usuario(etName.getText().toString(), etSurname.getText().toString(), etDni.getText().toString(), Integer.parseInt(etYear.getText().toString()), etUserName.getText().toString(), etPwd.getText().toString(), gymID, true);
+            db.collection("users").document(u1.getUser()).set(u1);
+            UserSession.setUsuario(u1);
+            Intent i = new Intent(this, MainActivity.class);
+            i.putExtra("owner", true);
+            startActivity(i);
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "Error al crear el usuario", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     public boolean setRegisterEnabled() {

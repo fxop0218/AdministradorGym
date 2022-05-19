@@ -2,6 +2,7 @@ package com.example.gym.ui.login;
 
 import android.app.Activity;
 
+import com.example.gym.UserSession;
 import com.example.gym.databinding.ActivityLoginBinding;
 import com.example.gym.pojos.PojosClass;
 
@@ -15,6 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Parcelable;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
@@ -37,6 +39,7 @@ public class LoginActivity extends AppCompatActivity {
     private ActivityLoginBinding binding;
     private PojosClass pjClss = new PojosClass();
     private boolean isOwner = false;
+    private Usuario usr;
 
 
     @Override
@@ -164,8 +167,8 @@ public class LoginActivity extends AppCompatActivity {
         // TODO : initiate successful logged in experience
         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra("user", binding.username.getText().toString());
-        //intent.putExtra("owner", isOwner);
+        intent.putExtra("owner", isOwner); //binding.username.getText().toString()
+        //intent.putExtra("usua", isOwner);
         startActivity(intent);
     }
 
