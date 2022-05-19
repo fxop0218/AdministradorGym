@@ -1,7 +1,12 @@
 package com.example.gym;
 
+import android.app.usage.UsageEvents;
+import android.content.Intent;
+import android.graphics.Color;
+import android.media.metrics.Event;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -12,6 +17,12 @@ import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.Toast;
 
+import com.example.gym.gymOwner.ActCreationActivity;
+import com.google.android.material.tabs.TabLayout;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,7 +36,9 @@ public class CalendarFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private CalendarView cvCalendar;
-    private Button btUpComingActivities, btCreateActivity;
+    private Date actualDate, selData;
+    private Button bSetActividad;
+    private final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -80,22 +93,46 @@ public class CalendarFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_calendar, container, false);
+        bSetActividad = view.findViewById(R.id.bSeeNex);
         cvCalendar = (CalendarView) view.findViewById(R.id.cvCalendar);
+        actualDate = new Date();
+
         cvCalendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(CalendarView calendarView, int i, int i1, int i2) {
-                date = i + "/" + i1 + "/" +i2;
+                date = i2 + "/" + i1 + "/" +i;
+
+                try {
+                    selData = sdf.parse(date);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
                 Log.d("CalendarFragment", "onSelectedDayChange: date:"+ date);
                 Toast.makeText(getContext(), date, Toast.LENGTH_SHORT).show();
             }
         });
 
-        btCreateActivity = view.findViewById(R.id.new_activity);
-        btUpComingActivities = view.findViewById(R.id.bSeeNex);
+        bSetActividad.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (selData != null) {
+                    if (!actualDate.before(selData)) {
 
-        btCreateActivity.setVisibility(View.INVISIBLE);
+                        Toast.makeText(view.getContext(), "Ejecutado con exito", Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(getContext(), ActCreationActivity.class);
+                        startActivity(i);
+                    } else {
+                        Toast.makeText(view.getContext(), "Seleciona un dia posterior al de hoy", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(view.getContext(), "Error al selecionar un dia", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
         return view;
+
     }
 
     public void bGetActivity(View v) {

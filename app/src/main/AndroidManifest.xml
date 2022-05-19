@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Gym">
         <activity
+            android:name=".gymOwner.ActCreationActivity"
+            android:exported="false" />
+        <activity
             android:name=".VestuarioActivity"
             android:exported="false" />
         <activity

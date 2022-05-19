@@ -59,7 +59,7 @@ public class RegisterGymActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if (RegisterComFunctions.is_not_correct(etGymID,8)) {
+                if (ComFunctions.is_not_correct(etGymID,8)) {
                     etGymID.setError("El id del gimnasio tiene que tener 8 numeros");
                     bNextStep.setEnabled(setRegisterEnabled());
                 }
@@ -79,7 +79,7 @@ public class RegisterGymActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if (RegisterComFunctions.is_not_correct(etCity, 5, 30)) {
+                if (ComFunctions.is_not_correct(etCity, 5, 30)) {
                     etCity.setError("El nombre de la ciudad tiene que tener entre 5 y 30 letras");
                     bNextStep.setEnabled(setRegisterEnabled());
                 }
@@ -99,7 +99,7 @@ public class RegisterGymActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if (RegisterComFunctions.is_not_correct(etPostalCode, 5)) {
+                if (ComFunctions.is_not_correct(etPostalCode, 5)) {
                     etPostalCode.setError("El codigo postal tiene que tener 5 numeros");
                     bNextStep.setEnabled(setRegisterEnabled());
                 }
@@ -150,9 +150,7 @@ public class RegisterGymActivity extends AppCompatActivity {
         //TODO Guardar aqui en la base de datos los archivos
         try {
             Gym g1 = new Gym(Integer.parseInt(etGymID.getText().toString()), etCity.getText().toString(), Integer.parseInt(etPostalCode.getText().toString()), df.parse(etHoraA.getText().toString()), df.parse(etHoraC.getText().toString()));
-            PojosClass p1 = new PojosClass();
-            p1.getGymDAO().setNewGym(g1);
-
+            PojosClass.getGymDAO().setNewGym(g1);
             Intent i = new Intent(this, RegisterOwner_activity.class);
             i.putExtra("gymID", g1.getIdGym());
             startActivity(i);
@@ -161,7 +159,6 @@ public class RegisterGymActivity extends AppCompatActivity {
         }
 
     }
-
     public void popTimerPickerApertura (View v) {
         TimePickerDialog.OnTimeSetListener onTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
             @Override
@@ -192,13 +189,13 @@ public class RegisterGymActivity extends AppCompatActivity {
 
     public boolean setRegisterEnabled() {
         boolean correctLogin = true;
-        if (RegisterComFunctions.is_not_correct(etGymID, 8)) {
+        if (ComFunctions.is_not_correct(etGymID, 8)) {
             correctLogin = false;
         };
-        if (RegisterComFunctions.is_not_correct(etCity, 5, 20)) {
+        if (ComFunctions.is_not_correct(etCity, 5, 20)) {
             correctLogin = false;
         }
-        if (RegisterComFunctions.is_not_correct(etPostalCode, 5)) correctLogin = false;
+        if (ComFunctions.is_not_correct(etPostalCode, 5)) correctLogin = false;
         if (etHoraA.getText().toString() == null) correctLogin = false;
         if (etHoraC.getText().toString() == null) correctLogin = false;
         return correctLogin;

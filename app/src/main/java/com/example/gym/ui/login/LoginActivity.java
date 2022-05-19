@@ -37,7 +37,6 @@ public class LoginActivity extends AppCompatActivity {
 
     private LoginViewModel loginViewModel;
     private ActivityLoginBinding binding;
-    private PojosClass pjClss = new PojosClass();
     private boolean isOwner = false;
     private Usuario usr;
 
@@ -131,7 +130,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 loginButton.setEnabled(false);
-                usr = pjClss.getUsuarioDAO().getUsuario(usernameEditText.getText().toString(), (usuario -> {
+                usr = PojosClass.getUsuarioDAO().getUsuario(usernameEditText.getText().toString(), (usuario -> {
                     //This catch throws a NullPointerException when don't get a User
                    try {
                        pwd = usuario.getPassword();

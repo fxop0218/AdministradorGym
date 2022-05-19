@@ -6,16 +6,16 @@ import java.util.Date;
 public class Actividad {
 
     private int idActividad;
+    private int gymID;
     private String nombre;
-    private String descripcion;
     private int aforo;
     private Date hora_inicio;
     private Date hora_fin;
 
-    public Actividad(int idActividad, String nombre, String descripcion, int aforo, Date hora_inicio, Date hora_fin) {
+    public Actividad(int idActividad, String nombre, int gymID, int aforo, Date hora_inicio, Date hora_fin) {
         this.idActividad = idActividad;
         this.nombre = nombre;
-        this.descripcion = descripcion;
+        this.gymID = gymID;
         this.aforo = aforo;
         this.hora_inicio = hora_inicio;
         this.hora_fin = hora_fin;
@@ -37,12 +37,12 @@ public class Actividad {
         this.nombre = nombre;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public int getGymID() {
+        return gymID ;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setGymID(int gymID) {
+        this.gymID = gymID;
     }
 
     public int getAforo() {

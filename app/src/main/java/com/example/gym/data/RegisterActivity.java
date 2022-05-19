@@ -72,7 +72,7 @@ public class RegisterActivity extends Activity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if (RegisterComFunctions.is_not_correct(etName, 3, 20)) {
+                if (ComFunctions.is_not_correct(etName, 3, 20)) {
                     etName.setError("El nombre tiene que tener entre 3 y 20 letras");
                     bRegister.setEnabled(setRegisterEnabled());
                 }
@@ -92,7 +92,7 @@ public class RegisterActivity extends Activity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if (RegisterComFunctions.is_not_correct(etSurname, 5, 20)) {
+                if (ComFunctions.is_not_correct(etSurname, 5, 20)) {
                     etSurname.setError("El apellido tiene que tener entre 5 y 20 letras");
                     bRegister.setEnabled(setRegisterEnabled());
                 }
@@ -113,7 +113,7 @@ public class RegisterActivity extends Activity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if (RegisterComFunctions.is_not_correct(etUserName, 5, 30)) {
+                if (ComFunctions.is_not_correct(etUserName, 5, 30)) {
                     etUserName.setError("El nombre de usuario tiene que tener entre 5 y 30 letras");
                     bRegister.setEnabled(setRegisterEnabled());
                 }
@@ -133,7 +133,7 @@ public class RegisterActivity extends Activity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if (RegisterComFunctions.is_not_correct(etPwd, 5, 20)) {
+                if (ComFunctions.is_not_correct(etPwd, 5, 20)) {
                     etPwd.setError("La contraseña tiene que tener entre 5 y 20 letras");
                     bRegister.setEnabled(setRegisterEnabled());
                 }
@@ -178,8 +178,8 @@ public class RegisterActivity extends Activity {
                 } else {
                     year = Integer.parseInt(etYear.getText().toString());
                 }
-                if (RegisterComFunctions.is_not_correct_year(year, etYear)) {
-                    etYear.setError("El año no esta entre los valores " + (RegisterComFunctions.actYear - 100) + " - " + RegisterComFunctions.actYear);
+                if (ComFunctions.is_not_correct_year(year, etYear)) {
+                    etYear.setError("El año no esta entre los valores " + (ComFunctions.actYear - 100) + " - " + ComFunctions.actYear);
                 }
                 bRegister.setEnabled(setRegisterEnabled());
             }
@@ -196,19 +196,19 @@ public class RegisterActivity extends Activity {
 
     public boolean setRegisterEnabled() {
         boolean correctLogin = true;
-        if (RegisterComFunctions.is_not_correct(etName, 3, 20)) {
+        if (ComFunctions.is_not_correct(etName, 3, 20)) {
             correctLogin = false;
         };
-        if (RegisterComFunctions.is_not_correct(etSurname, 5, 20)) {
+        if (ComFunctions.is_not_correct(etSurname, 5, 20)) {
             correctLogin = false;
         }
-        if (RegisterComFunctions.is_not_correct_year(year, etYear)) correctLogin = false;
+        if (ComFunctions.is_not_correct_year(year, etYear)) correctLogin = false;
         //            etYear.setError("El año no puede ser inferior a " + (actYear - 100) + " y no puede ser superior a " + actYear);
         //            correctLogin = false;
-        if (RegisterComFunctions.is_not_correct(etUserName, 5, 30)) correctLogin = false;
-        if (RegisterComFunctions.is_not_correct(etPwd, 6, 30)) correctLogin = false;
+        if (ComFunctions.is_not_correct(etUserName, 5, 30)) correctLogin = false;
+        if (ComFunctions.is_not_correct(etPwd, 6, 30)) correctLogin = false;
         if (!etCfnPwd.getText().toString().equals(etPwd.getText().toString())) correctLogin = false;
-        if (RegisterComFunctions.is_not_correct(etDni, 9)) correctLogin = false;
+        if (ComFunctions.is_not_correct(etDni, 9)) correctLogin = false;
         return correctLogin;
     }
 

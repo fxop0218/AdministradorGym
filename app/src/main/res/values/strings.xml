@@ -64,4 +64,12 @@
     <string name="material_para_gym">MATERIAL PARA GYM</string>
     <string name="suplementos_para_gym">SUPLEMENTOS PARA GYM</string>
     <string name="vestuario_para_gym">VESTUARIO PARA GYM</string>
+    <string name="crear_actividad">Crear actividad</string>
+    <string name="id_actividad">Id actividad</string>
+    <string name="nombre">Nombre</string>
+    <string name="aforo_maximo">Aforo maximo</string>
+    <string name="aforo_actual">Aforo actual</string>
+    <string name="registrar_actividad">Registrar actividad</string>
+    <string name="hora_de_cierre">Hora de cierre</string>
+    <string name="hora_de_apertura">Hora de apertura</string>
 </resources>
