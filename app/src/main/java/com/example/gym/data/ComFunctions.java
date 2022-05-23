@@ -15,6 +15,8 @@ import java.util.Locale;
 public class ComFunctions {
     public static int actYear = Calendar.getInstance().get(Calendar.YEAR);
     public static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    public static SimpleDateFormat sdfMin = new SimpleDateFormat("HH:mm");
+
 
     public static boolean is_not_correct(EditText etValidator, int i, int i2) {
         if (etValidator.getText().toString().length() < i || etValidator.getText().toString().length() > i2)
@@ -33,33 +35,19 @@ public class ComFunctions {
         return false;
     }
 
-    public static void dataPickerDialog (EditText etHoraA, Context context) {
-        final int[] horaA = {0};
-        final int[] minuteA = { 0 };
-        TimePickerDialog.OnTimeSetListener onTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
-            @Override
-            public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                horaA[0] = selectedHour;
-                minuteA[0] = selectedMinute;
-                etHoraA.setText(String.format(Locale.getDefault(), "%02d:%02d", horaA[0], minuteA[0]));
-            }
-        };
-        TimePickerDialog timePickerDialog = new TimePickerDialog(context, AlertDialog.THEME_HOLO_DARK, onTimeSetListener, horaA[0], minuteA[0], true);
-        timePickerDialog.setTitle("Seleciona la hora de apertura del gimnasio");
-        timePickerDialog.show();
-    }
-
     public static boolean isCorrectHour(String horaA, String horaC) {
-        try {
-            Date hDateA = sdf.parse(horaA);
-            Date hDateC = sdf.parse(horaC);
+            Date hDateA = strToDate(horaA);
+            Date hDateC = strToDate(horaC);
 
             if (hDateA == null || hDateC == null) return false;
-            if (hDateA.after(hDateC) || hDateA.equals(hDateC)) return true;
-
+            if (hDateA.after(hDateC)) return false;
+            return true;
+    }
+    public static Date strToDate(String hora) {
+        try {
+            return sdfMin.parse(hora);
         } catch (ParseException e) {
-            return false;
+            return null;
         }
-        return false;
     }
 }

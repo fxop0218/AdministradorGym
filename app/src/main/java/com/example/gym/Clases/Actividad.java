@@ -9,8 +9,11 @@ public class Actividad {
     private int gymID;
     private String nombre;
     private int aforo;
+    private int aforo_actual = 0;
     private Date hora_inicio;
     private Date hora_fin;
+
+    public Actividad() {}
 
     public Actividad(int idActividad, String nombre, int gymID, int aforo, Date hora_inicio, Date hora_fin) {
         this.idActividad = idActividad;
@@ -51,6 +54,22 @@ public class Actividad {
 
     public void setAforo(int aforo) {
         this.aforo = aforo;
+    }
+
+    public int getAforo_actual() {
+        return aforo;
+    }
+
+    public void setAforo_actual(int aforo) {
+        this.aforo = aforo;
+    }
+
+    public void sumAforo_actual() {
+        if (aforo_actual < aforo) aforo_actual++;
+    }
+
+    public void resAforo_actual() {
+        if (aforo_actual > 0) aforo_actual--;
     }
 
     public Date getHora_inicio() {

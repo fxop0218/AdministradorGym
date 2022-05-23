@@ -3,8 +3,8 @@ package com.example.gym.ui.login;
 import android.app.Activity;
 
 import com.example.gym.UserSession;
-import com.example.gym.databinding.ActivityLoginBinding;
 import com.example.gym.pojos.PojosClass;
+import com.example.gym.databinding.ActivityLoginBinding;
 
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;

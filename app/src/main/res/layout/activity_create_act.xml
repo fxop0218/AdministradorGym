@@ -31,64 +31,63 @@
             <EditText
                 android:id="@+id/etIdActividad"
                 android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginStart="35dp"
                 android:layout_marginLeft="50dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginRight="50dp"
-                android:ems="10"
-                android:hint="@string/id_actividad"
-                android:inputType="textPersonName"
-                android:maxLength="9"
-                android:textSize="18sp"
-                android:enabled="true"
-                android:drawableStart="@drawable/custom_dni_selected"
-                android:background="@drawable/custom_edit_text"
-                android:layout_height="45dp"
-                android:paddingStart="10dp"
-                android:drawablePadding="12dp"
                 android:layout_marginEnd="35dp"
-                android:layout_marginStart="35dp"
-                />
+                android:layout_marginRight="50dp"
+                android:background="@drawable/custom_edit_text"
+                android:drawableStart="@drawable/custom_dni_selected"
+                android:drawablePadding="12dp"
+                android:ems="10"
+                android:enabled="true"
+                android:hint="@string/id_actividad"
+                android:inputType="number"
+                android:maxLength="8"
+                android:paddingStart="10dp"
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/etName"
                 android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginStart="35dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="35dp"
+                android:layout_marginRight="50dp"
+                android:background="@drawable/custom_edit_text"
+                android:drawableStart="@drawable/custom_name_selected"
+                android:drawablePadding="12dp"
                 android:ems="10"
+                android:enabled="true"
                 android:hint="@string/nombre"
                 android:inputType="textPersonName"
-                android:textSize="18sp"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:enabled="true"
-                android:drawableStart="@drawable/custom_name_selected"
-                android:background="@drawable/custom_edit_text"
-                android:layout_height="45dp"
+                android:maxLength="40"
                 android:paddingStart="10dp"
-                android:drawablePadding="12dp"
-                android:layout_marginEnd="35dp"
-                android:layout_marginStart="35dp"
-                />
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/etAforoMax"
                 android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginStart="35dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="35dp"
+                android:layout_marginRight="50dp"
+                android:background="@drawable/custom_edit_text"
+                android:drawableStart="@drawable/custom_date_selector"
+                android:drawablePadding="12dp"
                 android:ems="10"
+                android:enabled="true"
                 android:hint="@string/aforo_maximo"
                 android:inputType="date"
-                android:textSize="18sp"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:enabled="true"
-                android:drawableStart="@drawable/custom_date_selector"
-                android:background="@drawable/custom_edit_text"
-                android:layout_height="45dp"
+                android:maxLength="3"
                 android:paddingStart="10dp"
-                android:drawablePadding="12dp"
-                android:layout_marginEnd="35dp"
-                android:layout_marginStart="35dp"
 
-                />
+                android:textSize="18sp" />
 
 
             <LinearLayout
@@ -113,11 +112,11 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:ems="10"
-                    android:enabled="true"
-                    android:inputType="textPersonName"
                     android:clickable="false"
-                    android:hint="@string/hora_de_apertura" />
+                    android:ems="10"
+                    android:enabled="false"
+                    android:hint="@string/hora_de_apertura"
+                    android:inputType="textPersonName" />
 
             </LinearLayout>
 
@@ -143,11 +142,11 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:clickable="false"
                     android:ems="10"
-                    android:enabled="true"
-                    android:inputType="textPersonName"
+                    android:enabled="false"
                     android:hint="@string/hora_de_cierre"
-                    android:clickable="false"/>
+                    android:inputType="textPersonName" />
 
             </LinearLayout>
 
@@ -155,11 +154,11 @@
                 android:id="@+id/bAdd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
                 android:layout_gravity="center"
                 android:layout_marginTop="24dp"
                 android:background="@drawable/custom_button"
-                android:text="@string/registrar_actividad" />
+                android:text="@string/registrar_actividad"
+                android:textSize="14sp" />
 
         </LinearLayout>
     </ScrollView>

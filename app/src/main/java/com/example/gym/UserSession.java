@@ -5,7 +5,7 @@ import com.example.gym.Clases.Usuario;
 public class UserSession {
     private static Usuario usuario;
 
-    private Usuario getUsuario() {
+    public static Usuario getUsuario() {
         return usuario;
     }
 
