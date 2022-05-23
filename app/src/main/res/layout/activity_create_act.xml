@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".gymOwner.actCreationActivity">
-
+    tools:context=".gymOwner.createAct_activity">
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -107,8 +106,7 @@
                     android:layout_width="56dp"
                     android:layout_height="match_parent"
                     android:background="@drawable/custom_button"
-                    android:drawableLeft="@drawable/custom_horaa_selected"
-                    android:onClick="dataPickerDialogHoraA" />
+                    android:drawableLeft="@drawable/custom_horaa_selected" />
 
                 <EditText
                     android:id="@+id/etHoraA"
@@ -138,8 +136,7 @@
                     android:layout_width="56dp"
                     android:layout_height="match_parent"
                     android:background="@drawable/custom_button"
-                    android:drawableLeft="@drawable/custom_horac_selected"
-                    android:onClick="dataPickerDialogHoraC" />
+                    android:drawableLeft="@drawable/custom_horac_selected" />
 
                 <EditText
                     android:id="@+id/etHoraC"

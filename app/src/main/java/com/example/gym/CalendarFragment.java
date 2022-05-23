@@ -17,7 +17,7 @@ import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.Toast;
 
-import com.example.gym.gymOwner.ActCreationActivity;
+import com.example.gym.gymOwner.createAct_activity;
 import com.google.android.material.tabs.TabLayout;
 
 import java.text.ParseException;
@@ -120,7 +120,7 @@ public class CalendarFragment extends Fragment {
                     if (!actualDate.before(selData)) {
 
                         Toast.makeText(view.getContext(), "Ejecutado con exito", Toast.LENGTH_SHORT).show();
-                        Intent i = new Intent(getContext(), ActCreationActivity.class);
+                        Intent i = new Intent(getContext(), createAct_activity.class);
                         startActivity(i);
                     } else {
                         Toast.makeText(view.getContext(), "Seleciona un dia posterior al de hoy", Toast.LENGTH_SHORT).show();
