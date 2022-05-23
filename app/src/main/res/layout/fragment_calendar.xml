@@ -7,12 +7,12 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="626dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <CalendarView
                 android:id="@+id/cvCalendar"
@@ -27,8 +27,8 @@
                 android:id="@+id/bSeeGymActivity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
                 android:layout_marginLeft="100dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginRight="100dp"
                 android:background="@drawable/custom_button"
                 android:text="@string/bViewActivities" />
@@ -48,12 +48,12 @@
                 android:id="@+id/bNewActivity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
                 android:layout_marginLeft="85dp"
+                android:layout_marginTop="-120dp"
                 android:layout_marginRight="85dp"
                 android:background="@drawable/custom_button"
                 android:text="@string/new_activity"
-                android:visibility="invisible"/>
+                android:visibility="invisible" />
 
         </LinearLayout>
     </ScrollView>

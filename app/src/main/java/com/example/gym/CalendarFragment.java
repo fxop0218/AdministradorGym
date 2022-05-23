@@ -32,7 +32,7 @@ public class CalendarFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
     private CalendarView cvCalendar;
     private Date actualDate, selDate;
-    private Button bSetActividad, bLogActiviy, bComingActivity;
+    private Button bNewActividad, bSeeGymActivity, bSeeUpcoming;
     private final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
     // TODO: Rename and change types of parameters
@@ -88,10 +88,22 @@ public class CalendarFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_calendar, container, false);
-        bSetActividad = view.findViewById(R.id.bNewActivity);
-        bComingActivity = view.findViewById(R.id.bSeeUpcoming);
+        bNewActividad = view.findViewById(R.id.bNewActivity);
+        bSeeUpcoming = view.findViewById(R.id.bSeeUpcoming);
+        bSeeGymActivity = view.findViewById(R.id.bSeeGymActivity);
+
         cvCalendar = view.findViewById(R.id.cvCalendar);
         actualDate = new Date();
+        //Dependiendo de el tipo de usuario que se registre, se mostraran unos bottones o otros
+        if (UserSession.getUsuario().isGymOwner()) {
+            bNewActividad.setVisibility(View.VISIBLE);
+            bSeeUpcoming.setVisibility(View.INVISIBLE);
+            bSeeGymActivity.setVisibility(View.INVISIBLE);
+        } else {
+            bNewActividad.setVisibility(View.INVISIBLE);
+            bSeeUpcoming.setVisibility(View.VISIBLE);
+            bSeeGymActivity.setVisibility(View.VISIBLE);
+        }
 
 
         cvCalendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
@@ -110,7 +122,7 @@ public class CalendarFragment extends Fragment {
             }
         });
 
-        bComingActivity.setOnClickListener(new View.OnClickListener() {
+        bNewActividad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (selDate != null && !date.isEmpty()) {
@@ -130,14 +142,6 @@ public class CalendarFragment extends Fragment {
         });
 
         return view;
-
-    }
-
-    public void bGetActivity(View v) {
-
-    }
-
-    public void bSetReserva(View v) {
 
     }
 }

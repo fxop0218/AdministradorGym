@@ -167,7 +167,6 @@ public class LoginActivity extends AppCompatActivity {
         // TODO : initiate successful logged in experience
         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra("owner", isOwner); //binding.username.getText().toString()
         //intent.putExtra("usua", isOwner);
         startActivity(intent);
     }
