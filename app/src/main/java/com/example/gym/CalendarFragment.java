@@ -1,12 +1,8 @@
 package com.example.gym;
 
-import android.app.usage.UsageEvents;
 import android.content.Intent;
-import android.graphics.Color;
-import android.media.metrics.Event;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -18,7 +14,6 @@ import android.widget.CalendarView;
 import android.widget.Toast;
 
 import com.example.gym.gymOwner.createAct_activity;
-import com.google.android.material.tabs.TabLayout;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -36,8 +31,8 @@ public class CalendarFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private CalendarView cvCalendar;
-    private Date actualDate, selData;
-    private Button bSetActividad;
+    private Date actualDate, selDate;
+    private Button bSetActividad, bLogActiviy, bComingActivity;
     private final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
     // TODO: Rename and change types of parameters
@@ -93,9 +88,11 @@ public class CalendarFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_calendar, container, false);
-        bSetActividad = view.findViewById(R.id.bSeeNex);
-        cvCalendar = (CalendarView) view.findViewById(R.id.cvCalendar);
+        bSetActividad = view.findViewById(R.id.bNewActivity);
+        bComingActivity = view.findViewById(R.id.bSeeUpcoming);
+        cvCalendar = view.findViewById(R.id.cvCalendar);
         actualDate = new Date();
+
 
         cvCalendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
@@ -103,7 +100,7 @@ public class CalendarFragment extends Fragment {
                 date = i2 + "/" + i1 + "/" +i;
 
                 try {
-                    selData = sdf.parse(date);
+                    selDate = sdf.parse(date);
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
@@ -113,14 +110,15 @@ public class CalendarFragment extends Fragment {
             }
         });
 
-        bSetActividad.setOnClickListener(new View.OnClickListener() {
+        bComingActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (selData != null) {
-                    if (!actualDate.before(selData)) {
+                if (selDate != null && !date.isEmpty()) {
+                    if (!actualDate.before(selDate)) {
 
                         Toast.makeText(view.getContext(), "Ejecutado con exito", Toast.LENGTH_SHORT).show();
                         Intent i = new Intent(getContext(), createAct_activity.class);
+                        i.putExtra("day", date); // TODO tener en cuenta que no se puede clickar al boton cuando la fecha es inferior a la atual o igual.
                         startActivity(i);
                     } else {
                         Toast.makeText(view.getContext(), "Seleciona un dia posterior al de hoy", Toast.LENGTH_SHORT).show();

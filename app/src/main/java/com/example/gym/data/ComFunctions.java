@@ -43,9 +43,32 @@ public class ComFunctions {
             if (hDateA.after(hDateC)) return false;
             return true;
     }
+
+    /**
+     * Transforma una String con un formato en concreto (HH:mm) en
+     * un objeto de clase Date con la hora.
+     *
+     * @param hora
+     * @return null si no es correcto el formato
+     */
     public static Date strToDate(String hora) {
         try {
             return sdfMin.parse(hora);
+        } catch (ParseException e) {
+            return null;
+        }
+    }
+
+    /**
+     * Transforma una string con un formato concreto (dd/mm/yyyy) en
+     * un objeto Date.
+     *
+     * @param dateStr
+     * @return  si no es correcto el formato
+     */
+    public static Date strToDateDay(String dateStr) {
+        try {
+            return sdf.parse(dateStr);
         } catch (ParseException e) {
             return null;
         }

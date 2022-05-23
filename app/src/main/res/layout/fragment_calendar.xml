@@ -24,7 +24,7 @@
                 android:background="@drawable/bg_calendar" />
 
             <Button
-                android:id="@+id/bSeeGymActivitys"
+                android:id="@+id/bSeeGymActivity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
@@ -34,7 +34,7 @@
                 android:text="@string/bViewActivities" />
 
             <Button
-                android:id="@+id/bSeeNex"
+                android:id="@+id/bSeeUpcoming"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="85dp"
@@ -45,7 +45,7 @@
                 android:text="@string/bViewUpcomingActivities" />
 
             <Button
-                android:id="@+id/bNewActiviry"
+                android:id="@+id/bNewActivity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"

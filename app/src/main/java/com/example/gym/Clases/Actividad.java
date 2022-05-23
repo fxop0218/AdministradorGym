@@ -12,16 +12,18 @@ public class Actividad {
     private int aforo_actual = 0;
     private Date hora_inicio;
     private Date hora_fin;
+    private Date dia;
 
     public Actividad() {}
 
-    public Actividad(int idActividad, String nombre, int gymID, int aforo, Date hora_inicio, Date hora_fin) {
+    public Actividad(int idActividad, String nombre, int gymID, int aforo, Date hora_inicio, Date hora_fin, Date dia) {
         this.idActividad = idActividad;
         this.nombre = nombre;
         this.gymID = gymID;
         this.aforo = aforo;
         this.hora_inicio = hora_inicio;
         this.hora_fin = hora_fin;
+        this.dia = dia;
     }
 
     public int getIdActividad() {
@@ -86,5 +88,13 @@ public class Actividad {
 
     public void setHora_fin(Date hora_fin) {
         this.hora_fin = hora_fin;
+    }
+
+    public Date getDia() {
+        return dia;
+    }
+
+    public void setDia(Date dia) {
+        this.dia = dia;
     }
 }

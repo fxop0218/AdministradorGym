@@ -135,6 +135,7 @@ public class LoginActivity extends AppCompatActivity {
                    try {
                        pwd = usuario.getPassword();
                        if (pwd.equals(passwordEditText.getText().toString())) {
+                           UserSession.setUsuario(usuario);
                            isOwner = usuario.isGymOwner();
                            Toast.makeText(getApplicationContext(), "Bienvenido", Toast.LENGTH_SHORT).show();
                            loadingProgressBar.setVisibility(View.VISIBLE);
