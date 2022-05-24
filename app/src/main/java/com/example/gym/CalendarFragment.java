@@ -14,6 +14,8 @@ import android.widget.CalendarView;
 import android.widget.Toast;
 
 import com.example.gym.gymOwner.createAct_activity;
+import com.example.gym.user.view_actividades_activity;
+
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -116,9 +118,6 @@ public class CalendarFragment extends Fragment {
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
-
-                Log.d("CalendarFragment", "onSelectedDayChange: date:"+ date);
-                Toast.makeText(getContext(), date, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -137,6 +136,20 @@ public class CalendarFragment extends Fragment {
                     }
                 } else {
                     Toast.makeText(view.getContext(), "Error al selecionar un dia", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        bSeeGymActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (selDate != null && !date.isEmpty()) {
+                    if (!actualDate.before(selDate)) {
+                        Toast.makeText(view.getContext(), "Actividades", Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(getContext(), view_actividades_activity.class);
+                        i.putExtra("day", date); //Pasa la fecha escogida por el usuario
+                        startActivity(i);
+                    }
                 }
             }
         });
