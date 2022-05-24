@@ -6,4 +6,5 @@ public class PojosClass {
     }
     public static GymDAOimp getGymDAO() { return new GymDAOimp(); }
     public static ActividadesDAOImp getActividadesDao() { return new ActividadesDAOImp(); }
+    public static ReservaDAOImp getReservaDao() { return new ReservaDAOImp(); }
 }

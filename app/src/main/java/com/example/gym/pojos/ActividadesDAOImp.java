@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 
 import com.example.gym.Clases.Actividad;
 import com.example.gym.Clases.Usuario;
+import com.example.gym.data.ComFunctions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -15,15 +16,19 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class ActividadesDAOImp implements ActividadesDAO{
     public static final String ACTIVIDADES = "Actividades";
     public static final String GYM_ID = "gymID";
+    public static final String DIA = "dia";
 
     @Override
     public void setActiviad(Actividad a1) {
@@ -52,13 +57,26 @@ public class ActividadesDAOImp implements ActividadesDAO{
         return null;
     }
 
-    /*@Override
-    public Actividad[] getGymActivity(int gymID, OnSuccessListener<Actividad> listener) {
-        final Actividad[][] actArray = new Actividad[1][1];
-        final Actividad[] activity = new Actividad[1];
-        int i = 0;
-        return null;
-    }*/
+    @Override
+    public ArrayList<Actividad> getGymActivity(int gymID, String actDate, OnCompleteListener<QuerySnapshot> listener) throws Exception {
+        Date actualDate = ComFunctions.strToDateDay(actDate);
+        ArrayList<Actividad> gymArray = new ArrayList<>();
+        FirebaseFirestore db = FireConnection.getDb();
+        db.collection(ACTIVIDADES).whereEqualTo(GYM_ID, gymID).whereEqualTo(DIA, actualDate).get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                gymArray.add(document.toObject(Actividad.class));
+                            }
+                        }
+                    }
+                });
+
+        if (gymArray.isEmpty()) throw new Exception("No se ha encontrado ninguna actividad");
+        return gymArray;
+    }
 
     @Override
     public Actividad[] getUserActivitys(int idUser) {

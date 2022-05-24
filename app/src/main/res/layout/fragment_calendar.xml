@@ -31,6 +31,7 @@
                 android:layout_marginTop="30dp"
                 android:layout_marginRight="100dp"
                 android:background="@drawable/custom_button"
+                android:layout_marginBottom="50dp"
                 android:text="@string/bViewActivities" />
 
             <Button
@@ -41,7 +42,6 @@
                 android:layout_marginTop="30dp"
                 android:layout_marginRight="85dp"
                 android:background="@drawable/custom_button"
-                android:onClick="bSetActivity"
                 android:text="@string/bViewUpcomingActivities" />
 
             <Button
