@@ -12,6 +12,27 @@
         android:layout_height="match_parent"
         android:orientation="vertical" >
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/mas_suplementos"
+            android:background="@drawable/boton2"
+            android:gravity="center"
+            android:textSize="22dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"/>
+
+        <ImageView
+            android:id="@+id/ivDecaSup"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/logodeca" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerProductos"
             android:layout_width="match_parent"

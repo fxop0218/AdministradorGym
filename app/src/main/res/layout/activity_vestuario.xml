@@ -12,12 +12,47 @@
         android:layout_height="match_parent"
         android:orientation="vertical" >
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerProductos"
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@string/ropa_hombre"
+            android:background="@drawable/boton2"
+            android:gravity="center"
+            android:textSize="22dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
-            android:layout_marginRight="20dp" />
+            android:layout_marginRight="20dp"/>
+
+        <ImageView
+            android:id="@+id/ivHombres"
+            android:layout_width="wrap_content"
+            android:layout_height="270dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            app:srcCompat="@drawable/ropa_hombre"
+            android:scaleType="centerCrop"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ropa_mujer"
+            android:background="@drawable/boton2"
+            android:gravity="center"
+            android:textSize="22dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"/>
+
+        <ImageView
+            android:id="@+id/ivMujeres"
+            android:layout_width="match_parent"
+            android:layout_height="270dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            app:srcCompat="@drawable/ropa_mujer"
+            android:scaleType="centerCrop"/>
+
     </LinearLayout>
 </RelativeLayout>

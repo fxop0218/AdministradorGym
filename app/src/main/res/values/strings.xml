@@ -72,4 +72,8 @@
     <string name="registrar_actividad">Registrar actividad</string>
     <string name="hora_de_cierre">Hora de cierre</string>
     <string name="hora_de_apertura">Hora de apertura</string>
+    <string name="mas_productos">MAS PRODUCTOS</string>
+    <string name="mas_suplementos">MAS SUPLEMENTOS</string>
+    <string name="ropa_mujer">ROPA MUJER</string>
+    <string name="ropa_hombre">ROPA HOMBRE</string>
 </resources>
