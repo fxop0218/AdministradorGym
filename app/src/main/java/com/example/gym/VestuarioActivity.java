@@ -25,6 +25,7 @@ public class VestuarioActivity extends AppCompatActivity {
         setContentView(R.layout.activity_vestuario);
 
         ivHombre = findViewById(R.id.ivHombres);
+
         ivMujer = findViewById(R.id.ivMujeres);
 
         ivHombre.setOnClickListener(new View.OnClickListener() {
