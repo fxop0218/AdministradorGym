@@ -1,6 +1,7 @@
 package com.example.gym;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +21,10 @@ import org.jetbrains.annotations.NotNull;
 
 public class TiendaFragment extends Fragment {
 
+    private String urlDecaMat = "https://www.decathlon.es/es/browse/c0-deportes/c1-fitness-cardio/c2-accesorios/_/N-1go8kxh";
+    private String urlDecaVM = "https://www.decathlon.es/es/browse/c0-deportes/c1-fitness-cardio/c2-ropa-mujer-fitness-gym/_/N-uh595a";
+    private String urlDecaSup = "https://www.decathlon.es/es/browse/c0-salud-y-bienestar/c1-alimentacion-saludable/_/N-1mfwa2e";
+
     @Nullable
     @org.jetbrains.annotations.Nullable
     @Override
@@ -35,8 +40,9 @@ public class TiendaFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(view.getContext(), MaterialActivity.class);
-                startActivity(intent);
+                Uri uriDeca = Uri.parse(urlDecaMat);
+                Intent i = new Intent(Intent.ACTION_VIEW, uriDeca);
+                startActivity(i);
             }
         });
 
@@ -44,8 +50,9 @@ public class TiendaFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(view.getContext(), SuplementosActivity.class);
-                startActivity(intent);
+                Uri uriDeca = Uri.parse(urlDecaSup);
+                Intent i = new Intent(Intent.ACTION_VIEW, uriDeca);
+                startActivity(i);
             }
         });
 
@@ -53,8 +60,9 @@ public class TiendaFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(view.getContext(), VestuarioActivity.class);
-                startActivity(intent);
+                Uri uriDeca = Uri.parse(urlDecaVM);
+                Intent i = new Intent(Intent.ACTION_VIEW, uriDeca);
+                startActivity(i);
             }
         });
 

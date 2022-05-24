@@ -52,13 +52,13 @@ public class ActividadesDAOImp implements ActividadesDAO{
         return null;
     }
 
-    @Override
+    /*@Override
     public Actividad[] getGymActivity(int gymID, OnSuccessListener<Actividad> listener) {
         final Actividad[][] actArray = new Actividad[1][1];
         final Actividad[] activity = new Actividad[1];
         int i = 0;
         return null;
-    }
+    }*/
 
     @Override
     public Actividad[] getUserActivitys(int idUser) {
