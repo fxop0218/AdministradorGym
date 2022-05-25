@@ -11,6 +11,9 @@
         android:theme="@style/Theme.Gym">
         <activity android:name=".user.viewUpcomingActivity"></activity>
         <activity
+            android:name=".Cardio"
+            android:exported="false" />
+        <activity
             android:name=".user.view_actividades_activity"
             android:exported="false" />
         <activity

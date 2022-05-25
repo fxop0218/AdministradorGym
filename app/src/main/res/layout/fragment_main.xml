@@ -122,7 +122,6 @@
                         android:layout_marginRight="30dp"
                         android:background="@drawable/boton2"
                         android:drawableLeft="@drawable/ic_hipocalorica"
-                        android:onClick="onButtonShowPopupWindowClick"
                         android:text="@string/Dieta_hipocalórica" />
 
                     <Button

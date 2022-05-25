@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 
@@ -20,6 +21,8 @@ import android.widget.PopupWindow;
  * create an instance of this fragment.
  */
 public class MainFragment extends Fragment {
+
+    private Button bt_cardio;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -65,12 +68,20 @@ public class MainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_main, container, false);
+
+        View view = inflater.inflate(R.layout.fragment_main, container, false);
+
+        bt_cardio = view.findViewById(R.id.bt_cardio);
+        bt_cardio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(view.getContext(), Cardio.class);
+                startActivity(intent);
+            }
+        });
+
+        return view;
     }
 
-    public void onButtonShowPopupWindowClick(View view) {
-
-        Intent i = new Intent(getContext(), DietaHipocalorica.class);
-        startActivity(i);
-    }
 }

@@ -9,9 +9,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import androidx.annotation.NonNull;
+
 import com.example.gym.Clases.Usuario;
 import com.example.gym.MainActivity;
 import com.example.gym.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.firebase.auth.ActionCodeSettings;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.database.FirebaseDatabase;
 import java.util.Calendar;
@@ -192,6 +198,7 @@ public class RegisterActivity extends Activity {
         db.collection("users").document(u1.getUser()).set(u1);
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
+
     }
 
     public boolean setRegisterEnabled() {
