@@ -190,6 +190,7 @@
                         android:drawableLeft="@drawable/ic_poleas"
                         android:text="@string/Con_poleas" />
 
+
                     <Button
                         android:id="@+id/bt_pesas"
                         android:layout_width="match_parent"
