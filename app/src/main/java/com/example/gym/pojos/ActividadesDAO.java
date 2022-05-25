@@ -14,4 +14,5 @@ public interface ActividadesDAO {
     public Actividad getActividad(int idActividad, OnSuccessListener<Actividad> listener, OnFailureListener failure);
     public ArrayList<Actividad> getGymActivity(int gymID,String actDate, OnCompleteListener<QuerySnapshot> listener) throws Exception;
     public Actividad[] getUserActivitys(int idUser);
+    public Actividad getActividadById (int idActividad, OnCompleteListener<QuerySnapshot> listener);
 }

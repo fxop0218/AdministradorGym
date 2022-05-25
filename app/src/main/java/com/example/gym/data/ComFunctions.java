@@ -73,4 +73,8 @@ public class ComFunctions {
             return null;
         }
     }
+
+    public static Date getActualDate() {
+        return new Date();
+    }
 }

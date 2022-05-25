@@ -76,4 +76,6 @@
     <string name="mas_suplementos">MAS SUPLEMENTOS</string>
     <string name="ropa_mujer">ROPA MUJER</string>
     <string name="ropa_hombre">ROPA HOMBRE</string>
+    <string name="cerrar">Cerrar</string>
+    <string name="actividades_proximas">Actividades proximas</string>
 </resources>

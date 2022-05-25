@@ -29,6 +29,7 @@ public class ActividadesDAOImp implements ActividadesDAO{
     public static final String ACTIVIDADES = "Actividades";
     public static final String GYM_ID = "gymID";
     public static final String DIA = "dia";
+    public static final String ID_ACTIVIDAD = "idActividad";
 
     @Override
     public void setActiviad(Actividad a1) {
@@ -81,5 +82,37 @@ public class ActividadesDAOImp implements ActividadesDAO{
     @Override
     public Actividad[] getUserActivitys(int idUser) {
         return new Actividad[0];
+    }
+
+    /**
+     *
+     * Busca una actividad por la id, y comprueba que sea superior a la fecha actual
+     *
+     * @param idActividad id de la actividad que queremos consultar
+     * @param listener Si la consulta es exitosa
+     * @return la actividad con las caracteristicas en caso de que exista
+     */
+
+    @Override
+    public Actividad getActividadById(int idActividad, OnCompleteListener<QuerySnapshot> listener) {
+        Actividad[] act = new Actividad[1];
+        FirebaseFirestore db = FireConnection.getDb();
+
+        db.collection(ACTIVIDADES).whereEqualTo(ID_ACTIVIDAD, idActividad).whereGreaterThan(DIA, ComFunctions.getActualDate()) // TODO comprobar si esto funciona bien
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull @NotNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                act[0] = document.toObject(Actividad.class);
+                            }
+                        }
+                    }
+                });
+        if (act[0] == null) {
+            return null;
+        }
+        return act[0];
     }
 }
