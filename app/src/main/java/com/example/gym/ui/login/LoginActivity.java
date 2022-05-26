@@ -7,6 +7,7 @@ import com.example.gym.UserSession;
 import com.example.gym.pojos.PojosClass;
 import com.example.gym.databinding.ActivityLoginBinding;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -34,6 +35,13 @@ import com.example.gym.Clases.Usuario;
 import com.example.gym.data.RegisterActivity;
 import com.example.gym.MainActivity;
 import com.example.gym.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
+import org.jetbrains.annotations.NotNull;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
@@ -44,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
     private ActivityLoginBinding binding;
     private boolean isOwner = false;
     private Usuario usr;
-
+    FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -171,6 +179,16 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Contraseña o usuario incorrecto", Toast.LENGTH_SHORT).show();
                     }
                 }));
+
+                firebaseAuth.createUserWithEmailAndPassword(usernameEditText.getText().toString(), passwordEditText.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull @NotNull Task<AuthResult> task) {
+
+                        FirebaseUser user = firebaseAuth.getCurrentUser();
+                        assert user != null;
+                        user.sendEmailVerification();
+                    }
+                });
             }
         });
     }

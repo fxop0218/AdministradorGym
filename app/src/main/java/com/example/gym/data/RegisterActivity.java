@@ -308,7 +308,8 @@ public class RegisterActivity extends Activity {
             @Override
             public void onComplete(@NonNull @NotNull Task<AuthResult> task) {
 
-
+                    FirebaseUser user = firebaseAuth.getCurrentUser();
+                    user.sendEmailVerification();
             }
         });
 
