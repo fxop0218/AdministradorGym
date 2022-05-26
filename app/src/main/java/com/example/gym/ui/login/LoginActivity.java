@@ -185,6 +185,7 @@ public class LoginActivity extends AppCompatActivity {
                     public void onComplete(@NonNull @NotNull Task<AuthResult> task) {
 
                         FirebaseUser user = firebaseAuth.getCurrentUser();
+
                         assert user != null;
                         user.sendEmailVerification();
                     }
