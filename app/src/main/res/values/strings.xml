@@ -78,4 +78,6 @@
     <string name="ropa_hombre">ROPA HOMBRE</string>
     <string name="cerrar">Cerrar</string>
     <string name="actividades_proximas">Actividades proximas</string>
+    <string name="actividades">Actividades</string>
+    <string name="atras">Atras</string>
 </resources>

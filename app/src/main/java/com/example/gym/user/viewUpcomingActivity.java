@@ -2,6 +2,8 @@ package com.example.gym.user;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -23,6 +25,7 @@ public class viewUpcomingActivity extends AppCompatActivity {
     private Button bCloseUp;
     ArrayList<Reserva> registerArray = new ArrayList<>();
     ArrayList<Actividad> activityArray = new ArrayList<>();
+    private AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +33,7 @@ public class viewUpcomingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_upcoming);
         bCloseUp = findViewById(R.id.bCloseUp);
         lvUpcomign = findViewById(R.id.lvUpcoming);
+
         registerArray = PojosClass.getReservaDao().getReservaByUserName(UserSession.getUsuario().getUser());
 
         try {
@@ -59,6 +63,12 @@ public class viewUpcomingActivity extends AppCompatActivity {
                 //TODO En el alertDialog poner que puedas borrarte de la acividad
 
                 Actividad selectedAct = activityArray.get(i); //Guarda la acividad selecionada
+                builder.setMessage("Eliminar actividad").setCancelable(false).setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        PojosClass.getReservaDao().deleteReserva(UserSession.getUsuario().getUser(), selectedAct.getIdActividad());
+                    }
+                });
             }
         });
 

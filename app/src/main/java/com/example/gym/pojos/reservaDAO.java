@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public interface reservaDAO {
     public void addReserva(Reserva r1);
     public Reserva getReserva (int idReserva);
-    public ArrayList<Reserva> getReservaByGymID (int gymID);
+    public ArrayList<Reserva> getReservaByActivityID(int activityID);
     public ArrayList<Reserva> getReservaByUserName (String userName);
+    public void deleteReserva (String userName, int acivityID);
 }

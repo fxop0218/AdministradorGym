@@ -17,9 +17,9 @@
             android:id="@+id/tvTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Actividades"
+            android:text="@string/actividades"
             android:gravity="center"
-            android:textSize="30dp" />
+            android:textSize="30sp" />
 
         <ScrollView
             android:layout_width="match_parent"
@@ -41,7 +41,7 @@
             android:id="@+id/bClose"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button"
+            android:text="@string/atras"
             android:layout_marginLeft="70dp"
             android:layout_marginRight="70dp"
             android:background="@drawable/custom_button"
