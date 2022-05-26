@@ -81,13 +81,13 @@
     <string name="actividades">Actividades</string>
     <string name="atras">Atras</string>
     <string name="el_ptica">ELIPTICA</string>
-    <string name="eliptica_exp">hola</string>
+    <string name="eliptica_exp">Para ejercicio sin impacto y por tanto sin efecto negativo en las articulaciones; además de mejorar la coordinación y el sentido del equilibrio. Es una de las máquinas más completas, ya que nos hace ejercitar el 80% de los músculos de nuestro cuerpo, y también muy intenso a nivel cardiovascular y respiratorio. En el tren superior se trabajan los pectorales y los hombros y en la parte baja los cuádriceps y nalgas. Y de manera secundaria la espalda, los brazos y los abdominales. Además, quema muchísimas calorías. Por supuesto, también es divertida, ya que el movimiento es una simulación que combina la bicicleta y el esquí de fondo.</string>
     <string name="stepper">STEPPER</string>
-    <string name="stepper_exp">HOla</string>
+    <string name="stepper_exp">Esta máquina la identificarás fácilmente porque, sencillamente, es un aparato que reproduce la actividad de subir escaleras. El objetivo de este ejercicio es trabajar y tonificar los músculos de las piernas y de las nalgas. A mayor dificultad o nivel en la máquina, mayor es la velocidad que se requiere moviendo las piernas. Los resultados que se consiguen con el stepper son asombrosos; en muy poco tiempo notarás una mejoría tanto en el tono como en el volumen de tus glúteos y piernas.</string>
     <string name="bicicleta_estatica">BICICLETA ESTATICA</string>
-    <string name="bicicleta_est_exp">bicicleta estatica</string>
+    <string name="bicicleta_est_exp">Además de ser la máquina más utilizada por los usuarios del gimnasio para hacer sus minutos de calentamiento, es también la más eficiente si queremos centrar nuestro objetivo en el tren inferior. Junto al trabajo cardiovascular y respiratorio estaremos realizando una alternancia de contracciones de los muslos que favorecen la circulación y el gasto energético. Es decir, quemamos más calorías. Si quieres mantener la forma, realiza bici estática de manera suave, pero si el objetivo es adelgazar, aumenta el tiempo de pedaleo por encima de los 30 minutos. También notarás una mejoría en la zona de los abdominales y los estabilizadores de la espalda.</string>
     <string name="cinta_de_correr">CINTA DE CORRER</string>
-    <string name="cintadecorrer_expl">cinta de correr</string>
-    <string name="remo">remoi</string>
-    <string name="remo_exp">remo</string>
+    <string name="cintadecorrer_expl">La máquina más popular por su sencillo uso y funcionamiento. Podemos caminar sobre el tapiz rodante o correr al ritmo que deseamos ajustando la velocidad. Con ella conseguiremos una quema de grasa gradual a través del ejercicio cardiovascular y muscular. Si corremos sobre ella, lograremos una mejor amortiguación que cuando corremos en exteriores, ya que el movimiento no es exactamente idéntico: la cinta pasa y no tenemos que empujar con el glúteo. Corriendo en la calle sí.</string>
+    <string name="remo">REMO</string>
+    <string name="remo_exp">En esta máquina logramos un ejercicio muy completo, ya que trabajamos simultáneamente varios grupos musculares como los brazos, los glúteos o la espalda, y además a una intensidad considerable. De manera más concreta, los dorsales son los músculos que más fortaleceremos con el remo, dándole amplitud a nuestra espalda. También están implicados los pectorales, tríceps y los abdominales, aunque en menor medida. Como estamos trabajando muchos músculos a la vez, no hace falta que la intensidad del ejercicio sea muy alta, ya que el corazón aumenta su frecuencia cardíaca con relativa facilidad.</string>
 </resources>
