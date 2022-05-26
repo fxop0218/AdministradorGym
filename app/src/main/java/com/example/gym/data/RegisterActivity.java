@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,12 +17,18 @@ import com.example.gym.Clases.Usuario;
 import com.example.gym.Encript;
 import com.example.gym.MainActivity;
 import com.example.gym.R;
+import com.example.gym.UserSession;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.ActionCodeSettings;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.auth.User;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -38,6 +45,7 @@ public class RegisterActivity extends Activity {
     private Button bRegister;
     private int year = 0;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+    FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     private String Pwd;
 
     @Override
@@ -131,6 +139,7 @@ public class RegisterActivity extends Activity {
             @Override
             public void afterTextChanged(Editable editable) {
                 if (ComFunctions.is_not_correct(etUserName, 5, 30)) {
+
                     etUserName.setError("El nombre de usuario tiene que tener entre 5 y 30 letras");
                     bRegister.setEnabled(setRegisterEnabled());
                 }
@@ -292,4 +301,37 @@ public class RegisterActivity extends Activity {
         i.putExtra("owner", false);
         startActivity(i);
     }
+
+    /*public void authEmail(){
+
+       firebaseAuth.createUserWithEmailAndPassword(etUserName.getText().toString(), etPwd.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull @NotNull Task<AuthResult> task) {
+
+
+            }
+        });
+
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        user.sendEmailVerification();
+
+        // Dynamic Links will start with https://tfg-final-55f61.web.app
+        "appAssociation": "AUTO",
+                "rewrites": [ { "source": "/**", "dynamicLinks": true } ]
+
+        ActionCodeSettings actionCodeSettings =
+                ActionCodeSettings.newBuilder()
+                        // URL you want to redirect back to. The domain (www.example.com) for this
+                        // URL must be whitelisted in the Firebase Console.
+                        .setUrl("https://www.example.com/finishSignUp?cartId=1234")
+                        // This must be true
+                        .setHandleCodeInApp(true)
+                        .setIOSBundleId("com.example.ios")
+                        .setAndroidPackageName(
+                                "com.example.gym",
+                                true,  installIfNotAvailable
+                                "12"     minimumVersion )
+                        .build();
+
+    }*/
 }
