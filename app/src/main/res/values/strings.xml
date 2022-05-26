@@ -6,7 +6,7 @@
     <string name="action_sign_in">Sign in</string>
     <string name="action_register">Register as GymUser</string>
     <string name="action_sign_in_short">Sign in</string>
-    <string name="welcome">"Bienvenido !"</string>
+    <string name="welcome">"Bienvenido "</string>
     <string name="invalid_username">No es un usuario valido</string>
     <string name="invalid_password">La contraseña tiene que tener mas de 5 caracteres</string>
     <string name="login_failed">"Login failed"</string>
@@ -80,4 +80,14 @@
     <string name="actividades_proximas">Actividades proximas</string>
     <string name="actividades">Actividades</string>
     <string name="atras">Atras</string>
+    <string name="el_ptica">ELIPTICA</string>
+    <string name="eliptica_exp">hola</string>
+    <string name="stepper">STEPPER</string>
+    <string name="stepper_exp">HOla</string>
+    <string name="bicicleta_estatica">BICICLETA ESTATICA</string>
+    <string name="bicicleta_est_exp">bicicleta estatica</string>
+    <string name="cinta_de_correr">CINTA DE CORRER</string>
+    <string name="cintadecorrer_expl">cinta de correr</string>
+    <string name="remo">remoi</string>
+    <string name="remo_exp">remo</string>
 </resources>

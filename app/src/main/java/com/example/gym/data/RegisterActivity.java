@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,6 +13,7 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 
 import com.example.gym.Clases.Usuario;
+import com.example.gym.Encript;
 import com.example.gym.MainActivity;
 import com.example.gym.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -20,20 +22,29 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
+
 public class RegisterActivity extends Activity {
+
     private EditText etDni, etName, etSurname, etYear, etUserName, etPwd, etCfnPwd;
     private Button bRegister;
     private int year = 0;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private String Pwd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
         etDni = findViewById(R.id.etDni);
         etName = findViewById(R.id.etName);
         etSurname = findViewById(R.id.etSurname);
@@ -192,9 +203,9 @@ public class RegisterActivity extends Activity {
         });
     }
 
-    public void register(View view){
+    public void register(View view) throws Exception {
         //TODO guardar en la base de datos, si no se puede porque hay un usario on el mismo nombre te salta un error
-        Usuario u1 = new Usuario(etName.getText().toString(), etSurname.getText().toString(), etDni.getText().toString(), Integer.parseInt(etYear.getText().toString()), etUserName.getText().toString(), etPwd.getText().toString());
+        Usuario u1 = new Usuario(etName.getText().toString(), etSurname.getText().toString(), etDni.getText().toString(), Integer.parseInt(etYear.getText().toString()), etUserName.getText().toString(), Encript.encriptar(etPwd.getText().toString()));
         db.collection("users").document(u1.getUser()).set(u1);
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);

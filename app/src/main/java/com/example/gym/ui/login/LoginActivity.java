@@ -2,6 +2,7 @@ package com.example.gym.ui.login;
 
 import android.app.Activity;
 
+import com.example.gym.Encript;
 import com.example.gym.UserSession;
 import com.example.gym.pojos.PojosClass;
 import com.example.gym.databinding.ActivityLoginBinding;
@@ -19,6 +20,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Parcelable;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Base64;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -32,6 +34,9 @@ import com.example.gym.Clases.Usuario;
 import com.example.gym.data.RegisterActivity;
 import com.example.gym.MainActivity;
 import com.example.gym.R;
+
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -127,17 +132,23 @@ public class LoginActivity extends AppCompatActivity {
             String pwd = "";
             Usuario usr = null;
             int idGym = 0;
+
+            String pwdEncripted;
+
             @Override
             public void onClick(View v) {
+
                 loginButton.setEnabled(false);
+
                 usr = PojosClass.getUsuarioDAO().getUsuario(usernameEditText.getText().toString(), (usuario -> {
                     //This catch throws a NullPointerException when don't get a User
                    try {
+                       String pwdEt = passwordEditText.getText().toString();
+                       pwdEncripted = Encript.encriptar(pwdEt);
                        pwd = usuario.getPassword();
-                       if (pwd.equals(passwordEditText.getText().toString())) {
+                       if (pwd.equals(pwdEncripted)) {
                            UserSession.setUsuario(usuario);
                            isOwner = usuario.isGymOwner();
-                           Toast.makeText(getApplicationContext(), "Bienvenido", Toast.LENGTH_SHORT).show();
                            loadingProgressBar.setVisibility(View.VISIBLE);
                            loginViewModel.login(usernameEditText.getText().toString(),
                                    passwordEditText.getText().toString());
@@ -147,6 +158,8 @@ public class LoginActivity extends AppCompatActivity {
                        }
                    } catch (NullPointerException e) {
                        loginButton.setEnabled(true);
+                       Toast.makeText(getApplicationContext(), "Contraseña o usuario incorrecto", Toast.LENGTH_SHORT).show();
+                   } catch (Exception e) {
                        Toast.makeText(getApplicationContext(), "Contraseña o usuario incorrecto", Toast.LENGTH_SHORT).show();
                    }
                 }), (e -> {
@@ -163,7 +176,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void updateUiWithUser(LoggedInUserView model) {
-        String welcome = getString(R.string.welcome) + model.getDisplayName();
+        String welcome = getString(R.string.welcome) + UserSession.getUsuario().getUser();
         // TODO : initiate successful logged in experience
         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this, MainActivity.class);
@@ -180,4 +193,6 @@ public class LoginActivity extends AppCompatActivity {
         Intent i = new Intent(this, RegisterActivity.class);
         startActivity(i);
     }
+
+
 }
