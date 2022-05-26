@@ -54,7 +54,7 @@
                 android:text="@string/cambiar_fecha_nacimiento"/>
 
             <Button
-                android:id="@+id/bSetGym"
+                android:id="@+id/bAltaGym"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -62,8 +62,7 @@
                 android:layout_marginRight="20dp"
                 android:background="@drawable/boton2"
                 android:drawableLeft="@drawable/ic_mis_actividades"
-                android:onClick="bSetGymClick"
-                android:text="@string/mis_actividades" />
+                android:text="@string/darte_de_alte_en_un_gimnasio" />
 
             <Button
                 android:id="@+id/cerrar_sesion"

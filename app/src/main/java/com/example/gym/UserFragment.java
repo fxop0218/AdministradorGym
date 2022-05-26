@@ -7,19 +7,17 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.InputFilter;
 import android.text.InputType;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.gym.pojos.PojosClass;
 import com.example.gym.ui.login.LoginActivity;
-import com.google.android.material.button.MaterialButtonToggleGroup;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -78,11 +76,9 @@ public class UserFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        bSetGym = getView().findViewById(R.id.bSetGym);
         View v = inflater.inflate(R.layout.fragment_user, container, false);
-
+        bSetGym = v.findViewById(R.id.bAltaGym);
         btCerrarSesion = v.findViewById(R.id.cerrar_sesion);
-
         btCerrarSesion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -92,29 +88,47 @@ public class UserFragment extends Fragment {
             }
         });
 
-        return v;
-    }
-
-    public void bSetGymClick (View v) {
-        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(v.getContext());
-        alertBuilder.setTitle("Adjunta el ID de tu gimnasio (8 numeros)");
-        final EditText etGymID = new EditText(getContext().getApplicationContext());
-        etGymID.setInputType(InputType.TYPE_CLASS_NUMBER);
-        alertBuilder.setView(etGymID);
-        alertBuilder.setPositiveButton("Acceptar", new DialogInterface.OnClickListener() {
+        /**
+         * Abre un dialogo con el que puedes añadir una id de gimnasio
+         * En caso de ser admin, no te permite cambiarlo
+         * Si no tiene la longitud correcta te salta un error
+         * Si no exite te salta un error
+         *
+         */
+        bSetGym.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                if (!etGymID.getText().toString().isEmpty() && etGymID.getText().toString().length() == 8) {
-                    try {
-                        PojosClass.getUsuarioDAO().addGym(Integer.parseInt(etGymID.getText().toString()));
-                    } catch (Exception e) {
-                        Toast.makeText(getContext().getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+            public void onClick(View view) {
+                AlertDialog.Builder alertBuilder = new AlertDialog.Builder(v.getContext());
+                alertBuilder.setTitle("Adjunta el ID de tu gimnasio (8 numeros)");
+                final EditText etGymID = new EditText(v.getContext());
+                etGymID.setInputType(InputType.TYPE_CLASS_NUMBER);
+                etGymID.setFilters(new InputFilter[] {new InputFilter.LengthFilter(8) }); // Se añade un maximo de numeros al edit text
+                alertBuilder.setView(etGymID);
+                alertBuilder.setCancelable(true);
+                alertBuilder.setPositiveButton("Acceptar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        if (!etGymID.getText().toString().isEmpty() && etGymID.getText().toString().length() == 8) {
+                            try {
+                                PojosClass.getUsuarioDAO().addGym(Integer.parseInt(etGymID.getText().toString()));
+                            } catch (Exception e) {
+                                Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        } else {
+                            Toast.makeText(getContext(), "Introduce una id correct ", Toast.LENGTH_SHORT).show();
+                        }
                     }
-                    //TODO cambiar la idGy
-                } else {
-                    Toast.makeText(getContext(), "Introduce una id correct ", Toast.LENGTH_SHORT).show();
-                }
+                })
+                .setNegativeButton("Cerrar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(v.getContext(), "Se ha cancelado la operación", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                alertBuilder.show();
             }
         });
+
+        return v;
     }
 }
