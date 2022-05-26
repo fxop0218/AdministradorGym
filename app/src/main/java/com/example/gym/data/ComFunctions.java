@@ -16,9 +16,18 @@ public class ComFunctions {
     public static int actYear = Calendar.getInstance().get(Calendar.YEAR);
     public static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     public static SimpleDateFormat sdfMin = new SimpleDateFormat("HH:mm");
+    //Constantes de Actividad
     public static final String ID_ACTIVIDAD = "actividad";
     public static final String USER_NAME = "actividad";
     public static final String ID_RESERVA = "idReserva";
+
+    //-----------------------------------------------------------
+    //Constantes de GYM
+    public static final String GYM = "gym";
+
+    //------------------------------------------------------------
+    //Constantes de Registro
+    public static final String RESERVA = "Reserva";
 
 
     public static boolean is_not_correct(EditText etValidator, int i, int i2) {

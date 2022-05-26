@@ -1,18 +1,23 @@
 package com.example.gym;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.InputType;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.gym.pojos.PojosClass;
 import com.example.gym.ui.login.LoginActivity;
 import com.google.android.material.button.MaterialButtonToggleGroup;
 
@@ -27,6 +32,7 @@ public class UserFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private Button bSetGym;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -72,6 +78,7 @@ public class UserFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        bSetGym = getView().findViewById(R.id.bSetGym);
         View v = inflater.inflate(R.layout.fragment_user, container, false);
 
         btCerrarSesion = v.findViewById(R.id.cerrar_sesion);
@@ -86,5 +93,28 @@ public class UserFragment extends Fragment {
         });
 
         return v;
+    }
+
+    public void bSetGymClick (View v) {
+        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(v.getContext());
+        alertBuilder.setTitle("Adjunta el ID de tu gimnasio (8 numeros)");
+        final EditText etGymID = new EditText(getContext().getApplicationContext());
+        etGymID.setInputType(InputType.TYPE_CLASS_NUMBER);
+        alertBuilder.setView(etGymID);
+        alertBuilder.setPositiveButton("Acceptar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                if (!etGymID.getText().toString().isEmpty() && etGymID.getText().toString().length() == 8) {
+                    try {
+                        PojosClass.getUsuarioDAO().addGym(Integer.parseInt(etGymID.getText().toString()));
+                    } catch (Exception e) {
+                        Toast.makeText(getContext().getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                    //TODO cambiar la idGy
+                } else {
+                    Toast.makeText(getContext(), "Introduce una id correct ", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 }

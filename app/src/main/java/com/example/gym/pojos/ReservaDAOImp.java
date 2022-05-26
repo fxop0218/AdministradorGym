@@ -14,6 +14,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 
 public class ReservaDAOImp implements reservaDAO{
+
     @Override
     public void addReserva(Reserva r1) {
 
@@ -52,7 +53,7 @@ public class ReservaDAOImp implements reservaDAO{
                         }
                         // En caso de que no encuentre, continua, en caso contrario lo elimina
                         if (!reserveId[0].isEmpty()) {
-                            db.collection("Reserva").document(reserveId[0]).delete();
+                            db.collection(ComFunctions.RESERVA).document(reserveId[0]).delete();
                         }
                     }
                 });

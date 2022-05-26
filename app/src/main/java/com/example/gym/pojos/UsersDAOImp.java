@@ -4,7 +4,9 @@ import android.content.Context;
 
 import androidx.annotation.NonNull;
 
+import com.example.gym.Clases.Gym;
 import com.example.gym.Clases.Usuario;
+import com.example.gym.UserSession;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
@@ -72,5 +74,29 @@ public class UsersDAOImp implements UsersDAO{
             }
         });
         return pwd[0];
+    }
+
+    @Override
+    public void setUsuario(Usuario u) {
+
+    }
+
+    /**
+     * Actualiza la id de gymnasio de un usuario
+     * @param gymID
+     */
+    @Override
+    public void addGym(int gymID) throws Exception {
+        FirebaseFirestore db = FireConnection.getDb();
+        Usuario uChanged = UserSession.getUsuario();
+        Gym gym = PojosClass.getGymDAO().getGym(gymID);
+        if (gym != null) {
+            if (!uChanged.isGymOwner()) {
+                uChanged.setIdGimnasios(gymID);
+                db.collection(USER).document(UserSession.getUsuario().getUser()).set(uChanged);
+            } else {
+                throw new Exception("Los administradores no pueden cambiar el id de gymnasio");
+            }
+        }
     }
 }

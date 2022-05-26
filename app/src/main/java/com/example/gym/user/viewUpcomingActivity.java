@@ -66,9 +66,20 @@ public class viewUpcomingActivity extends AppCompatActivity {
                 builder.setMessage("Eliminar actividad").setCancelable(false).setPositiveButton("Si", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        PojosClass.getReservaDao().deleteReserva(UserSession.getUsuario().getUser(), selectedAct.getIdActividad());
+                        try {
+                            PojosClass.getReservaDao().deleteReserva(UserSession.getUsuario().getUser(), selectedAct.getIdActividad());
+                            Toast.makeText(getApplicationContext(), "Se ha eliminado la reserva con exito", Toast.LENGTH_SHORT).show();
+                        } catch (Exception e) {
+                            Toast.makeText(getApplicationContext(), "No se ha podido eliminar la actividad", Toast.LENGTH_SHORT).show();
+                        }
                     }
-                });
+                }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                Toast.makeText(getApplicationContext(), "Acción cancelada con exito", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                );
             }
         });
 

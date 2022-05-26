@@ -7,4 +7,6 @@ import com.google.android.gms.tasks.OnSuccessListener;
 public interface UsersDAO {
     public Usuario getUsuario(String userName, OnSuccessListener<Usuario> listener, OnFailureListener failure);
     public String getUserPwd(String userName);
+    public void setUsuario(Usuario u);
+    public void addGym(int gymID) throws Exception;
 }
