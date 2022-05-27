@@ -116,7 +116,17 @@ public class UserFragment extends Fragment {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         if (!etGymID.getText().toString().isEmpty() && etGymID.getText().toString().length() == 8) {
                             try {
-                                PojosClass.getUsuarioDAO().addGym(Integer.parseInt(etGymID.getText().toString()));
+                                PojosClass.getGymDAO().getGym(Integer.parseInt(etGymID.getText().toString()), (gym ->{
+                                    try {
+                                        PojosClass.getUsuarioDAO().addGym(Integer.parseInt(etGymID.getText().toString()));
+                                        Toast.makeText(v.getContext(), "Te has insctito con exito a " + gym.getIdGym(), Toast.LENGTH_SHORT).show();
+
+                                    } catch (Exception e) {
+                                        Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                                    }
+                                }), (failure -> {
+                                    Toast.makeText(v.getContext(), failure.getMessage(), Toast.LENGTH_SHORT).show();
+                                }));
                             } catch (Exception e) {
                                 Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                             }

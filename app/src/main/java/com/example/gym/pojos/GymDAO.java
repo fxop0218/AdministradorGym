@@ -6,6 +6,6 @@ import com.google.android.gms.tasks.OnSuccessListener;
 
 public interface GymDAO {
     public void setNewGym(Gym gym);
-    public Gym getGym(int idGym, OnSuccessListener<Gym> listener, OnFailureListener failureListener) throws Exception;
+    public Gym getGym(int idGym, OnSuccessListener<Gym> listener,  OnFailureListener failureListener);
 
 }

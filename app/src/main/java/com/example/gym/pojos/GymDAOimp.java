@@ -15,6 +15,8 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import org.jetbrains.annotations.NotNull;
+
 public class GymDAOimp implements GymDAO{
 
     @Override
@@ -25,23 +27,23 @@ public class GymDAOimp implements GymDAO{
     }
 
     @Override
-    public Gym getGym(int idGym, OnSuccessListener<Gym> listener, OnFailureListener failureListener) throws Exception {
+    public Gym getGym(int idGym, OnSuccessListener<Gym> listener, OnFailureListener failureListener) {
         final Gym[] gym = new Gym[1];
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        DocumentReference docRef = db.collection(ComFunctions.GYM).document("11111111");
+        DocumentReference docRef = db.collection(ComFunctions.GYM).document(idGym+"");
         docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 gym[0] = documentSnapshot.toObject(Gym.class);
                 listener.onSuccess(gym[0]);
             }
-        })
-        .addOnFailureListener(new OnFailureListener() {
+        }).addOnFailureListener(new OnFailureListener() {
             @Override
-            public void onFailure(@NonNull Exception e) {
+            public void onFailure(@NonNull @NotNull Exception e) {
+                failureListener.onFailure(new Exception("No se ha encontrado ningun gimnasio con ese id"));
             }
         });
         if (gym[0] != null) return gym[0];
-        throw new Exception("No se ha encontrado ningun gymnasio con ese id");
+        return null;
     }
 }

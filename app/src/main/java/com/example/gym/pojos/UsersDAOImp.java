@@ -80,16 +80,12 @@ public class UsersDAOImp implements UsersDAO{
     public void addGym(int gymID) throws Exception {
         FirebaseFirestore db = FireConnection.getDb();
         Usuario uChanged = UserSession.getUsuario();
-        Gym gym = PojosClass.getGymDAO().getGym(gymID, (gym1 -> {
-            if (gym1 != null) {
-                if (!uChanged.isGymOwner()) {
-                    uChanged.setIdGimnasios(gym1.getIdGym());
-                    db.collection(USER).document(UserSession.getUsuario().getUser()).set(uChanged);
-                }
-            }
-        }),(e ->{
-        }));
-        throw new Exception("No se ha encontrado");
+        if (!uChanged.isGymOwner()) {
+            uChanged.setIdGimnasios(gymID);
+            db.collection(USERS).document(UserSession.getUsuario().getUser()).set(uChanged);
+        } else {
+            throw new Exception("No se puede mofificar el id de gimnasio si eres el dueño de uno");
+        }
     }
 }
 
