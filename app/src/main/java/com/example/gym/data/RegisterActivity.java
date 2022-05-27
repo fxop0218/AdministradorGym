@@ -138,9 +138,9 @@ public class RegisterActivity extends Activity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if (ComFunctions.is_not_correct(etUserName, 5, 30)) {
+                if (ComFunctions.is_not_correct(etUserName, 8, 30) || !etUserName.getText().toString().contains("@") && !etUserName.getText().toString().contains(".")) {
 
-                    etUserName.setError("El nombre de usuario tiene que tener entre 5 y 30 letras");
+                    etUserName.setError("El correo debe tener entre 8 y 30 letras y debe contener @");
                     bRegister.setEnabled(setRegisterEnabled());
                 }
             }
@@ -301,38 +301,4 @@ public class RegisterActivity extends Activity {
         i.putExtra("owner", false);
         startActivity(i);
     }
-
-    /*public void authEmail(){
-
-       firebaseAuth.createUserWithEmailAndPassword(etUserName.getText().toString(), etPwd.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull @NotNull Task<AuthResult> task) {
-
-                    FirebaseUser user = firebaseAuth.getCurrentUser();
-                    user.sendEmailVerification();
-            }
-        });
-
-        FirebaseUser user = firebaseAuth.getCurrentUser();
-        user.sendEmailVerification();
-
-        // Dynamic Links will start with https://tfg-final-55f61.web.app
-        "appAssociation": "AUTO",
-                "rewrites": [ { "source": "/**", "dynamicLinks": true } ]
-
-        ActionCodeSettings actionCodeSettings =
-                ActionCodeSettings.newBuilder()
-                        // URL you want to redirect back to. The domain (www.example.com) for this
-                        // URL must be whitelisted in the Firebase Console.
-                        .setUrl("https://www.example.com/finishSignUp?cartId=1234")
-                        // This must be true
-                        .setHandleCodeInApp(true)
-                        .setIOSBundleId("com.example.ios")
-                        .setAndroidPackageName(
-                                "com.example.gym",
-                                true,  installIfNotAvailable
-                                "12"     minimumVersion )
-                        .build();
-
-    }*/
 }

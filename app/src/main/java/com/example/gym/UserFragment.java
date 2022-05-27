@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.gym.pojos.PojosClass;
@@ -31,6 +32,7 @@ public class UserFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private Button bSetGym;
+    private TextView tvUser;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -79,6 +81,10 @@ public class UserFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_user, container, false);
         bSetGym = v.findViewById(R.id.bAltaGym);
         btCerrarSesion = v.findViewById(R.id.cerrar_sesion);
+        tvUser = v.findViewById(R.id.tvUsername);
+
+        tvUser.setText("PERFIL DE " + UserSession.getUsuario().getUser());
+
         btCerrarSesion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

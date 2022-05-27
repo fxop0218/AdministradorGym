@@ -115,7 +115,7 @@
                 android:id="@+id/etUserName"
                 android:layout_width="match_parent"
                 android:ems="10"
-                android:hint="@string/etUserName"
+                android:hint="@string/correo"
                 android:inputType="textPersonName"
                 android:textSize="18sp"
                 android:layout_marginTop="20dp"

@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.gym.Clases.Gym;
 import com.example.gym.Clases.Usuario;
+import com.example.gym.Encript;
 import com.example.gym.MainActivity;
 import com.example.gym.R;
 import com.example.gym.UserSession;
@@ -193,7 +194,7 @@ public class RegisterOwner_activity extends AppCompatActivity {
     public void register(View view){
         //TODO guardar en la base de datos, si no se puede porque hay un usario on el mismo nombre te salta un error
         try {
-            Usuario u1 = new Usuario(etName.getText().toString(), etSurname.getText().toString(), etDni.getText().toString(), Integer.parseInt(etYear.getText().toString()), etUserName.getText().toString(), etPwd.getText().toString(), gymID, true);
+            Usuario u1 = new Usuario(etName.getText().toString(), etSurname.getText().toString(), etDni.getText().toString(), Integer.parseInt(etYear.getText().toString()), etUserName.getText().toString(), Encript.encriptar(etPwd.getText().toString()), gymID, true);
             db.collection("users").document(u1.getUser()).set(u1);
             UserSession.setUsuario(u1);
             Intent i = new Intent(this, MainActivity.class);

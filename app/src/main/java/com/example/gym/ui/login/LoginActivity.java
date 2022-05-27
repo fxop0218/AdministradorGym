@@ -18,10 +18,8 @@ import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Parcelable;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Base64;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -35,16 +33,10 @@ import com.example.gym.Clases.Usuario;
 import com.example.gym.data.RegisterActivity;
 import com.example.gym.MainActivity;
 import com.example.gym.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import org.jetbrains.annotations.NotNull;
-
-import javax.crypto.Cipher;
-import javax.crypto.spec.SecretKeySpec;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -53,6 +45,7 @@ public class LoginActivity extends AppCompatActivity {
     private boolean isOwner = false;
     private Usuario usr;
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+    FirebaseAuth.AuthStateListener authStateListener;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -154,7 +147,7 @@ public class LoginActivity extends AppCompatActivity {
                        String pwdEt = passwordEditText.getText().toString();
                        pwdEncripted = Encript.encriptar(pwdEt);
                        pwd = usuario.getPassword();
-                       if (pwd.equals(pwdEncripted)) {
+                       if (pwd.equals(pwdEncripted) || emailVerificado()) {
                            UserSession.setUsuario(usuario);
                            isOwner = usuario.isGymOwner();
                            loadingProgressBar.setVisibility(View.VISIBLE);
@@ -162,7 +155,6 @@ public class LoginActivity extends AppCompatActivity {
                                    passwordEditText.getText().toString());
                        } else {
                            Toast.makeText(getApplicationContext(), "La contraseña es incorrecta, intentalo de nuevo", Toast.LENGTH_SHORT).show();
-
                        }
                    } catch (NullPointerException e) {
                        loginButton.setEnabled(true);
@@ -179,19 +171,28 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Contraseña o usuario incorrecto", Toast.LENGTH_SHORT).show();
                     }
                 }));
-
-                firebaseAuth.createUserWithEmailAndPassword(usernameEditText.getText().toString(), passwordEditText.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull @NotNull Task<AuthResult> task) {
-
-                        FirebaseUser user = firebaseAuth.getCurrentUser();
-
-                        assert user != null;
-                        user.sendEmailVerification();
-                    }
-                });
             }
         });
+    }
+
+    private boolean emailVerificado(){
+
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        final boolean[] emailverificado = {false};
+        authStateListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull @NotNull FirebaseAuth firebaseAuth) {
+
+                if (!user.isEmailVerified()){
+
+                    Toast.makeText(getApplicationContext(), "Necesitas verificar el correo" + user.getEmail(), Toast.LENGTH_LONG).show();
+                }else{
+
+                    emailverificado[0] = true;
+                }
+            }
+        };
+        return emailverificado[0];
     }
 
     private void updateUiWithUser(LoggedInUserView model) {
