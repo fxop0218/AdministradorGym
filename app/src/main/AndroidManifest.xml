@@ -17,6 +17,9 @@
             android:name=".user.view_actividades_activity"
             android:exported="false" />
         <activity
+            android:name=".user.view_actividades_activity"
+            android:exported="false" />
+        <activity
             android:name=".gymOwner.createAct_activity"
             android:exported="false" />
         <activity
