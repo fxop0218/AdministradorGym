@@ -6,22 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".data.RegisterGymActivity">
 
-    <ScrollView
-        android:layout_width="404dp"
-        android:layout_height="735dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="1dp">
-
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/fondos"
+            android:orientation="vertical"
+            tools:ignore="MissingConstraints">
 
             <TextView
                 android:id="@+id/tvGymInfo"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:textAlignment="center"
                 android:textSize="18sp"
@@ -85,7 +84,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginStart="35dp"
                 android:layout_marginLeft="50dp"
@@ -96,7 +95,7 @@
                 <Button
                     android:id="@+id/bSelectHoraA"
                     android:layout_width="56dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:background="@drawable/custom_button"
                     android:drawableLeft="@drawable/custom_horaa_selected"
                     android:onClick="popTimerPickerApertura" />
@@ -116,7 +115,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginStart="35dp"
                 android:layout_marginLeft="50dp"
@@ -127,7 +126,7 @@
                 <Button
                     android:id="@+id/bSelectHoraC"
                     android:layout_width="56dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:background="@drawable/custom_button"
                     android:drawableLeft="@drawable/custom_horac_selected"
                     android:onClick="popTimerPickerCierre" />
@@ -155,8 +154,5 @@
                 android:onClick="bNextStep"
                 android:text="@string/nextStep" />
 
-
-
         </LinearLayout>
-    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
