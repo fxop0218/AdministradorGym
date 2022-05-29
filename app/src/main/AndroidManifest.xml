@@ -21,9 +21,11 @@
             android:exported="false" />
         <activity
             android:name=".gymOwner.createAct_activity"
+            android:windowSoftInputMode="adjustNothing"
             android:exported="false" />
         <activity
             android:name=".gymOwner.ActCreationActivity"
+            android:windowSoftInputMode="adjustNothing"
             android:exported="false" />
         <activity
             android:name=".VestuarioActivity"
@@ -39,11 +41,14 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".data.RegisterGymActivity"
+            android:windowSoftInputMode="adjustNothing"
             android:exported="false" />
         <activity
             android:name=".DietaHipocalorica"
             android:theme="@style/Theme.AppCompat.Dialog" />
-        <activity android:name=".data.RegisterActivity" />
+        <activity android:name=".data.RegisterActivity"
+            android:windowSoftInputMode="adjustNothing"
+            />
         <activity
             android:name=".ui.login.LoginActivity"
             android:label="@string/title_activity_login" />
