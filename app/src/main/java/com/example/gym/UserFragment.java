@@ -120,6 +120,7 @@ public class UserFragment extends Fragment {
                                     try {
                                         PojosClass.getUsuarioDAO().addGym(Integer.parseInt(etGymID.getText().toString()));
                                         Toast.makeText(v.getContext(), "Te has insctito con exito a " + gym.getIdGym(), Toast.LENGTH_SHORT).show();
+                                        UserSession.getUsuario().setIdGimnasios(Integer.parseInt(etGymID.getText().toString())); // Se añade la nueva id de gimnasion en la session de usuario actual
 
                                     } catch (Exception e) {
                                         Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();

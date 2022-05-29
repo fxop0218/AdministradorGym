@@ -22,13 +22,16 @@ import com.example.gym.pojos.PojosClass;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 public class view_actividades_activity extends AppCompatActivity {
     String day = "01/01/2000";
     private Button bClose;
-    ArrayList<Actividad> activityArray = new ArrayList<>();
-    ArrayList<Actividad> correctActivity = new ArrayList<>();
+    List<Actividad> activityArray = new ArrayList<>();
+    List<Actividad> correctActivity = new ArrayList<>();
+    //ArrayList<Actividad> activityArray = new ArrayList<>();
+    //ArrayList<Actividad> correctActivity = new ArrayList<>();
 
     ListView lvActividades;
 
@@ -42,11 +45,12 @@ public class view_actividades_activity extends AppCompatActivity {
         day = i.getStringExtra("day");
 
         try {
-            activityArray = PojosClass.getActividadesDao().getGymActivity(UserSession.getUsuario().getIdGimnasios(), day,task -> {
-
+            activityArray = PojosClass.getActividadesDao().getGymActivity(UserSession.getUsuario().getIdGimnasios(), day ,task -> {
                 correctActivity = correctActivitys(activityArray);
-
-            } );
+            }, (e -> {
+                // Cuando no hay actividades o no estas apuntado a un gymnasio
+                Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+            }) );
         } catch (Exception e) {
             Toast.makeText(this, "No se ha encontrado ninguna actividad relacionada con el dia", Toast.LENGTH_SHORT).show();
         }
@@ -95,7 +99,7 @@ public class view_actividades_activity extends AppCompatActivity {
         });
     }
 
-    private ArrayList<Actividad> correctActivitys(ArrayList<Actividad> allActivitys) {
+    private List<Actividad> correctActivitys(List<Actividad> allActivitys) {
         ArrayList<Actividad> correctActividades = new ArrayList<>();
 
         for (int i = 0; i < allActivitys.size(); i++) {

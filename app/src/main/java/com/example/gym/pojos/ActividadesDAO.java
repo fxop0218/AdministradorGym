@@ -8,11 +8,12 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public interface ActividadesDAO {
     public void setActiviad(Actividad a1);
     public Actividad getActividad(int idActividad, OnSuccessListener<Actividad> listener, OnFailureListener failure);
-    public ArrayList<Actividad> getGymActivity(int gymID,String actDate, OnCompleteListener<QuerySnapshot> listener) throws Exception;
+    public List<Actividad> getGymActivity(int gymID, String actDate, OnSuccessListener<QuerySnapshot> listener, OnFailureListener failureListener) throws Exception;
     public Actividad[] getUserActivitys(int idUser);
     public Actividad getActividadById (int idActividad, OnCompleteListener<QuerySnapshot> listener);
 }

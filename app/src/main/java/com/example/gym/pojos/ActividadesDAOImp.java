@@ -59,24 +59,27 @@ public class ActividadesDAOImp implements ActividadesDAO{
     }
 
     @Override
-    public ArrayList<Actividad> getGymActivity(int gymID, String actDate, OnCompleteListener<QuerySnapshot> listener) throws Exception {
+    public List<Actividad> getGymActivity(int gymID, String actDate, OnSuccessListener<QuerySnapshot> listener, OnFailureListener failureListener) throws Exception {
         Date actualDate = ComFunctions.strToDateDay(actDate);
-        ArrayList<Actividad> gymArray = new ArrayList<>();
+        final List<Actividad>[] gymArray = new List[]{new ArrayList<>()};
         FirebaseFirestore db = FireConnection.getDb();
-        db.collection(ACTIVIDADES).whereEqualTo(GYM_ID, gymID).whereEqualTo(DIA, actualDate).get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        //        db.collection(ACTIVIDADES).whereEqualTo(GYM_ID, gymID).whereEqualTo(DIA, actualDate).get()
+        db.collectionGroup(ACTIVIDADES).whereEqualTo(GYM_ID, gymID).get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                gymArray.add(document.toObject(Actividad.class));
-                            }
-                        }
-                    }
-                });
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        gymArray[0] = (queryDocumentSnapshots.toObjects(Actividad.class));
+                                            }
+                })
+        .addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                failureListener.onFailure(new Exception("No se ha encontrado ninguna actividad"));
+            }
+        });
 
-        if (gymArray.isEmpty()) throw new Exception("No se ha encontrado ninguna actividad");
-        return gymArray;
+        if (!gymArray[0].isEmpty()) return gymArray[0];
+        return null;
     }
 
     @Override
