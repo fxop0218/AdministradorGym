@@ -29,6 +29,9 @@ public class ComFunctions {
     //Constantes de Registro
     public static final String RESERVA = "Reserva";
 
+    //Constatntes acitvidad
+    public static final String ACTIVIDADES = "Actividades";
+
 
     public static boolean is_not_correct(EditText etValidator, int i, int i2) {
         if (etValidator.getText().toString().length() < i || etValidator.getText().toString().length() > i2)

@@ -1,5 +1,8 @@
 package com.example.gym.pojos;
 
+import android.view.View;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 
 import com.example.gym.Clases.Actividad;
@@ -59,19 +62,22 @@ public class ActividadesDAOImp implements ActividadesDAO{
     }
 
     @Override
-    public List<Actividad> getGymActivity(int gymID, String actDate, OnSuccessListener<QuerySnapshot> listener, OnFailureListener failureListener) throws Exception {
+    public List<Actividad> getGymActivity(int gymID, String actDate, OnSuccessListener<List<Actividad>> listener, OnFailureListener failureListener) throws Exception {
         Date actualDate = ComFunctions.strToDateDay(actDate);
         final List<Actividad>[] gymArray = new List[]{new ArrayList<>()};
         FirebaseFirestore db = FireConnection.getDb();
         //        db.collection(ACTIVIDADES).whereEqualTo(GYM_ID, gymID).whereEqualTo(DIA, actualDate).get()
-        db.collectionGroup(ACTIVIDADES).whereEqualTo(GYM_ID, gymID).get()
+        db.collection(ACTIVIDADES).get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        gymArray[0] = (queryDocumentSnapshots.toObjects(Actividad.class));
-                                            }
-                })
-        .addOnFailureListener(new OnFailureListener() {
+                    public void onSuccess(QuerySnapshot documentSnapshot) {
+                        for (QueryDocumentSnapshot queryDocumentSnapshot : documentSnapshot) {
+                            gymArray[0].add(queryDocumentSnapshot.toObject(Actividad.class));
+                        }
+                        //gymArray[0] = (documentSnapshot.toObjects(Actividad.class));
+                        listener.onSuccess(gymArray[0]);
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
                 failureListener.onFailure(new Exception("No se ha encontrado ninguna actividad"));

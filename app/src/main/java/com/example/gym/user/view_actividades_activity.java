@@ -1,8 +1,10 @@
 package com.example.gym.user;
 
 import androidx.annotation.ArrayRes;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -18,7 +20,14 @@ import com.example.gym.Clases.Reserva;
 import com.example.gym.R;
 import com.example.gym.UserSession;
 import com.example.gym.data.ComFunctions;
+import com.example.gym.pojos.FireConnection;
 import com.example.gym.pojos.PojosClass;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -32,6 +41,8 @@ public class view_actividades_activity extends AppCompatActivity {
     List<Actividad> correctActivity = new ArrayList<>();
     //ArrayList<Actividad> activityArray = new ArrayList<>();
     //ArrayList<Actividad> correctActivity = new ArrayList<>();
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private CollectionReference activityRef = db.collection(ComFunctions.ACTIVIDADES);
 
     ListView lvActividades;
 
@@ -45,6 +56,12 @@ public class view_actividades_activity extends AppCompatActivity {
         day = i.getStringExtra("day");
 
         try {
+            prueba(UserSession.getUsuario().getIdGimnasios(), day);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+/*
+        try {
             activityArray = PojosClass.getActividadesDao().getGymActivity(UserSession.getUsuario().getIdGimnasios(), day ,task -> {
                 correctActivity = correctActivitys(activityArray);
             }, (e -> {
@@ -54,6 +71,8 @@ public class view_actividades_activity extends AppCompatActivity {
         } catch (Exception e) {
             Toast.makeText(this, "No se ha encontrado ninguna actividad relacionada con el dia", Toast.LENGTH_SHORT).show();
         }
+
+ */
 
         ArrayAdapter<Actividad> arrayAdapter = new ArrayAdapter<Actividad>(this, R.layout.activity_view_actividades, R.id.textView, correctActivity);
         lvActividades.setAdapter(arrayAdapter);
@@ -108,5 +127,19 @@ public class view_actividades_activity extends AppCompatActivity {
             }
         }
         return correctActividades;
+    }
+
+    public void prueba(int gymID, String actDate) throws Exception {
+        activityRef.limit(3).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                List<Actividad> actividadesL = new ArrayList<>();
+                for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                    Actividad act = documentSnapshot.toObject(Actividad.class);
+                    act.setIdActividad(Integer.parseInt(documentSnapshot.getId()));
+                }
+                activityArray = actividadesL;
+            }
+        });
     }
 }

@@ -13,7 +13,7 @@ import java.util.List;
 public interface ActividadesDAO {
     public void setActiviad(Actividad a1);
     public Actividad getActividad(int idActividad, OnSuccessListener<Actividad> listener, OnFailureListener failure);
-    public List<Actividad> getGymActivity(int gymID, String actDate, OnSuccessListener<QuerySnapshot> listener, OnFailureListener failureListener) throws Exception;
+    public List<Actividad> getGymActivity(int gymID, String actDate, OnSuccessListener<List<Actividad>> listener, OnFailureListener failureListener) throws Exception;
     public Actividad[] getUserActivitys(int idUser);
     public Actividad getActividadById (int idActividad, OnCompleteListener<QuerySnapshot> listener);
 }

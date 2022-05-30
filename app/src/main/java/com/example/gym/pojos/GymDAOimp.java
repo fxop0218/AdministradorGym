@@ -17,7 +17,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.jetbrains.annotations.NotNull;
 
-public class GymDAOimp implements GymDAO{
+public class  GymDAOimp implements GymDAO{
 
     @Override
     public void setNewGym(Gym gym) {

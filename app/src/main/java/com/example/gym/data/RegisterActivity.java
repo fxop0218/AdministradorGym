@@ -216,6 +216,7 @@ public class RegisterActivity extends Activity {
         //TODO guardar en la base de datos, si no se puede porque hay un usario on el mismo nombre te salta un error
         Usuario u1 = new Usuario(etName.getText().toString(), etSurname.getText().toString(), etDni.getText().toString(), Integer.parseInt(etYear.getText().toString()), etUserName.getText().toString(), Encript.encriptar(etPwd.getText().toString()));
         db.collection("users").document(u1.getUser()).set(u1);
+        UserSession.setUsuario(u1);
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
 
