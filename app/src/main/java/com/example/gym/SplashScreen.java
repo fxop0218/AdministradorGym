@@ -9,6 +9,9 @@ import android.os.Handler;
 import com.example.gym.ui.login.LoginActivity;
 import com.lusfold.spinnerloading.SpinnerLoading;
 
+/**
+ *  Ventana inicial que espera a que este cargado
+ */
 public class SplashScreen extends AppCompatActivity {
 
     SpinnerLoading spinnerLoading;
