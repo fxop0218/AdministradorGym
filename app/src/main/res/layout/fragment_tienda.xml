@@ -8,84 +8,84 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="481dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="20dp"
                 android:layout_marginLeft="30dp"
-                android:height="50dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginRight="30dp"
-                android:gravity="center"
+                android:height="50dp"
                 android:background="@drawable/boton2"
-                android:textStyle="bold"
-                android:textColor="@color/blanco"
+                android:gravity="center"
                 android:text="@string/material_para_gym"
+                android:textColor="@color/blanco"
+                android:textStyle="bold"
                 app:drawableLeftCompat="@drawable/ic_material" />
 
             <ImageButton
                 android:id="@+id/ibMaterial"
                 android:layout_width="wrap_content"
                 android:layout_height="150dp"
-                android:layout_marginTop="20dp"
                 android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginRight="30dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/material"/>
+                android:src="@drawable/material" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="20dp"
                 android:layout_marginLeft="30dp"
-                android:height="50dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginRight="30dp"
-                android:gravity="center"
+                android:height="50dp"
                 android:background="@drawable/boton2"
-                android:textStyle="bold"
-                android:textColor="@color/blanco"
+                android:gravity="center"
                 android:text="@string/suplementos_para_gym"
+                android:textColor="@color/blanco"
+                android:textStyle="bold"
                 app:drawableStartCompat="@drawable/ic_suplementos" />
 
             <ImageButton
                 android:id="@+id/ibSuplementos"
                 android:layout_width="wrap_content"
                 android:layout_height="150dp"
-                android:layout_marginTop="20dp"
                 android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginRight="30dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/suplementos"/>
+                android:src="@drawable/suplementos" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="20dp"
                 android:layout_marginLeft="30dp"
-                android:height="50dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginRight="30dp"
-                android:gravity="center"
+                android:height="50dp"
                 android:background="@drawable/boton2"
-                android:textStyle="bold"
-                android:textColor="@color/blanco"
+                android:gravity="center"
                 android:text="@string/vestuario_para_gym"
+                android:textColor="@color/blanco"
+                android:textStyle="bold"
                 app:drawableStartCompat="@drawable/ic_vestuario" />
 
             <ImageButton
                 android:id="@+id/ibVestuario"
                 android:layout_width="wrap_content"
                 android:layout_height="150dp"
-                android:layout_marginTop="20dp"
                 android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginRight="30dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/vestuario"/>
+                android:src="@drawable/vestuario" />
 
         </LinearLayout>
     </ScrollView>

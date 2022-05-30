@@ -12,26 +12,27 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginBottom="90dp"
-            android:background="@drawable/user_design"
             android:orientation="vertical">
 
             <ImageView
                 android:src="@drawable/ic_user_icono"
                 android:layout_width="match_parent"
                 android:layout_marginTop="20dp"
-                android:layout_height="100dp"/>
+                android:layout_height="80dp"/>
 
             <TextView
                 android:id="@+id/tvUsername"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
-                android:text="PERFIL DE USER"
+                android:textColor="@color/blanco"
+                android:textAllCaps="true"
+                android:text="@string/perfil_de_user"
                 android:gravity="center"/>
 
             <Button

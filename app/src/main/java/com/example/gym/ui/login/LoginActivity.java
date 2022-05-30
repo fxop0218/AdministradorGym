@@ -177,16 +177,18 @@ public class LoginActivity extends AppCompatActivity {
 
     private boolean emailVerificado(){
 
-        FirebaseUser user = firebaseAuth.getCurrentUser();
         final boolean[] emailverificado = {false};
         authStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull @NotNull FirebaseAuth firebaseAuth) {
 
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+
                 if (!user.isEmailVerified()){
 
                     Toast.makeText(getApplicationContext(), "Necesitas verificar el correo" + user.getEmail(), Toast.LENGTH_LONG).show();
-                }else{
+                }
+                if (user != null){
 
                     emailverificado[0] = true;
                 }
@@ -196,6 +198,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void updateUiWithUser(LoggedInUserView model) {
+
         String welcome = getString(R.string.welcome) + UserSession.getUsuario().getUser();
         // TODO : initiate successful logged in experience
         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();

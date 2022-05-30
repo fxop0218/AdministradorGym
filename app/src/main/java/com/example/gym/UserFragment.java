@@ -3,10 +3,12 @@ package com.example.gym;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.icu.lang.UScript;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.telephony.TelephonyManager;
 import android.text.InputFilter;
 import android.text.InputType;
 import android.view.LayoutInflater;
@@ -18,7 +20,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.gym.pojos.PojosClass;
+import com.example.gym.pojos.UsersDAO;
 import com.example.gym.ui.login.LoginActivity;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.auth.User;
 
 /**
  * A simple {@link Fragment} subclass.
