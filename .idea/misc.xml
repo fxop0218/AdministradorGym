@@ -11,6 +11,7 @@
         <entry key="..\:/AndroidStudiProject/gym/gimnasioEpico/app/src/main/res/drawable/custom_edit_text.xml" value="0.22135416666666666" />
         <entry key="..\:/AndroidStudiProject/gym/gimnasioEpico/app/src/main/res/drawable/custom_horaa_selected.xml" value="0.3828125" />
         <entry key="..\:/AndroidStudiProject/gym/gimnasioEpico/app/src/main/res/drawable/custom_horac_selected.xml" value="0.3828125" />
+        <entry key="..\:/AndroidStudiProject/gym/gimnasioEpico/app/src/main/res/drawable/custom_image.xml" value="0.3828125" />
         <entry key="..\:/AndroidStudiProject/gym/gimnasioEpico/app/src/main/res/drawable/custom_menu.xml" value="0.22135416666666666" />
         <entry key="..\:/AndroidStudiProject/gym/gimnasioEpico/app/src/main/res/drawable/custom_name_selected.xml" value="0.3828125" />
         <entry key="..\:/AndroidStudiProject/gym/gimnasioEpico/app/src/main/res/drawable/custom_postalode_selected.xml" value="0.3828125" />
@@ -38,6 +39,7 @@
         <entry key="..\:/AndroidStudiProject/gym/gimnasioEpico/app/src/main/res/drawable/ic_fecha_aniversario.xml" value="0.3828125" />
         <entry key="..\:/AndroidStudiProject/gym/gimnasioEpico/app/src/main/res/drawable/ic_hipocalorica.xml" value="0.3828125" />
         <entry key="..\:/AndroidStudiProject/gym/gimnasioEpico/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.3828125" />
+        <entry key="..\:/AndroidStudiProject/gym/gimnasioEpico/app/src/main/res/drawable/ic_material.xml" value="0.3828125" />
         <entry key="..\:/AndroidStudiProject/gym/gimnasioEpico/app/src/main/res/drawable/ic_mis_actividades.xml" value="0.3828125" />
         <entry key="..\:/AndroidStudiProject/gym/gimnasioEpico/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.3828125" />
         <entry key="..\:/AndroidStudiProject/gym/gimnasioEpico/app/src/main/res/drawable/ic_pesas.xml" value="0.3828125" />
@@ -67,12 +69,13 @@
         <entry key="..\:/AndroidStudiProject/gym/gimnasioEpico/app/src/main/res/layout/activity_view_actividades.xml" value="0.3491847826086957" />
         <entry key="..\:/AndroidStudiProject/gym/gimnasioEpico/app/src/main/res/layout/fragment_calendar.xml" value="0.36666666666666664" />
         <entry key="..\:/AndroidStudiProject/gym/gimnasioEpico/app/src/main/res/layout/fragment_main.xml" value="0.20520833333333333" />
+        <entry key="..\:/AndroidStudiProject/gym/gimnasioEpico/app/src/main/res/layout/fragment_tienda.xml" value="0.333786231884058" />
         <entry key="..\:/AndroidStudiProject/gym/gimnasioEpico/app/src/main/res/layout/fragment_user.xml" value="0.3392210144927536" />
         <entry key="..\:/AndroidStudiProject/gym/gimnasioEpico/app/src/main/res/menu/bottom_nav_menu.xml" value="0.36666666666666664" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

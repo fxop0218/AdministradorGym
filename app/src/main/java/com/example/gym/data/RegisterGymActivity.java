@@ -160,7 +160,8 @@ public class RegisterGymActivity extends AppCompatActivity {
                     try {
                         Gym g1 = new Gym(Integer.parseInt(etGymID.getText().toString()), etCity.getText().toString(), Integer.parseInt(etPostalCode.getText().toString()), df.parse(etHoraA.getText().toString()), df.parse(etHoraC.getText().toString()));
                         PojosClass.getGymDAO().setNewGym(g1);
-                        Intent i = new Intent(this, RegisterOwner_activity.class);
+                        Intent i = new Intent(this, RegisterActivity.class);
+                        i.putExtra("owner", true);
                         i.putExtra("gymID", g1.getIdGym());
                         startActivity(i);
                     } catch (ParseException parseException) {
@@ -171,7 +172,8 @@ public class RegisterGymActivity extends AppCompatActivity {
                 try {
                     Gym g1 = new Gym(Integer.parseInt(etGymID.getText().toString()), etCity.getText().toString(), Integer.parseInt(etPostalCode.getText().toString()), df.parse(etHoraA.getText().toString()), df.parse(etHoraC.getText().toString()));
                     PojosClass.getGymDAO().setNewGym(g1);
-                    Intent i = new Intent(this, RegisterOwner_activity.class);
+                    Intent i = new Intent(this, RegisterActivity.class);
+                    i.putExtra("owner", true);
                     i.putExtra("gymID", g1.getIdGym());
                     startActivity(i);
                 } catch (ParseException parseException) {

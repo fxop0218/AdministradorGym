@@ -44,16 +44,18 @@ import javax.crypto.spec.SecretKeySpec;
 public class RegisterActivity extends Activity {
 
     private EditText etDni, etName, etSurname, etYear, etUserName, etPwd, etCfnPwd;
-    private Button bRegister;
+    private Button bRegister, bCreateGymAccount;
     private int year = 0;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-    private String Pwd;
+    private boolean isOwner = false;
+    private int idGym = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        Intent i = getIntent();
 
         etDni = findViewById(R.id.etDni);
         etName = findViewById(R.id.etName);
@@ -63,6 +65,11 @@ public class RegisterActivity extends Activity {
         etCfnPwd = findViewById(R.id.etCfnPwd);
         etYear = findViewById(R.id.etYear);
         bRegister = findViewById(R.id.bRegsiter);
+        bCreateGymAccount = findViewById(R.id.bCreateGymAccount);
+        isOwner = i.getBooleanExtra("owner", false);
+        idGym = i.getIntExtra("gymID", 0);
+
+        if (isOwner) bCreateGymAccount.setVisibility(View.INVISIBLE);
 
         bRegister.setEnabled(false);
 
@@ -221,7 +228,7 @@ public class RegisterActivity extends Activity {
                 Toast.makeText(getApplicationContext(), "Ya existe un usuario con el correo " + usr.getUser(), Toast.LENGTH_SHORT).show();
             } else {
                 try {
-                    Usuario u1 = new Usuario(etName.getText().toString(), etSurname.getText().toString(), etDni.getText().toString(), Integer.parseInt(etYear.getText().toString()), etUserName.getText().toString(), Encript.encriptar(etPwd.getText().toString()));
+                    Usuario u1 = new Usuario(etName.getText().toString(), etSurname.getText().toString(), etDni.getText().toString(), Integer.parseInt(etYear.getText().toString()), etUserName.getText().toString(), Encript.encriptar(etPwd.getText().toString()), idGym, isOwner);
                     db.collection("users").document(u1.getUser()).set(u1);
                     UserSession.setUsuario(u1);
                     Intent i = new Intent(this, MainActivity.class);

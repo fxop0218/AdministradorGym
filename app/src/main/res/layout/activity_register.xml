@@ -196,7 +196,7 @@
         android:layout_marginBottom="16dp"
         android:background="@drawable/custom_button"
         android:onClick="register"
-        android:text="@string/action_register"
+        android:text="@string/crear_usuario"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

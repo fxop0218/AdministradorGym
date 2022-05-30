@@ -94,4 +94,5 @@
     <string name="correo">Correo Electronico</string>
     <string name="crea_tu_gimnasio">Crea tu gimnasio</string>
     <string name="perfil_de_user">PERFIL DE USER</string>
+    <string name="crear_usuario">Crear usuario</string>
 </resources>

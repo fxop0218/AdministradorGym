@@ -27,6 +27,7 @@
                 android:text="@string/material_para_gym"
                 android:textColor="@color/blanco"
                 android:textStyle="bold"
+                android:paddingStart="10dp"
                 app:drawableLeftCompat="@drawable/ic_material" />
 
             <ImageButton
@@ -37,7 +38,8 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="30dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/material" />
+                android:src="@drawable/material"
+                android:background="@drawable/custom_image"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -51,6 +53,7 @@
                 android:text="@string/suplementos_para_gym"
                 android:textColor="@color/blanco"
                 android:textStyle="bold"
+                android:paddingStart="10dp"
                 app:drawableStartCompat="@drawable/ic_suplementos" />
 
             <ImageButton
@@ -61,7 +64,8 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="30dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/suplementos" />
+                android:src="@drawable/suplementos"
+                android:background="@drawable/custom_image"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -75,6 +79,7 @@
                 android:text="@string/vestuario_para_gym"
                 android:textColor="@color/blanco"
                 android:textStyle="bold"
+                android:paddingStart="10dp"
                 app:drawableStartCompat="@drawable/ic_vestuario" />
 
             <ImageButton
@@ -85,7 +90,8 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="30dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/vestuario" />
+                android:src="@drawable/vestuario"
+                android:background="@drawable/custom_image"/>
 
         </LinearLayout>
     </ScrollView>
