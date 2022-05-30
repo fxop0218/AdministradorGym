@@ -18,6 +18,7 @@ import com.example.gym.MainActivity;
 import com.example.gym.R;
 import com.example.gym.UserSession;
 import com.example.gym.pojos.FireConnection;
+import com.example.gym.pojos.PojosClass;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class RegisterOwner_activity extends AppCompatActivity {
@@ -193,17 +194,33 @@ public class RegisterOwner_activity extends AppCompatActivity {
 
     public void register(View view){
         //TODO guardar en la base de datos, si no se puede porque hay un usario on el mismo nombre te salta un error
-        try {
-            Usuario u1 = new Usuario(etName.getText().toString(), etSurname.getText().toString(), etDni.getText().toString(), Integer.parseInt(etYear.getText().toString()), etUserName.getText().toString(), Encript.encriptar(etPwd.getText().toString()), gymID, true);
-            db.collection("users").document(u1.getUser()).set(u1);
-            UserSession.setUsuario(u1);
-            Intent i = new Intent(this, MainActivity.class);
-            i.putExtra("owner", true);
-            startActivity(i);
-        } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "Error al crear el usuario", Toast.LENGTH_SHORT).show();
-        }
-
+        PojosClass.getUsuarioDAO().getUsuario(etUserName.getText().toString(), (usr -> {
+            if (usr != null) {
+                Toast.makeText(getApplicationContext(), "Ya existe un usuario con el correo " + usr.getUser(), Toast.LENGTH_SHORT).show();
+            } else {
+                try {
+                    Usuario u1 = new Usuario(etName.getText().toString(), etSurname.getText().toString(), etDni.getText().toString(), Integer.parseInt(etYear.getText().toString()), etUserName.getText().toString(), Encript.encriptar(etPwd.getText().toString()), gymID, true);
+                    db.collection("users").document(u1.getUser()).set(u1);
+                    UserSession.setUsuario(u1);
+                    Intent i = new Intent(this, MainActivity.class);
+                    startActivity(i);
+                } catch (Exception exception) {
+                    exception.printStackTrace();
+                    Toast.makeText(getApplicationContext(), "Error al crear el usuario", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }), (e -> {
+            try {
+                Usuario u1 = new Usuario(etName.getText().toString(), etSurname.getText().toString(), etDni.getText().toString(), Integer.parseInt(etYear.getText().toString()), etUserName.getText().toString(), Encript.encriptar(etPwd.getText().toString()), gymID, true);
+                db.collection("users").document(u1.getUser()).set(u1);
+                UserSession.setUsuario(u1);
+                Intent i = new Intent(this, MainActivity.class);
+                startActivity(i);
+            } catch (Exception exception) {
+                exception.printStackTrace();
+                Toast.makeText(getApplicationContext(), "Error al crear el usuario", Toast.LENGTH_SHORT).show();
+            }
+        }));
     }
 
     public boolean setRegisterEnabled() {

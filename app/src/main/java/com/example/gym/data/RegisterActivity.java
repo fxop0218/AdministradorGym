@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -18,6 +19,7 @@ import com.example.gym.Encript;
 import com.example.gym.MainActivity;
 import com.example.gym.R;
 import com.example.gym.UserSession;
+import com.example.gym.pojos.PojosClass;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.ActionCodeSettings;
@@ -214,12 +216,34 @@ public class RegisterActivity extends Activity {
 
     public void register(View view) throws Exception {
         //TODO guardar en la base de datos, si no se puede porque hay un usario on el mismo nombre te salta un error
-        Usuario u1 = new Usuario(etName.getText().toString(), etSurname.getText().toString(), etDni.getText().toString(), Integer.parseInt(etYear.getText().toString()), etUserName.getText().toString(), Encript.encriptar(etPwd.getText().toString()));
-        db.collection("users").document(u1.getUser()).set(u1);
-        UserSession.setUsuario(u1);
-        Intent i = new Intent(this, MainActivity.class);
-        startActivity(i);
+        PojosClass.getUsuarioDAO().getUsuario(etUserName.getText().toString(), (usr -> {
+            if (usr != null) {
+                Toast.makeText(getApplicationContext(), "Ya existe un usuario con el correo " + usr.getUser(), Toast.LENGTH_SHORT).show();
+            } else {
+                try {
+                    Usuario u1 = new Usuario(etName.getText().toString(), etSurname.getText().toString(), etDni.getText().toString(), Integer.parseInt(etYear.getText().toString()), etUserName.getText().toString(), Encript.encriptar(etPwd.getText().toString()));
+                    db.collection("users").document(u1.getUser()).set(u1);
+                    UserSession.setUsuario(u1);
+                    Intent i = new Intent(this, MainActivity.class);
+                    startActivity(i);
+                } catch (Exception exception) {
+                    exception.printStackTrace();
+                    Toast.makeText(getApplicationContext(), "Error al crear el usuario", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }), (e -> {
+            try {
+                Usuario u1 = new Usuario(etName.getText().toString(), etSurname.getText().toString(), etDni.getText().toString(), Integer.parseInt(etYear.getText().toString()), etUserName.getText().toString(), Encript.encriptar(etPwd.getText().toString()));
+                db.collection("users").document(u1.getUser()).set(u1);
+                UserSession.setUsuario(u1);
+                Intent i = new Intent(this, MainActivity.class);
+                startActivity(i);
+            } catch (Exception exception) {
+                exception.printStackTrace();
+                Toast.makeText(getApplicationContext(), "Error al crear el usuario", Toast.LENGTH_SHORT).show();
+            }
 
+        }));
     }
 
     public boolean setRegisterEnabled() {
@@ -299,7 +323,6 @@ public class RegisterActivity extends Activity {
 
     public void bCreateGymAccount (View v) {
         Intent i = new Intent(this, RegisterGymActivity.class);
-        i.putExtra("owner", false);
         startActivity(i);
     }
 }

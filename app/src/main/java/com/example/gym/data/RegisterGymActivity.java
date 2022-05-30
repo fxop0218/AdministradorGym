@@ -6,7 +6,6 @@ import android.app.AlertDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -19,8 +18,10 @@ import com.example.gym.Clases.Gym;
 import com.example.gym.R;
 import com.example.gym.pojos.PojosClass;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class RegisterGymActivity extends AppCompatActivity {
     private EditText etGymID, etCity, etPostalCode, etHoraA, etHoraC;
@@ -28,6 +29,8 @@ public class RegisterGymActivity extends AppCompatActivity {
     private Button dataPickerHoraA, dataPickerHoraC;
     private SimpleDateFormat df = new SimpleDateFormat("HH:mm");
     private int horaC, minuteC, horaA, minuteA;
+    private AtomicBoolean correct = new AtomicBoolean(false);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -148,12 +151,33 @@ public class RegisterGymActivity extends AppCompatActivity {
      */
     public void bNextStep (View v) {
         //TODO Guardar aqui en la base de datos los archivos
+        correct.set(false);
         try {
-            Gym g1 = new Gym(Integer.parseInt(etGymID.getText().toString()), etCity.getText().toString(), Integer.parseInt(etPostalCode.getText().toString()), df.parse(etHoraA.getText().toString()), df.parse(etHoraC.getText().toString()));
-            PojosClass.getGymDAO().setNewGym(g1);
-            Intent i = new Intent(this, RegisterOwner_activity.class);
-            i.putExtra("gymID", g1.getIdGym());
-            startActivity(i);
+            Gym gym = PojosClass.getGymDAO().getGym(Integer.parseInt(etGymID.getText().toString()), (g -> {
+                if (g != null) {
+                    Toast.makeText(getApplicationContext(), "Ya existe un gimnasio con la ID" + g.getIdGym(), Toast.LENGTH_SHORT).show();
+                } else {
+                    try {
+                        Gym g1 = new Gym(Integer.parseInt(etGymID.getText().toString()), etCity.getText().toString(), Integer.parseInt(etPostalCode.getText().toString()), df.parse(etHoraA.getText().toString()), df.parse(etHoraC.getText().toString()));
+                        PojosClass.getGymDAO().setNewGym(g1);
+                        Intent i = new Intent(this, RegisterOwner_activity.class);
+                        i.putExtra("gymID", g1.getIdGym());
+                        startActivity(i);
+                    } catch (ParseException parseException) {
+                        parseException.printStackTrace();
+                    }
+                }
+            }),(e -> {
+                try {
+                    Gym g1 = new Gym(Integer.parseInt(etGymID.getText().toString()), etCity.getText().toString(), Integer.parseInt(etPostalCode.getText().toString()), df.parse(etHoraA.getText().toString()), df.parse(etHoraC.getText().toString()));
+                    PojosClass.getGymDAO().setNewGym(g1);
+                    Intent i = new Intent(this, RegisterOwner_activity.class);
+                    i.putExtra("gymID", g1.getIdGym());
+                    startActivity(i);
+                } catch (ParseException parseException) {
+                    parseException.printStackTrace();
+                }
+            }));
         } catch (Exception e) {
             Toast.makeText(this, "Error al introducir el gimnasio a la base de datos", Toast.LENGTH_SHORT).show();
         }
