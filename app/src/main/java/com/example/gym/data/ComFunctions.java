@@ -41,6 +41,7 @@ public class ComFunctions {
      * @return boleano dependiendo de si esta comprendido entre los valores (True) o no (False)
      */
     public static boolean is_not_correct(EditText etValidator, int i, int i2) {
+        if (etValidator.getText().toString() == null) return true;
         if (etValidator.getText().toString().length() < i || etValidator.getText().toString().length() > i2)
             return true;
         return false;
@@ -54,6 +55,7 @@ public class ComFunctions {
      * @return boleano dependiendo de si el numero de caracteres es exacto (True) o no (False)
      */
     public static boolean is_not_correct(EditText etValidator, int i) {
+        if (etValidator.getText().toString() == null) return true;
         if (etValidator.getText().toString().length() != i) return true;
         return false;
     }
@@ -79,12 +81,13 @@ public class ComFunctions {
      * @return Devuelve False en caso de que la horaA sea menor a horaC y True si es al reves
      */
     public static boolean isCorrectHour(String horaA, String horaC) {
-            Date hDateA = strToDate(horaA);
-            Date hDateC = strToDate(horaC);
+        Date hDateA = strToDate(horaA);
+        Date hDateC = strToDate(horaC);
 
-            if (hDateA == null || hDateC == null) return false;
-            if (hDateA.after(hDateC)) return false;
-            return true;
+        if (hDateA == null || hDateC == null) return false;
+        if (hDateA.equals(hDateC)) return false;
+        if (hDateA.after(hDateC)) return false;
+        return true;
     }
 
     /**
