@@ -79,6 +79,14 @@ public class UserFragment extends Fragment {
 
     }
 
+    /**
+     * Creación del fragmento de administración del usuario, en el cual
+     * puedes cambiar el ID de gimnasio, contraseña y salir de la sesión.
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return v
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -100,13 +108,6 @@ public class UserFragment extends Fragment {
             }
         });
 
-        /**
-         * Abre un dialogo con el que puedes añadir una id de gimnasio
-         * En caso de ser admin, no te permite cambiarlo
-         * Si no tiene la longitud correcta te salta un error
-         * Si no exite te salta un error
-         *
-         */
         bSetGym.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

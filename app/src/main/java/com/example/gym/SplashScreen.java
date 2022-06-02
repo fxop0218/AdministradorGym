@@ -8,14 +8,14 @@ import android.os.Handler;
 
 import com.example.gym.ui.login.LoginActivity;
 import com.lusfold.spinnerloading.SpinnerLoading;
-
-/**
- *  Ventana inicial que espera a que este cargado
- */
 public class SplashScreen extends AppCompatActivity {
 
     SpinnerLoading spinnerLoading;
 
+    /**
+     * Ventana de carga inicial, la cual deja tiempo a que la aplicación este cargada
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

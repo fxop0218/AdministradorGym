@@ -3,6 +3,12 @@ package com.example.gym.data;
 import android.widget.EditText;
 
 public class dniValidator {
+    /**
+     * Comprueba si el DNI que se ha introducido es correcto o no.
+     *
+     * @param etDni, DNI del cual hay que comprobar su veracidad
+     * @return fasle en caso de que el DNI no sea correcto y true en el caso contrario
+     */
     public static boolean dni_validator(EditText etDni) {
         String dni = etDni.getText().toString();
         String mayusLetter = "";
@@ -19,14 +25,10 @@ public class dniValidator {
     }
 
     /**
+     * Comprueba si el DNI introducido es correcto o no
      *
-     * Mira si el dni introducido por el usuario es correcto
-     * y es un dni existente, es decir, que la letra coincide con
-     * el calculo de los numeros anteriores
-     *
-     *
-     * @param dni
-     * @return Si el dni es correcto devuelve true, si no lo es false
+     * @param dni, DNI del cual se tiene que comprobar la veracidad
+     * @return Si el DNI es correcto devuelve true, en caso contrario devuelve falso
      */
     public static boolean onlyNumbers(String dni){
         int i,j=0;
@@ -49,6 +51,11 @@ public class dniValidator {
         }
     }
 
+    /**
+     * Calcula la letra correspondiente al los números del DNI
+     * @param dni, DNI del cual se quiere la letra correspondiente
+     * @return Letra correspondiente a los números introducidos
+     */
     public static String letraDNI(String dni){
         int miDNI=Integer.parseInt(dni.substring(0,8));
         int resto=0;

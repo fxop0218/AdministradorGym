@@ -36,6 +36,11 @@ public class RegisterActivity extends Activity {
     private boolean isOwner = false;
     private int idGym = 0;
 
+    /**
+     * Actividad donde se registran los usuarios,
+     * La actividad cambia dependiendo de si el usuario ha registrado un gimnasio anteriormente o no
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

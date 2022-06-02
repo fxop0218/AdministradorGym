@@ -31,7 +31,13 @@ public class RegisterGymActivity extends AppCompatActivity {
     private int horaC, minuteC, horaA, minuteA;
     private AtomicBoolean correct = new AtomicBoolean(false);
 
-
+    /**
+     * Creación de un nuevo gimnasio
+     * Comprueba que todos los fatos son correctos y si no existe uno con la misma id
+     * en caso positivo lo añade a la base de datos y te envía a la creación de un usuario
+     * en caso positivo no te deja
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -145,8 +151,8 @@ public class RegisterGymActivity extends AppCompatActivity {
     }
 
     /**
-     * Pasa al siguinte paso cuando todos los campos estan rellenados de forma correcta
-     *
+     * Pasa al siguiente paso cuando todos los campos están rellenados de forma correcta
+     * Comprueba si existe un gimnasio con la misma id, si es asi te salta un toast
      * @param v
      */
     public void bNextStep (View v) {
@@ -185,6 +191,11 @@ public class RegisterGymActivity extends AppCompatActivity {
         }
 
     }
+
+    /**
+     * Seleccionar la hora de apertura mediante un PopUp
+     * @param v
+     */
     public void popTimerPickerApertura (View v) {
         TimePickerDialog.OnTimeSetListener onTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
             @Override
@@ -199,6 +210,10 @@ public class RegisterGymActivity extends AppCompatActivity {
         timePickerDialog.show();
     }
 
+    /**
+     * Selecciona la hora de cierre mediante un PopUp
+     * @param v
+     */
     public void popTimerPickerCierre (View v) {
         TimePickerDialog.OnTimeSetListener onTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
             @Override
@@ -213,6 +228,10 @@ public class RegisterGymActivity extends AppCompatActivity {
         timePickerDialog.show();
     }
 
+    /**
+     * Mantiene el botón de registrar enabled mientras los campos estén mal rellenados
+     * @return boolean false cuando no están bien rellenados, true cuando están correctamente rellenados
+     */
     public boolean setRegisterEnabled() {
         boolean correctLogin = true;
         if (ComFunctions.is_not_correct(etGymID, 8)) {

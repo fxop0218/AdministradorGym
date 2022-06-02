@@ -64,6 +64,15 @@ public class MainFragment extends Fragment {
         }
     }
 
+    /**
+     * Fragmento principal donde se muestran las actividades, dietas y ejercicios
+     * Menu por defecto al iniciar sesión
+     *
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return v
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -83,5 +92,4 @@ public class MainFragment extends Fragment {
 
         return view;
     }
-
 }

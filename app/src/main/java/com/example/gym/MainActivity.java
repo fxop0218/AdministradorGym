@@ -22,6 +22,10 @@ public class MainActivity extends AppCompatActivity {
     TiendaFragment tiendaFragment = new TiendaFragment();
     UserFragment userFragment = new UserFragment();
 
+    /**
+     * Actividad principal donde se respaldan en resto de fragmetos
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +36,10 @@ public class MainActivity extends AppCompatActivity {
         loadFragment(mainFragment);
     }
 
+    /**
+     * Menu en la parte inferior que permite la navegacion entre diferentes fragmentos
+     *
+     */
     private final BottomNavigationView.OnItemSelectedListener mOnNavegationItemSelectedListener = new BottomNavigationView.OnItemSelectedListener() {
         @SuppressLint("NonConstantResourceId")
         @Override
@@ -59,17 +67,14 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    /**
+     * Carga los fragmentos
+     * @param fragment, fragmento que tiene que cargar
+     */
     public void loadFragment(Fragment fragment){
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, fragment);
         transaction.commit();
-    }
-
-    public boolean es_owner(){
-
-        Intent intent = getIntent();
-
-        return intent.getBooleanExtra("owner", false);
     }
 }
