@@ -35,6 +35,7 @@ public class RegisterActivity extends Activity {
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     private boolean isOwner = false;
     private int idGym = 0;
+    private String DNIerror = "El dni tiene que contener 9 caracteres", NameError = "El nombre tiene que tener entre 3 y 20 letras", SurnameError = "El apellido tiene que tener entre 5 y 20 letras", UserNameError = "El correo debe tener entre 8 y 30 letras y debe contener @", PwdError = "La contraseña tiene que tener entre 5 y 20 letras";
 
     /**
      * Actividad donde se registran los usuarios,
@@ -76,8 +77,8 @@ public class RegisterActivity extends Activity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if (!dniValidator.dni_validator(etDni)) {
-                    etDni.setError("El dni tiene que contener 9 caracteres");
+                if (!DniValidator.dni_validator(etDni)) {
+                    etDni.setError(DNIerror);
                     bRegister.setEnabled(setRegisterEnabled());
                 }
             }
@@ -97,7 +98,7 @@ public class RegisterActivity extends Activity {
             @Override
             public void afterTextChanged(Editable editable) {
                 if (ComFunctions.is_not_correct(etName, 3, 20)) {
-                    etName.setError("El nombre tiene que tener entre 3 y 20 letras");
+                    etName.setError(NameError);
                     bRegister.setEnabled(setRegisterEnabled());
                 }
             }
@@ -117,7 +118,7 @@ public class RegisterActivity extends Activity {
             @Override
             public void afterTextChanged(Editable editable) {
                 if (ComFunctions.is_not_correct(etSurname, 5, 20)) {
-                    etSurname.setError("El apellido tiene que tener entre 5 y 20 letras");
+                    etSurname.setError(SurnameError);
                     bRegister.setEnabled(setRegisterEnabled());
                 }
             }
@@ -139,7 +140,7 @@ public class RegisterActivity extends Activity {
             public void afterTextChanged(Editable editable) {
                 if (ComFunctions.is_not_correct(etUserName, 8, 30) || !etUserName.getText().toString().contains("@") && !etUserName.getText().toString().contains(".")) {
 
-                    etUserName.setError("El correo debe tener entre 8 y 30 letras y debe contener @");
+                    etUserName.setError(UserNameError);
                     bRegister.setEnabled(setRegisterEnabled());
                 }
             }
@@ -159,7 +160,7 @@ public class RegisterActivity extends Activity {
             @Override
             public void afterTextChanged(Editable editable) {
                 if (ComFunctions.is_not_correct(etPwd, 5, 20)) {
-                    etPwd.setError("La contraseña tiene que tener entre 5 y 20 letras");
+                    etPwd.setError(PwdError);
                     bRegister.setEnabled(setRegisterEnabled());
                 }
             }

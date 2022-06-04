@@ -154,21 +154,21 @@ public class LoginActivity extends AppCompatActivity {
                            loginViewModel.login(usernameEditText.getText().toString(),
                                    passwordEditText.getText().toString());
                        } else {
-                           Toast.makeText(getApplicationContext(), "La contraseña es incorrecta, intentalo de nuevo", Toast.LENGTH_SHORT).show();
+                           Toast.makeText(getApplicationContext(), R.string.contraseña_incorrecta, Toast.LENGTH_SHORT).show();
                        }
                    } catch (NullPointerException e) {
                        loginButton.setEnabled(true);
-                       Toast.makeText(getApplicationContext(), "Contraseña o usuario incorrecto", Toast.LENGTH_SHORT).show();
+                       Toast.makeText(getApplicationContext(), R.string.contraseña_usuario_incorrecto, Toast.LENGTH_SHORT).show();
                    } catch (Exception e) {
-                       Toast.makeText(getApplicationContext(), "Contraseña o usuario incorrecto", Toast.LENGTH_SHORT).show();
+                       Toast.makeText(getApplicationContext(), R.string.contraseña_usuario_incorrecto, Toast.LENGTH_SHORT).show();
                    }
                 }), (e -> {
                     try {
                         loginButton.setEnabled(true);
-                        Toast.makeText(getApplicationContext(), "Contraseña o usuario incorrecto", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), R.string.contraseña_usuario_incorrecto, Toast.LENGTH_SHORT).show();
                     } catch (Exception e1) {
                         loginButton.setEnabled(true);
-                        Toast.makeText(getApplicationContext(), "Contraseña o usuario incorrecto", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), R.string.contraseña_usuario_incorrecto, Toast.LENGTH_SHORT).show();
                     }
                 }));
             }
@@ -186,7 +186,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (!user.isEmailVerified()){
 
-                    Toast.makeText(getApplicationContext(), "Necesitas verificar el correo" + user.getEmail(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), getString(R.string.verificar_correo) + user.getEmail(), Toast.LENGTH_LONG).show();
                 }
                 if (user != null){
 

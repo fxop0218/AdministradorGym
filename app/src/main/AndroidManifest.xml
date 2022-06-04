@@ -9,7 +9,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Gym">
-        <activity android:name=".IntroActivity"></activity>
         <activity android:name=".user.viewUpcomingActivity" />
         <activity
             android:name=".Cardio"

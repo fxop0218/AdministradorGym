@@ -102,10 +102,10 @@ public class view_actividades_activity extends AppCompatActivity {
                         PojosClass.getActividadesDao().setActiviad(act); //Se actualiza la actividad
 
                     } catch (Exception e) {
-                        Toast.makeText(getApplicationContext(), "Error al asignarte a la acividad", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), R.string.error_asignacion_actividad, Toast.LENGTH_SHORT).show();
                     }
                 } else { //En caso de estar apuntado en la actividad, muestra un mensaeje;
-                    Toast.makeText(getApplicationContext(), "Ya estas apuntado en esta actividad", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), R.string.ya_apuntado_actividad, Toast.LENGTH_SHORT).show();
                 }
             }
         });

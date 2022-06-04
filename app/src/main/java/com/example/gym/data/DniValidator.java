@@ -2,7 +2,7 @@ package com.example.gym.data;
 
 import android.widget.EditText;
 
-public class dniValidator {
+public class DniValidator {
     /**
      * Comprueba si el DNI que se ha introducido es correcto o no.
      *

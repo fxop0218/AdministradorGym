@@ -112,13 +112,13 @@ public class UserFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder alertBuilder = new AlertDialog.Builder(v.getContext());
-                alertBuilder.setTitle("Adjunta el ID de tu gimnasio (8 numeros)");
+                alertBuilder.setTitle(R.string.adjunta_id_gym);
                 final EditText etGymID = new EditText(v.getContext());
                 etGymID.setInputType(InputType.TYPE_CLASS_NUMBER);
                 etGymID.setFilters(new InputFilter[] {new InputFilter.LengthFilter(8) }); // Se añade un maximo de numeros al edit text
                 alertBuilder.setView(etGymID);
                 alertBuilder.setCancelable(true);
-                alertBuilder.setPositiveButton("Acceptar", new DialogInterface.OnClickListener() {
+                alertBuilder.setPositiveButton(R.string.aceptar, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         if (!etGymID.getText().toString().isEmpty() && etGymID.getText().toString().length() == 8) {
@@ -126,7 +126,7 @@ public class UserFragment extends Fragment {
                                 PojosClass.getGymDAO().getGym(Integer.parseInt(etGymID.getText().toString()), (gym ->{
                                     try {
                                         PojosClass.getUsuarioDAO().addGym(Integer.parseInt(etGymID.getText().toString()));
-                                        Toast.makeText(v.getContext(), "Te has insctito con exito a " + gym.getIdGym(), Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(v.getContext(), getString(R.string.insctito_exito) + gym.getIdGym(), Toast.LENGTH_SHORT).show();
                                         UserSession.getUsuario().setIdGimnasios(Integer.parseInt(etGymID.getText().toString())); // Se añade la nueva id de gimnasion en la session de usuario actual
 
                                     } catch (Exception e) {
@@ -139,14 +139,14 @@ public class UserFragment extends Fragment {
                                 Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         } else {
-                            Toast.makeText(getContext(), "Introduce una id correct ", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), R.string.id_correcta, Toast.LENGTH_SHORT).show();
                         }
                     }
                 })
-                .setNegativeButton("Cerrar", new DialogInterface.OnClickListener() {
+                .setNegativeButton(R.string.cerrar, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(v.getContext(), "Se ha cancelado la operación", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(v.getContext(), R.string.cancelado_operacion, Toast.LENGTH_SHORT).show();
                     }
                 });
                 alertBuilder.show();

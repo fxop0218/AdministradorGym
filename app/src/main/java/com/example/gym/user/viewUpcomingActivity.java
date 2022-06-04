@@ -21,6 +21,7 @@ import com.example.gym.pojos.PojosClass;
 import java.util.ArrayList;
 
 public class viewUpcomingActivity extends AppCompatActivity {
+
     private ListView lvUpcomign;
     private Button bCloseUp;
     ArrayList<Reserva> registerArray = new ArrayList<>();
@@ -30,6 +31,7 @@ public class viewUpcomingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_view_upcoming);
         bCloseUp = findViewById(R.id.bCloseUp);
         lvUpcomign = findViewById(R.id.lvUpcoming);
@@ -63,20 +65,20 @@ public class viewUpcomingActivity extends AppCompatActivity {
                 //TODO En el alertDialog poner que puedas borrarte de la acividad
 
                 Actividad selectedAct = activityArray.get(i); //Guarda la acividad selecionada
-                builder.setMessage("Eliminar actividad").setCancelable(false).setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                builder.setMessage(R.string.eliminar_actividad).setCancelable(false).setPositiveButton("Si", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         try {
                             PojosClass.getReservaDao().deleteReserva(UserSession.getUsuario().getUser(), selectedAct.getIdActividad());
-                            Toast.makeText(getApplicationContext(), "Se ha eliminado la reserva con exito", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), R.string.eliminar_reserva, Toast.LENGTH_SHORT).show();
                         } catch (Exception e) {
-                            Toast.makeText(getApplicationContext(), "No se ha podido eliminar la actividad", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), R.string.erro_eliminar_actividad, Toast.LENGTH_SHORT).show();
                         }
                     }
                 }).setNegativeButton("No", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                Toast.makeText(getApplicationContext(), "Acción cancelada con exito", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), R.string.accion_cancelada, Toast.LENGTH_SHORT).show();
                             }
                         }
                 );
@@ -88,7 +90,7 @@ public class viewUpcomingActivity extends AppCompatActivity {
     private ArrayList<Actividad> getUserActivity (ArrayList<Reserva> registerArray) throws Exception {
         ArrayList<Actividad> actList = new ArrayList<>();
         if (registerArray.isEmpty()) {
-            throw new Exception("No se ha encontrado ninguna actividad relacionada");
+            throw new Exception(getString(R.string.error_encontrar_actividad));
         } else {
             for (Reserva reserva : registerArray) {
                 Actividad act = PojosClass.getActividadesDao().getActividadById(reserva.getActividad(), listener -> {
@@ -98,7 +100,7 @@ public class viewUpcomingActivity extends AppCompatActivity {
             }
         }
         if (!actList.isEmpty()) return actList;
-        Toast.makeText(getApplicationContext(), "No se ha encontrado ninguna actividad proxima", Toast.LENGTH_LONG).show();
-        throw new Exception("No tienes proximas actividades");
+        Toast.makeText(getApplicationContext(), R.string.error_encontrar_actividad_proxima, Toast.LENGTH_LONG).show();
+        throw new Exception(getString(R.string.no_proximas_actividades));
     }
 }

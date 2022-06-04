@@ -127,15 +127,15 @@ public class CalendarFragment extends Fragment {
                 if (selDate != null && !date.isEmpty()) {
                     if (!actualDate.before(selDate)) {
 
-                        Toast.makeText(view.getContext(), "Ejecutado con exito", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(view.getContext(), R.string.ejecutado_con_exito, Toast.LENGTH_SHORT).show();
                         Intent i = new Intent(getContext(), createAct_activity.class);
                         i.putExtra("day", date); // TODO tener en cuenta que no se puede clickar al boton cuando la fecha es inferior a la atual o igual.
                         startActivity(i);
                     } else {
-                        Toast.makeText(view.getContext(), "Seleciona un dia posterior al de hoy", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(view.getContext(), R.string.selecciona_dia_anterior, Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(view.getContext(), "Error al selecionar un dia", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(view.getContext(), R.string.error_seleccion_dia, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -145,7 +145,7 @@ public class CalendarFragment extends Fragment {
             public void onClick(View view) {
                 if (selDate != null && !date.isEmpty()) {
                     if (!actualDate.before(selDate)) {
-                        Toast.makeText(view.getContext(), "Actividades", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(view.getContext(), R.string.Actividades, Toast.LENGTH_SHORT).show();
                         Intent i = new Intent(getContext(), view_actividades_activity.class);
                         i.putExtra("day", date); //Pasa la fecha escogida por el usuario
                         startActivity(i);
