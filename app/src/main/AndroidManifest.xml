@@ -24,10 +24,6 @@
             android:exported="false"
             android:windowSoftInputMode="adjustNothing" />
         <activity
-            android:name=".gymOwner.ActCreationActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustNothing" />
-        <activity
             android:name=".VestuarioActivity"
             android:exported="false" />
         <activity
@@ -37,12 +33,9 @@
             android:name=".MaterialActivity"
             android:exported="false" />
         <activity
-            android:name=".data.RegisterOwner_activity"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".data.RegisterGymActivity"
             android:exported="false"
-            android:windowSoftInputMode="adjustNothing" />
+            android:windowSoftInputMode="adjustPan|adjustResize"/>
         <activity
             android:name=".DietaHipocalorica"
             android:theme="@style/Theme.AppCompat.Dialog" />

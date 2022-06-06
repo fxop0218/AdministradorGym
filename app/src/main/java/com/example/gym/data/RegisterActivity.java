@@ -199,15 +199,19 @@ public class RegisterActivity extends Activity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if (etYear.getText().toString().isEmpty()) {
-                    year = 0;
-                } else {
-                    year = Integer.parseInt(etYear.getText().toString());
+                try {
+                    if (etYear.getText().toString().isEmpty()) {
+                        year = 0;
+                    } else {
+                        year = Integer.parseInt(etYear.getText().toString());
+                    }
+                    if (ComFunctions.is_not_correct_year(year, etYear)) {
+                        etYear.setError("El año no esta entre los valores " + (ComFunctions.actYear - 100) + " - " + ComFunctions.actYear);
+                    }
+                    bRegister.setEnabled(setRegisterEnabled());
+                } catch (Exception e) {
+                    etYear.setError("El año no tiene el formato correcto");
                 }
-                if (ComFunctions.is_not_correct_year(year, etYear)) {
-                    etYear.setError("El año no esta entre los valores " + (ComFunctions.actYear - 100) + " - " + ComFunctions.actYear);
-                }
-                bRegister.setEnabled(setRegisterEnabled());
             }
         });
     }

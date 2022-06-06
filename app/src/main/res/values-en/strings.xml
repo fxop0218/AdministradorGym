@@ -91,4 +91,6 @@
     <string name="insctito_exito">You have assigned to: </string>
     <string name="id_correcta">Select a correct ID </string>
     <string name="cancelado_operacion">Operation have been canceled</string>
+    <string name="name">Name</string>
+    <string name="search_by_code">Search by code</string>
 </resources>

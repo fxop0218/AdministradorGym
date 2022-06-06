@@ -17,7 +17,8 @@ public class ReservaDAOImp implements reservaDAO{
 
     @Override
     public void addReserva(Reserva r1) {
-
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("reservas").document(r1.getIdReserva()).set(r1);
     }
 
     @Override

@@ -34,7 +34,7 @@ public class viewUpcomingActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_view_upcoming);
         bCloseUp = findViewById(R.id.bCloseUp);
-        lvUpcomign = findViewById(R.id.lvUpcoming);
+        //lvUpcomign = findViewById(R.id.lvUpcoming);
 
         registerArray = PojosClass.getReservaDao().getReservaByUserName(UserSession.getUsuario().getUser());
 

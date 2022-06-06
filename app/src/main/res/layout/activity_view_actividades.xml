@@ -7,46 +7,63 @@
     android:background="@drawable/wallpaper_grade"
     tools:context=".user.view_actividades_activity">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/tvActividades"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:gravity="center"
+        android:text="@string/actividades"
+        android:textAlignment="center"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tvTitle"
+    <ScrollView
+        android:layout_width="411dp"
+        android:layout_height="529dp"
+        app:layout_constraintBottom_toTopOf="@+id/bAddCode"
+        app:layout_constraintTop_toBottomOf="@+id/tvActividades"
+        tools:layout_editor_absoluteX="0dp">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:gravity="center"
-            android:text="@string/"
-            android:textColor="@color/blanco"
-            android:textSize="30sp" />
+            android:orientation="vertical">
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="555dp">
-
-            <LinearLayout
+            <ListView
+                android:id="@+id/lv_Actividades"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="match_parent" />
+        </LinearLayout>
+    </ScrollView>
 
-                <ListView
-                    android:id="@+id/lv_Actividades"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-            </LinearLayout>
-        </ScrollView>
+    <Button
+        android:id="@+id/bAddCode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/search_by_code"
+        android:background="@drawable/custom_button"
+        app:layout_constraintBottom_toTopOf="@+id/bClose"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-        <Button
-            android:id="@+id/bClose"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="70dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="70dp"
-            android:layout_marginBottom="30dp"
-            android:background="@drawable/custom_button"
-            android:text="@string/atras" />
-    </LinearLayout>
+    <Button
+        android:id="@+id/bClose"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="36dp"
+        android:background="@drawable/custom_button"
+        android:text="@string/atras"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
