@@ -69,7 +69,7 @@
     <string name="correo">Email</string>
     <string name="crea_tu_gimnasio">Create your Gym</string>
     <string name="perfil_de_user">USER PROFILE</string>
-    <string name="crear_usuario">Create user</string>
+    <string name="crear_usuario">Create user</string>s
     <string name="contraseña_incorrecta">Incorrect password</string>
     <string name="contraseña_usuario_incorrecto">Incorrect user or password</string>
     <string name="verificar_correo">Need to verify the email</string>
@@ -93,4 +93,6 @@
     <string name="cancelado_operacion">Operation have been canceled</string>
     <string name="name">Name</string>
     <string name="search_by_code">Search by code</string>
+    <string name="eliminar_usuario">Delete user</string>
+    <string name="cambiar_contrase_a">Change password</string>
 </resources>

@@ -157,7 +157,7 @@ public class view_actividades_activity extends AppCompatActivity {
                                     PojosClass.getUsuarioDAO().addGym(Integer.parseInt(activityID.getText().toString()));
                                     Reserva r1 = new Reserva(UserSession.getUsuario().getUser(), actividad.getIdActividad(), UserSession.getUsuario().getUser()+ actividad.getIdActividad());
                                     PojosClass.getReservaDao().addReserva(r1); // Se añade la nueva id de gimnasion en la session de usuario actual
-                                    Toast.makeText(view.getContext(), getString(R.string.insctito_exito) + actividad.getIdActividad(), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(view.getContext(), getString(R.string.insctito_exito) + actividad.getIdActividad() + " " + actividad.getHora_inicio() + " " + actividad.getHora_fin() + " day " + actividad.getDia(), Toast.LENGTH_SHORT).show();
 
                                 } catch (Exception e) {
                                     Toast.makeText(view.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -166,7 +166,7 @@ public class view_actividades_activity extends AppCompatActivity {
                                 Toast.makeText(view.getContext(), failure.getMessage(), Toast.LENGTH_SHORT).show();
                             }));
                         } catch (Exception e) {
-                            Toast.makeText(view.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(view.getContext(), "Error", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }).setNegativeButton(R.string.cerrar, new DialogInterface.OnClickListener() {

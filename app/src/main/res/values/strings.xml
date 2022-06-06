@@ -118,4 +118,6 @@
     <string name="cancelado_operacion">Se ha cancelado la operación</string>
     <string name="name">Name</string>
     <string name="search_by_code">Buscar por codigo</string>
+    <string name="eliminar_usuario">Eliminar usuario</string>
+    <string name="cambiar_contrase_a">Cambiar contraseña</string>
 </resources>

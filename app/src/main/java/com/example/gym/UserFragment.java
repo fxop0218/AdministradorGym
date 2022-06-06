@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.telephony.RadioAccessSpecifier;
 import android.telephony.TelephonyManager;
 import android.text.InputFilter;
 import android.text.InputType;
@@ -19,6 +20,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.gym.data.Encript;
 import com.example.gym.pojos.PojosClass;
 import com.example.gym.pojos.UsersDAO;
 import com.example.gym.ui.login.LoginActivity;
@@ -36,7 +38,7 @@ public class UserFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    private Button bSetGym;
+    private Button bSetGym, bEliminarUsuario, bCambaiarContraseña;
     private TextView tvUser;
 
     // TODO: Rename and change types of parameters
@@ -94,6 +96,8 @@ public class UserFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_user, container, false);
         bSetGym = v.findViewById(R.id.bAltaGym);
         btCerrarSesion = v.findViewById(R.id.cerrar_sesion);
+        bEliminarUsuario = v.findViewById(R.id.bEliminarCuenta);
+        bCambaiarContraseña = v.findViewById(R.id.bCambiarContra);
         tvUser = v.findViewById(R.id.tvUsername);
 
         tvUser.setText("PERFIL DE " + UserSession.getUsuario().getUser());
@@ -147,6 +151,91 @@ public class UserFragment extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Toast.makeText(v.getContext(), R.string.cancelado_operacion, Toast.LENGTH_SHORT).show();
+                    }
+                });
+                alertBuilder.show();
+            }
+        });
+
+        bCambaiarContraseña.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final boolean[] correct = {false};
+                AlertDialog.Builder alertBuilder = new AlertDialog.Builder(v.getContext());
+                alertBuilder.setTitle("Intorduce tu constraseña actual");
+                final EditText etPwd = new EditText(v.getContext());
+                etPwd.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                etPwd.setFilters(new InputFilter[]{new InputFilter.LengthFilter(30)}); // Se añade un maximo de numeros al edit text
+                alertBuilder.setView(etPwd);
+                alertBuilder.setCancelable(true);
+                alertBuilder.setPositiveButton(R.string.aceptar, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        try {
+                            if (Encript.encriptar(etPwd.getText().toString()).equals(UserSession.getUsuario().getPassword())) {
+                                correct[0] = true;
+                            } else {
+                                Toast.makeText(v.getContext(), "La contraseña no coincide", Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+                alertBuilder.show();
+                if (correct[0]) {
+                    AlertDialog.Builder alertBuilder2 = new AlertDialog.Builder(v.getContext());
+                    final EditText etNewPwd = new EditText(v.getContext());
+                    etNewPwd.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    etNewPwd.setFilters(new InputFilter[]{new InputFilter.LengthFilter(30)});
+                    alertBuilder2.setView(etNewPwd);
+                    alertBuilder2.setCancelable(true);
+
+                    alertBuilder2.setPositiveButton(R.string.aceptar, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            if (etNewPwd.getText().toString().length() < 7) {
+                                Toast.makeText(v.getContext(), "La contraseña tiene que tener 6 caracteres minimo", Toast.LENGTH_SHORT).show();
+                            } else {
+                                try {
+                                    UserSession.getUsuario().setPassword(Encript.encriptar(etNewPwd.getText().toString()));
+                                    PojosClass.getUsuarioDAO().setUsuario(UserSession.getUsuario());
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }
+                    });
+                    alertBuilder2.show();
+                }
+            }
+        });
+
+        bEliminarUsuario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder alertBuilder = new AlertDialog.Builder(v.getContext());
+                final EditText etPwd = new EditText(v.getContext());
+                etPwd.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                etPwd.setFilters(new InputFilter[]{new InputFilter.LengthFilter(30)});
+                alertBuilder.setView(etPwd);
+                alertBuilder.setCancelable(true);
+                alertBuilder.setPositiveButton(R.string.aceptar, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        try {
+                            if (Encript.encriptar(etPwd.getText().toString()).equals(UserSession.getUsuario().getPassword())) {
+                                PojosClass.getUsuarioDAO().deleteUser(UserSession.getUsuario().getUser());
+                                Toast.makeText(v.getContext(), "Usuario eliminado con exito", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(v.getContext(), LoginActivity.class);
+                                startActivity(intent);
+                                FirebaseAuth.getInstance().signOut();
+                            } else {
+                                Toast.makeText(v.getContext(), "La contraseña no coincide", Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     }
                 });
                 alertBuilder.show();
